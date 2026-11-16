@@ -365,7 +365,7 @@ h1, h2, h3 { text-wrap: balance; }
         <li><div><b>Mandalo por WhatsApp</b><p>Se abre WhatsApp con todo escrito. Te confirmamos stock, envío y total.</p></div></li>
       </ol>
     </section>
-    <p class="foot">Pedidos y consultas por WhatsApp al <b id="wa-num"></b> · <a id="wa-help" href="https://wa.me/" target="_blank" rel="noopener">Escribinos</a><br>Precios en pesos argentinos, sujetos a stock.</p>
+    <p class="foot">Pedidos y consultas por WhatsApp al <b id="wa-num"></b> · <a id="wa-help" href="https://wa.me/" target="_blank" rel="noopener">Escribinos</a><br>Precios en pesos argentinos, sujetos a stock.<span id="credits"></span></p>
   </div>
 </main>
 
@@ -766,6 +766,7 @@ h1, h2, h3 { text-wrap: balance; }
       html += '<p class="p-foot">Notas orientativas: cómo se siente puede variar un poco en cada piel.</p>';
     }
     if (p.texto) html += '<p class="p-text">' + esc(p.texto) + "</p>";
+    if (p.credito) { var cr = p.credito; html += '<p class="p-foot" style="margin-top:12px">Foto de referencia: «' + esc(cr.titulo) + '» de <a href="' + esc(cr.fuente) + '" target="_blank" rel="noopener" style="color:var(--gold-hi)">' + esc(cr.autor) + '</a>, <a href="' + esc(cr.licenciaUrl) + '" target="_blank" rel="noopener" style="color:var(--gold-hi)">' + esc(cr.licencia) + '</a>. Recortada.</p>'; }
     if (p.ilustrativa) html += '<p class="p-foot" style="margin-top:12px">Imagen ilustrativa: el producto real puede verse distinto. Pedinos fotos por WhatsApp.</p>';
     var opts = p.opciones && OPC[p.opciones] ? '<label class="p-optl" for="p-opt">Elegí la opción<select class="opt" id="p-opt">' + OPC[p.opciones].map(function (o) { return "<option" + (sel[id] === o ? " selected" : "") + ">" + esc(o) + "</option>"; }).join("") + "</select></label>" : "";
     html += '<div class="p-buy"><div id="p-price"></div>' + opts + '<button class="add" type="button" id="p-add">Agregar al pedido</button><p class="p-have" id="p-have"></p></div>';
@@ -905,6 +906,8 @@ h1, h2, h3 { text-wrap: balance; }
   var m = /^549(\d{3})(\d{3})(\d{4})$/.exec(WA);
   $("wa-num").textContent = m ? "+54 9 " + m[1] + " " + m[2] + "-" + m[3] : "+" + WA;
   $("wa-help").href = waLink("¡Hola! Quería hacerte una consulta.");
+  var cred = P.filter(function (p) { return p.credito; });
+  if (cred.length) $("credits").innerHTML = "<br>Fotos de referencia con licencia libre: " + cred.map(function (p) { var c = p.credito; return esc(p.nombre) + ' (<a href="' + esc(c.fuente) + '" target="_blank" rel="noopener">' + esc(c.autor) + '</a>, <a href="' + esc(c.licenciaUrl) + '" target="_blank" rel="noopener">' + esc(c.licencia) + "</a>)"; }).join(" · ") + ". Recortadas.";
   renderCatGrid(); renderChips(); renderList(); syncSlots(); syncBar();
   if (state.cat !== "all") setTimeout(goList, 60);
 })();

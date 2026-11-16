@@ -50,6 +50,7 @@ window.CATALOGO = {
 
   // para: "el" | "ella" | "unisex". aroma: dulce, fresco, intenso, floral, amaderado, frutal.
   // destacado: posición en "Recomendados". nuevo: muestra la etiqueta "Nuevo".
+  // credito: foto con licencia libre (Creative Commons); la ficha y el pie muestran autor y licencia, como pide la licencia.
   // ilustrativa: la foto es una ilustración (no foto real); la ficha lo aclara. Al subir la foto real, borrá esa marca.
   productos: [
     // ── perfumes/arabes
@@ -148,7 +149,7 @@ window.CATALOGO = {
     { id: "le-male-elixir", cat: "perfumes", sec: "disenador", nombre: "Jean Paul Le Male Elixir", detalle: "Perfume 100 ml", precio: 46000, para: "el", aroma: "dulce", foto: "le-male-elixir.webp", destacado: 4 },
     { id: "le-male-parfum", cat: "perfumes", sec: "disenador", nombre: "Jean Paul Le Male Le Parfum", detalle: "Perfume 100 ml", precio: 48000, para: "el", aroma: "intenso", foto: "le-male-parfum.webp" },
     { id: "la-vie", cat: "perfumes", sec: "disenador", nombre: "La Vie Est Belle", detalle: "Perfume 100 ml", precio: 29000, para: "ella", aroma: "dulce", foto: "la-vie.webp", destacado: 10 },
-    { id: "lady-million", cat: "perfumes", sec: "disenador", nombre: "Lady Million", detalle: "Perfume 100 ml", precio: 23500, para: "ella", foto: "lady-million.webp", ilustrativa: true },
+    { id: "lady-million", cat: "perfumes", sec: "disenador", nombre: "Lady Million", detalle: "Perfume 100 ml", precio: 23500, para: "ella", foto: "lady-million.webp", credito: {"autor": "N Adey Photography", "titulo": "Paco Rabanne Lady Million Perfume", "fuente": "https://www.flickr.com/photos/94467733@N04/9259177168", "licencia": "CC BY 2.0", "licenciaUrl": "https://creativecommons.org/licenses/by/2.0/deed.es"} },
     { id: "one-million", cat: "perfumes", sec: "disenador", nombre: "One Million", detalle: "Perfume 100 ml", precio: 33000, para: "el", aroma: "intenso", foto: "one-million.webp" },
     { id: "stronger", cat: "perfumes", sec: "disenador", nombre: "Stronger With You", detalle: "Perfume 100 ml", precio: 42000, para: "el", aroma: "dulce", foto: "stronger.webp" },
     { id: "stronger-absolutely", cat: "perfumes", sec: "disenador", nombre: "Stronger With You Absolutely", detalle: "Perfume 100 ml", precio: 42000, para: "el", foto: "stronger-absolutely.webp", ilustrativa: true },
@@ -248,7 +249,7 @@ window.CATALOGO = {
     { id: "auric-lambotech-casco", cat: "audio", sec: "auriculares", nombre: "Auricular con micrófono para casco Lambotech", detalle: "Para casco de moto", precio: 26000, foto: "auric-lambotech-casco.webp" },
     { id: "jbl-wave380", cat: "audio", sec: "auriculares", nombre: "JBL Wave 380 TWS", detalle: "Auriculares inalámbricos", precio: 26000, foto: "jbl-wave380.webp" },
     { id: "jbl-wave-beam2", cat: "audio", sec: "auriculares", nombre: "JBL Wave Beam 2", detalle: "Auriculares inalámbricos", precio: 27500, foto: "jbl-wave-beam2.webp" },
-    { id: "airpods-max", cat: "audio", sec: "auriculares", nombre: "AirPods Max", detalle: "Elegí el color", precio: 36500, opciones: "colmax", texto: "Auriculares de vincha inalámbricos con almohadillas acolchadas y estuche protector. Cómodos para usar horas, con buen aislamiento del ruido de afuera. Vienen sellados en caja. Colores: negro, plata, azul y rojo.", foto: "airpods-max.webp", ilustrativa: true },
+    { id: "airpods-max", cat: "audio", sec: "auriculares", nombre: "AirPods Max", detalle: "Elegí el color", precio: 36500, opciones: "colmax", texto: "Auriculares de vincha inalámbricos con almohadillas acolchadas y estuche protector. Cómodos para usar horas, con buen aislamiento del ruido de afuera. Vienen sellados en caja. Colores: negro, plata, azul y rojo.", foto: "airpods-max.webp", credito: {"autor": "ajay_suresh", "titulo": "AirPods Max", "fuente": "https://www.flickr.com/photos/83136374@N05/51817515866", "licencia": "CC BY 2.0", "licenciaUrl": "https://creativecommons.org/licenses/by/2.0/deed.es"} },
 
     // ── audio/parlantes
     { id: "jbl-go4", cat: "audio", sec: "parlantes", nombre: "JBL Go 4", detalle: "Parlante portátil", precio: 24500, foto: "jbl-go4.webp", texto: "Parlante chico con luces RGB y cordón para llevarlo a todos lados. Ideal para la mochila, la pileta o el escritorio. Bluetooth y carga por USB-C." },
@@ -295,7 +296,7 @@ window.CATALOGO = {
     { id: "mate-termo", cat: "mate", nombre: "Combo termo 1,2 L + mate", detalle: "Termo y mate", precio: 44500, texto: "Termo de 1,2 litros con pico de precisión para cebar. Su tapa también se usa como mate, así que te llevás termo y mate en uno.", foto: "mate-termo.webp", ilustrativa: true },
 
     // ── otros/joysticks
-    { id: "joystick-ps3", cat: "otros", sec: "joysticks", nombre: "Joystick PS3 inalámbrico", detalle: "Elegí el color", precio: 19000, opciones: "colps3", texto: "Joystick inalámbrico para PS3 con vibración y batería recargable. Se carga con cable USB. Colores: negro, azul, rojo y blanco.", foto: "joystick-ps3.webp", ilustrativa: true },
+    { id: "joystick-ps3", cat: "otros", sec: "joysticks", nombre: "Joystick PS3 inalámbrico", detalle: "Elegí el color", precio: 19000, opciones: "colps3", texto: "Joystick inalámbrico para PS3 con vibración y batería recargable. Se carga con cable USB. Colores: negro, azul, rojo y blanco.", foto: "joystick-ps3.webp", credito: {"autor": "William Hook", "titulo": "DualShock 3 (2)", "fuente": "https://www.flickr.com/photos/83542829@N00/2505466922", "licencia": "CC BY-SA 2.0", "licenciaUrl": "https://creativecommons.org/licenses/by-sa/2.0/deed.es"} },
     { id: "joystick-ps4", cat: "otros", sec: "joysticks", nombre: "Joystick PS4 inalámbrico", detalle: "Elegí el color", precio: 31500, opciones: "colps4", foto: "joystick-ps4.webp", ilustrativa: true },
     { id: "joystick-ps5", cat: "otros", sec: "joysticks", nombre: "Joystick PS5 DualSense", detalle: "Original Sony · Negro", precio: 118500, texto: "Joystick inalámbrico original de Sony para PS5, sellado en caja. Vibración háptica, gatillos adaptativos y micrófono incorporado. También se puede usar en la PC.", foto: "joystick-ps5.webp", ilustrativa: true },
 
