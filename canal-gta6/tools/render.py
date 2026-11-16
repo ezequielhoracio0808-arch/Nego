@@ -132,8 +132,13 @@ def build_sky(accent):
     for i in range(7):
         yy = 300 + i * 34
         sd.rectangle([0, yy, 560, yy + 4 + i * 2], fill=(0, 0, 0, 0))
-    glow = sun.filter(ImageFilter.GaussianBlur(60))
-    img.paste(glow, (960 - 280, HORIZON - 420), glow)
+    pad = 220  # el halo necesita margen para no cortarse en un rectángulo
+    halo = Image.new("L", (560 + 2 * pad, 560 + 2 * pad), 0)
+    ImageDraw.Draw(halo).ellipse([pad, pad, pad + 560, pad + 560], fill=170)
+    halo = halo.filter(ImageFilter.GaussianBlur(70))
+    glow = Image.new("RGBA", halo.size, mix(acc, (255, 140, 110), 0.4) + (0,))
+    glow.putalpha(halo)
+    img.paste(glow, (960 - 280 - pad, HORIZON - 420 - pad), glow)
     img.paste(sun, (960 - 280, HORIZON - 420), sun)
     # skyline
     d = ImageDraw.Draw(img)

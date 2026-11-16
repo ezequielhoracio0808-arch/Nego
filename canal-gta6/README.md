@@ -4,6 +4,10 @@
 Cada carpeta de `salida/` trae: `video.mp4` (1080p, 30 fps, voz + música + subtítulos quemados),
 `miniatura.jpg` (1280×720), `subtitulos.srt` y `descripcion.txt` (título, descripción, capítulos, hashtags y etiquetas).
 
+## Identidad del canal
+En `marca/` tienes la foto de perfil, el banner, la marca de agua y `canal.md`, con los pasos para crear
+el canal, la descripción, las palabras clave y las listas de reproducción. Se regeneran con `python3 tools/marca.py`.
+
 ## Qué va a buscar la gente (y qué vídeo lo cubre)
 
 | # | Búsqueda / intención | Vídeo |
