@@ -766,6 +766,7 @@ h1, h2, h3 { text-wrap: balance; }
       html += '<p class="p-foot">Notas orientativas: cómo se siente puede variar un poco en cada piel.</p>';
     }
     if (p.texto) html += '<p class="p-text">' + esc(p.texto) + "</p>";
+    if (p.ilustrativa) html += '<p class="p-foot" style="margin-top:12px">Imagen ilustrativa: el producto real puede verse distinto. Pedinos fotos por WhatsApp.</p>';
     var opts = p.opciones && OPC[p.opciones] ? '<label class="p-optl" for="p-opt">Elegí la opción<select class="opt" id="p-opt">' + OPC[p.opciones].map(function (o) { return "<option" + (sel[id] === o ? " selected" : "") + ">" + esc(o) + "</option>"; }).join("") + "</select></label>" : "";
     html += '<div class="p-buy"><div id="p-price"></div>' + opts + '<button class="add" type="button" id="p-add">Agregar al pedido</button><p class="p-have" id="p-have"></p></div>';
     $("prod-body").innerHTML = html;
