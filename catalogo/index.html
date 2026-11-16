@@ -1,0 +1,910 @@
+<title>Catálogo a tu puerta</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#070707">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+/* Vidriera de noche: negro, oro champagne y marfil. Arriba el sello del 10% OFF con sus 10 casilleros,
+   después el índice de categorías con foto, y abajo los estantes ordenados por sección.
+   La barra del pedido se llena de a un casillero por producto hasta llegar a 10. */
+:root {
+  --bg: #070707;
+  --surface: #100F0D;
+  --surface-2: #181613;
+  --fg: #EDE8DE;
+  --muted: #A39B8B;
+  --line: rgba(205, 174, 114, 0.2);
+  --line-strong: rgba(205, 174, 114, 0.55);
+  --gold: #CDAE72;
+  --gold-hi: #EFE0B8;
+  --gold-lo: #8C7650;
+  --gold-grad: linear-gradient(135deg, #F6EBCB 0%, #D2B67F 46%, #8C7650 100%);
+  --ivory-grad: linear-gradient(180deg, #FFFFFF 0%, #DDD8CF 55%, #A29B8E 100%);
+  --on-gold: #15110A;
+  --soft: rgba(205, 174, 114, 0.11);
+  --tile: #0C0B0A;
+  --shade: rgba(0, 0, 0, 0.74);
+  --err: #E8A196;
+  --font-display: 'Cinzel', 'Trajan Pro', 'Times New Roman', serif;
+  --font-body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+body.has-bar { padding-bottom: 150px; }
+body.lock { overflow: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; }
+.num { font-variant-numeric: tabular-nums; }
+.eyebrow { margin: 0; color: var(--gold); font-size: 10.5px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; }
+
+/* Encabezado */
+.top { padding-block: 14px 0; }
+.top-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: inline-flex; flex-direction: column; line-height: 1; }
+.brand-name { padding-top: 0.22em; font-family: var(--font-display); font-weight: 600; font-size: 21px; letter-spacing: 0.14em; text-transform: uppercase; background: var(--ivory-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.brand-sub { display: flex; align-items: center; gap: 6px; margin-top: 6px; color: var(--gold); font-size: 8.5px; font-weight: 500; letter-spacing: 0.42em; text-transform: uppercase; }
+.brand-sub::before, .brand-sub::after { content: ""; flex: 1; height: 1px; background: var(--gold-lo); }
+.cart-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 8px 8px 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--gold-hi); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+.cart-count { min-width: 24px; padding: 2px 7px; border-radius: 999px; background: var(--gold-grad); color: var(--on-gold); font-size: 12px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* Portada */
+.intro { padding-block: 26px 8px; }
+.intro h1 { margin: 10px 0 0; max-width: 20ch; font-family: var(--font-display); font-weight: 600; font-size: clamp(26px, 7vw, 40px); line-height: 1.14; letter-spacing: 0.03em; text-transform: uppercase; background: var(--ivory-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.intro .lead { max-width: 56ch; margin: 12px 0 0; color: var(--muted); font-size: 15px; }
+.trust { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 0 0; padding: 0; list-style: none; color: var(--fg); font-size: 12.5px; font-weight: 500; }
+.trust li { display: flex; align-items: center; gap: 8px; }
+.trust li::before { content: ""; width: 5px; height: 5px; transform: rotate(45deg); background: var(--gold); }
+
+/* Sello del descuento */
+.promo { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px 20px; align-items: center; margin-top: 22px; padding: 18px; border: 1px solid var(--line-strong); border-radius: 20px; background: radial-gradient(ellipse 70% 120% at 0% 0%, rgba(205, 174, 114, 0.16), transparent 70%), var(--surface); }
+.seal { display: grid; place-items: center; width: 108px; height: 108px; border-radius: 50%; border: 1px solid var(--line-strong); box-shadow: inset 0 0 0 5px var(--surface), inset 0 0 0 6px var(--line); text-align: center; }
+.seal b { display: block; font-family: var(--font-display); font-size: 34px; font-weight: 700; line-height: 1; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.seal span { display: block; margin-top: 4px; color: var(--gold-hi); font-size: 10px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; }
+.promo h2 { margin: 0; font-family: var(--font-display); font-size: clamp(17px, 4.6vw, 22px); font-weight: 600; line-height: 1.25; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold-hi); }
+.promo p { margin: 6px 0 0; color: var(--muted); font-size: 13px; max-width: 58ch; }
+.promo .slots-wrap { grid-column: 1 / -1; }
+@media (max-width: 420px) { .seal { width: 92px; height: 92px; } .seal b { font-size: 29px; } .promo { gap: 14px; padding: 16px; } }
+
+/* Diez casilleros: uno por producto */
+.slots { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 4px; }
+.slots i { height: 8px; border-radius: 3px; background: var(--line); transition: background 0.2s ease, box-shadow 0.2s ease; }
+.slots i.on { background: var(--gold-grad); }
+.slots.full i { box-shadow: 0 0 10px rgba(205, 174, 114, 0.45); }
+.slots-text { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px; margin-top: 8px; color: var(--muted); font-size: 12.5px; }
+.slots-text span:first-child { white-space: nowrap; }
+.slots-text b { color: var(--gold-hi); font-weight: 600; }
+
+/* Índice de categorías */
+.cats { padding-block: 22px 6px; }
+.cats-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.cats-head h2 { margin: 0; font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-hi); }
+.cats-head span { color: var(--muted); font-size: 12px; }
+.cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (min-width: 760px) { .cat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.cat-tile { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; min-height: 124px; padding: 14px; border: 1px solid var(--line-strong); border-radius: 18px; background: radial-gradient(circle at 80% 20%, var(--soft), transparent 60%), var(--tile); color: var(--fg); text-align: left; }
+.cat-tile.big { grid-column: span 2; min-height: 150px; }
+.cat-tile .bg { position: absolute; inset: -12px; z-index: -2; background-size: cover; background-position: center; filter: blur(6px) saturate(1.1); transform: scale(1.06); opacity: 0.75; transition: transform 0.4s ease; }
+.cat-tile::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(7, 7, 7, 0.05) 0%, rgba(7, 7, 7, 0.82) 100%); }
+.cat-tile .ico { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; color: var(--gold-hi); opacity: 0.85; }
+.cat-tile .ico svg { width: 100%; height: 100%; }
+.cat-tile b { font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); }
+.cat-tile.big b { font-size: 21px; }
+.cat-tile span { color: var(--fg); opacity: 0.8; font-size: 11.5px; }
+.cat-tile span i { font-style: normal; color: var(--gold-hi); font-variant-numeric: tabular-nums; }
+@media (hover: hover) { .cat-tile:hover .bg { transform: scale(1.12); } .cat-tile:hover { border-color: var(--gold); } }
+
+/* Buscador y categorías (fijos arriba) */
+.tools { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; margin-top: 18px; padding-block: 12px 10px; background: var(--bg); border-bottom: 1px solid var(--line); }
+.tools .wrap { display: flex; flex-direction: column; gap: 10px; }
+.search-row { display: flex; gap: 8px; align-items: center; }
+.search-box { position: relative; flex: 1; min-width: 0; display: flex; align-items: center; }
+.search-box > svg { position: absolute; left: 15px; width: 17px; height: 17px; color: var(--gold); pointer-events: none; }
+.search { width: 100%; padding: 11px 42px 11px 42px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface); font-size: 15px; -webkit-appearance: none; appearance: none; }
+.search::-webkit-search-cancel-button { display: none; }
+.search::placeholder { color: var(--muted); }
+.search:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--soft); }
+.q-clear { position: absolute; right: 6px; display: grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 50%; background: var(--soft); color: var(--gold-hi); font-size: 17px; line-height: 1; }
+.mini-cart { flex: none; position: relative; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line-strong); border-radius: 50%; background: transparent; color: var(--gold-hi); }
+.mini-cart svg { width: 20px; height: 20px; }
+.mini-cart span { position: absolute; top: -4px; right: -4px; min-width: 20px; padding: 1px 5px; border-radius: 999px; background: var(--gold-grad); color: var(--on-gold); font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+.chip i { margin-left: 6px; font-style: normal; opacity: 0.7; font-variant-numeric: tabular-nums; }
+.chip[aria-pressed="true"] { background: var(--gold-grad); border-color: transparent; color: var(--on-gold); }
+.chip[aria-pressed="true"] i { opacity: 0.85; }
+@media (hover: hover) { .chip:hover { border-color: var(--line-strong); color: var(--fg); } .chip[aria-pressed="true"]:hover { color: var(--on-gold); } }
+
+/* Filtros de perfumes y orden */
+.filters { display: flex; flex-direction: column; gap: 10px; padding-block: 16px 0; }
+.frow { display: flex; align-items: center; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.frow::-webkit-scrollbar { display: none; }
+.frow > span { flex: none; width: 52px; color: var(--muted); font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.fchip { flex: none; padding: 6px 12px; border: 1px dashed var(--line-strong); border-radius: 999px; background: transparent; color: var(--muted); font-size: 12px; font-weight: 500; white-space: nowrap; }
+.fchip i { margin-left: 5px; font-style: normal; opacity: 0.65; font-variant-numeric: tabular-nums; }
+.fchip[aria-pressed="true"] { border-style: solid; border-color: var(--gold); background: var(--soft); color: var(--gold-hi); font-weight: 600; }
+.result-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 12.5px; }
+.result-row b { color: var(--fg); font-weight: 600; }
+.result-row .clear { padding: 0; border: 0; background: transparent; color: var(--gold-hi); font-size: 12.5px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.sort { padding: 7px 30px 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23CDAE72' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center; font-size: 12.5px; -webkit-appearance: none; appearance: none; }
+
+/* Estantes */
+.shelf { padding-block: 22px 0; }
+.shelf-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.shelf-head > div { min-width: 0; }
+.shelf-head h2 { margin: 0; font-family: var(--font-display); font-size: clamp(19px, 5vw, 24px); font-weight: 600; line-height: 1.15; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-hi); }
+.shelf-head h2 i { margin-left: 8px; font-family: var(--font-body); font-size: 12px; font-style: normal; font-weight: 500; letter-spacing: 0.04em; color: var(--muted); font-variant-numeric: tabular-nums; }
+.shelf-head p { margin: 3px 0 0; color: var(--muted); font-size: 12.5px; }
+.see-all { flex: none; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--gold-hi); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+.sec-head { display: flex; align-items: baseline; gap: 10px; margin: 20px 0 10px; }
+.sec-head h3 { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+.sec-head h3 i { margin-left: 6px; font-style: normal; font-weight: 500; letter-spacing: 0.04em; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sec-head::after { content: ""; flex: 1; border-top: 1px dashed var(--line-strong); transform: translateY(-3px); }
+.sec-sub { margin: -6px 0 12px; color: var(--muted); font-size: 12.5px; }
+
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+@media (min-width: 600px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; } }
+@media (min-width: 900px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; } }
+@media (max-width: 599px) { .grid.preview > .card:nth-child(n+5) { display: none; } }
+@media (min-width: 600px) and (max-width: 899px) { .grid.preview > .card:nth-child(n+7) { display: none; } }
+
+/* Tarjeta de producto */
+.card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+@media (hover: hover) { .card:hover { border-color: var(--line-strong); } }
+.tile { position: relative; display: grid; place-items: center; width: 100%; max-width: 100%; aspect-ratio: 1 / 1; padding: 0; overflow: hidden; border: 0; border-bottom: 1px solid var(--line); background: radial-gradient(circle at 50% 45%, rgba(205, 174, 114, 0.18), transparent 62%), var(--tile); color: var(--gold); }
+.tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tile > svg { width: 42%; height: 42%; }
+.tile .tname { position: absolute; left: 10px; right: 10px; bottom: 10px; color: var(--gold-hi); font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; line-height: 1.25; opacity: 0.8; }
+.badge { position: absolute; top: 8px; left: 8px; padding: 3px 8px; border: 1px solid var(--gold-lo); border-radius: 999px; background: rgba(7, 7, 7, 0.78); color: var(--gold-hi); font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.badge.top { border-color: transparent; background: var(--gold-grad); color: var(--on-gold); }
+.in-cart { position: absolute; top: 8px; right: 8px; display: grid; place-items: center; min-width: 26px; height: 26px; padding: 0 7px; border-radius: 999px; background: var(--gold-grad); color: var(--on-gold); font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
+.cbody { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; padding: 10px 11px 12px; }
+.cmeta { margin: 0; color: var(--gold); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.cname { margin: 0; font-size: 14px; font-weight: 600; line-height: 1.25; overflow-wrap: anywhere; }
+.cname button { padding: 0; border: 0; background: none; text-align: left; }
+@media (hover: hover) { .cname button:hover { color: var(--gold-hi); } }
+.cdet { margin: 0; color: var(--muted); font-size: 11.5px; line-height: 1.35; }
+.opt { width: 100%; margin-top: 4px; padding: 7px 26px 7px 9px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23CDAE72' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 9px center; font-size: 12.5px; -webkit-appearance: none; appearance: none; }
+.cfoot { display: flex; flex-direction: column; gap: 8px; margin-top: auto; padding-top: 6px; }
+.price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 8px; }
+.price b { color: var(--gold-hi); font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.price s { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.price .off { padding: 1px 6px; border-radius: 6px; background: var(--soft); color: var(--gold); font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; }
+.hint10 { margin: -2px 0 0; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.hint10 b { color: var(--gold); font-weight: 600; }
+.add { width: 100%; padding: 10px 10px; border: 0; border-radius: 999px; background: var(--gold-grad); color: var(--on-gold); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.add.flash { animation: flash 0.5s ease; }
+@keyframes flash { 40% { transform: scale(0.96); filter: brightness(1.2); } }
+.stepper { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 3px; border: 1px solid var(--line-strong); border-radius: 999px; }
+.stepper button { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 50%; background: var(--soft); color: var(--gold-hi); font-size: 18px; line-height: 1; }
+.stepper span { min-width: 28px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.empty { padding: 40px 0 10px; color: var(--muted); text-align: center; }
+.empty a { color: var(--gold-hi); font-weight: 600; }
+
+/* Cómo comprar y pie */
+.how { margin-top: 34px; padding-block: 22px; border-top: 1px solid var(--line); }
+.how h2 { margin: 0 0 14px; font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-hi); }
+.steps { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; counter-reset: s; }
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.steps li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; counter-increment: s; }
+.steps li::before { content: counter(s); display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold-hi); font-weight: 700; font-size: 13px; }
+.steps b { display: block; font-size: 14px; }
+.steps p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+.foot { padding-block: 18px 30px; color: var(--muted); font-size: 12.5px; text-align: center; }
+.foot b { color: var(--fg); font-weight: 600; user-select: all; }
+.foot a { color: var(--gold-hi); font-weight: 600; }
+
+/* Barra del pedido */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding-top: 10px; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--bg); border-top: 1px solid var(--line-strong); box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.6); }
+.bar .wrap { max-width: 640px; display: flex; flex-direction: column; gap: 8px; }
+.bar .slots-text { margin-top: 6px; }
+.bar-btn { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; padding: 13px 20px; border: 0; border-radius: 999px; background: var(--gold-grad); color: var(--on-gold); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.bar-btn .tot { font-size: 16px; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.bar-btn s { margin-right: 6px; font-size: 12px; font-weight: 600; opacity: 0.6; }
+
+.toast { position: fixed; left: 50%; bottom: calc(150px + env(safe-area-inset-bottom, 0px)); z-index: 60; max-width: calc(100% - 32px); padding: 9px 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface-2); color: var(--fg); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transform: translate(-50%, 8px); opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast b { color: var(--gold-hi); }
+
+/* Hojas (pedido y ficha de producto) */
+.overlay { position: fixed; inset: 0; z-index: 40; background: var(--shade); }
+.sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; max-width: 580px; max-height: 92%; margin: 0 auto; overflow-y: auto; overscroll-behavior: contain; border: 1px solid var(--line-strong); border-bottom: 0; border-radius: 22px 22px 0 0; background: var(--bg); padding: 18px max(16px, env(safe-area-inset-right, 0px)) calc(20px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.sheet-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.sheet-head h2 { margin: 0; font-family: var(--font-display); font-size: 23px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.sheet-head p { margin: 4px 0 0; color: var(--muted); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+.close { flex: none; padding: 7px 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--gold-hi); font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.sheet .promo-mini { margin-top: 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.items { display: flex; flex-direction: column; margin-top: 6px; }
+.item { display: grid; grid-template-columns: 52px minmax(0, 1fr) auto; gap: 4px 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.item .th { grid-row: span 2; width: 52px; height: 52px; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); background: var(--tile); color: var(--gold); display: grid; place-items: center; }
+.item .th img { width: 100%; height: 100%; object-fit: cover; }
+.item .th svg { width: 26px; height: 26px; }
+.i-name { font-weight: 600; font-size: 14px; line-height: 1.3; overflow-wrap: anywhere; }
+.i-var { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.i-var s { margin-right: 4px; }
+.i-line { text-align: right; font-weight: 700; color: var(--gold-hi); font-variant-numeric: tabular-nums; }
+.item .stepper { grid-column: 3; justify-self: end; padding: 2px; }
+.item .stepper button { width: 30px; height: 30px; font-size: 16px; }
+.item .stepper span { min-width: 24px; }
+.i-empty { padding: 26px 0; color: var(--muted); text-align: center; }
+.sums { display: flex; flex-direction: column; gap: 7px; margin-top: 14px; font-variant-numeric: tabular-nums; }
+.sum-row { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 13.5px; }
+.sum-row.save { color: var(--gold-hi); font-weight: 600; }
+.sum-row.total { align-items: baseline; padding-top: 10px; border-top: 1px solid var(--line); color: var(--fg); font-weight: 600; }
+.sum-row.total strong { font-family: var(--font-display); font-size: 28px; font-weight: 700; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+.sum-note { margin: 2px 0 0; padding: 10px 12px; border: 1px dashed var(--line-strong); border-radius: 12px; color: var(--fg); font-size: 12.5px; }
+.sum-note b { color: var(--gold-hi); }
+.fields { display: grid; gap: 10px; margin-top: 18px; }
+.fields label { display: grid; gap: 5px; color: var(--muted); font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.fields input, .fields select, .fields textarea { width: 100%; padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--fg); font-size: 15px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.fields input:focus, .fields select:focus, .fields textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--soft); }
+.fields textarea { min-height: 60px; resize: vertical; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.err { min-height: 18px; margin-top: 8px; color: var(--err); font-size: 12.5px; }
+.wa { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 6px; padding: 15px 16px; border-radius: 999px; background: var(--gold-grad); color: var(--on-gold); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-align: center; text-transform: uppercase; text-decoration: none; }
+.wa svg { width: 18px; height: 18px; flex: none; }
+.wa[aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
+.ghost { display: block; width: 100%; margin-top: 8px; padding: 12px 16px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--gold-hi); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.linkish { display: block; margin: 12px auto 0; padding: 6px 10px; border: 0; background: transparent; color: var(--muted); font-size: 12px; text-decoration: underline; text-underline-offset: 3px; }
+.linkish.warn { color: var(--err); }
+.copy-box { width: 100%; min-height: 160px; margin-top: 8px; padding: 10px 12px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface); color: var(--fg); font-size: 12.5px; }
+.hint { margin: 12px 0 0; color: var(--muted); font-size: 12px; text-align: center; }
+
+/* Ficha de producto */
+.p-top { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 14px; align-items: center; margin-top: 4px; }
+.p-pic { width: 120px; height: 120px; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 16px; background: radial-gradient(circle at 50% 45%, rgba(205, 174, 114, 0.18), transparent 62%), var(--tile); color: var(--gold); display: grid; place-items: center; }
+.p-pic img { width: 100%; height: 100%; object-fit: cover; }
+.p-pic svg { width: 50%; height: 50%; }
+.p-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.p-tags span { padding: 3px 9px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--gold-hi); font-size: 11px; }
+.p-fam { margin: 16px 0 0; font-size: 14px; }
+.p-use { margin: 4px 0 0; color: var(--muted); font-size: 12.5px; }
+.p-use b { color: var(--gold-hi); font-weight: 600; }
+.p-text { margin: 14px 0 0; color: var(--fg); opacity: 0.9; font-size: 13.5px; }
+.pyr { position: relative; margin: 16px 0 4px; padding-left: 22px; }
+.pyr::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; border-left: 1px dashed var(--line-strong); }
+.pyr-step { position: relative; padding-bottom: 14px; }
+.pyr-step::before { content: ""; position: absolute; left: -22px; top: 4px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px var(--bg); }
+.pyr-step:nth-child(2)::before { opacity: 0.72; }
+.pyr-step:nth-child(3)::before { opacity: 0.48; }
+.pyr-t { margin: 0; color: var(--gold); font-size: 10.5px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
+.pyr-w { margin: 1px 0 7px; color: var(--muted); font-size: 12px; }
+.notes { display: flex; flex-wrap: wrap; gap: 5px; }
+.notes span { padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 999px; font-size: 12.5px; }
+.p-foot { margin: 2px 0 0; color: var(--muted); font-size: 11.5px; }
+.p-buy { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.p-buy .price b { font-size: 24px; }
+.p-buy .add { padding: 14px; font-size: 12px; }
+.p-have { margin: 0; color: var(--muted); font-size: 12.5px; text-align: center; }
+.p-name { margin: 0; font-family: var(--font-display); font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: 0.05em; text-transform: uppercase; }
+.p-name + .cdet { margin-top: 4px; font-size: 13px; }
+.p-optl { display: grid; gap: 5px; color: var(--muted); font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.p-optl .opt { margin: 0; padding: 11px 30px 11px 12px; font-size: 14.5px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--fg); }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+</style>
+
+<header class="top">
+  <div class="wrap top-row">
+    <div class="brand"><span class="brand-name">Catálogo</span><span class="brand-sub">a tu puerta</span></div>
+    <button class="cart-btn" id="open-cart" type="button">Mi pedido <span class="cart-count" id="count">0</span></button>
+  </div>
+</header>
+
+<main>
+  <section class="intro wrap" aria-labelledby="intro-h">
+    <p class="eyebrow">Perfumes · Audio · Accesorios</p>
+    <h1 id="intro-h">Armá tu pedido y lo cerramos por WhatsApp</h1>
+    <p class="lead" id="lead">Todo ordenado por categoría y sección. Sumá lo que te guste y se abre WhatsApp con el pedido escrito.</p>
+    <ul class="trust">
+      <li>Envíos a todo el país</li>
+      <li>Transferencia, efectivo o Mercado Pago</li>
+      <li>Precios en pesos</li>
+    </ul>
+
+    <div class="promo" aria-labelledby="promo-h">
+      <div class="seal" aria-hidden="true"><div><b id="seal-pct">10%</b><span>OFF</span></div></div>
+      <div>
+        <h2 id="promo-h">Llevando 10 productos, 10% de descuento</h2>
+        <p id="promo-p">Se cuentan todas las unidades del pedido: combiná perfumes, decants, fundas o lo que quieras. El descuento se aplica solo al llegar a 10.</p>
+      </div>
+      <div class="slots-wrap">
+        <div class="slots" data-slots aria-hidden="true"></div>
+        <div class="slots-text" data-slots-text></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cats wrap" aria-labelledby="cats-h">
+    <div class="cats-head"><h2 id="cats-h">Categorías</h2><span id="cats-total"></span></div>
+    <div class="cat-grid" id="cat-grid"></div>
+  </section>
+
+  <div class="tools" id="tools">
+    <div class="wrap">
+      <div class="search-row">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input class="search" id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Buscá perfume, marca, aroma o producto" aria-label="Buscar en el catálogo">
+          <button class="q-clear" id="q-clear" type="button" aria-label="Borrar búsqueda" hidden>×</button>
+        </div>
+        <button class="mini-cart" id="mini-cart" type="button" aria-label="Ver mi pedido">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+          <span id="mini-count" hidden>0</span>
+        </button>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div id="list-anchor"></div>
+    <div class="filters" id="filters"></div>
+    <div id="list" aria-live="polite"></div>
+
+    <section class="how" aria-labelledby="how-h">
+      <h2 id="how-h">Cómo comprar</h2>
+      <ol class="steps">
+        <li><div><b>Elegí tus productos</b><p>Tocá «Agregar». Si llevás 10 o más, el 10% OFF se aplica solo.</p></div></li>
+        <li><div><b>Revisá tu pedido</b><p>Abrí «Mi pedido», ajustá cantidades y completá nombre, entrega y pago.</p></div></li>
+        <li><div><b>Mandalo por WhatsApp</b><p>Se abre WhatsApp con todo escrito. Te confirmamos stock, envío y total.</p></div></li>
+      </ol>
+    </section>
+    <p class="foot">Pedidos y consultas por WhatsApp al <b id="wa-num"></b> · <a id="wa-help" href="https://wa.me/" target="_blank" rel="noopener">Escribinos</a><br>Precios en pesos argentinos, sujetos a stock.</p>
+  </div>
+</main>
+
+<div class="bar" id="bar" hidden>
+  <div class="wrap">
+    <div>
+      <div class="slots" data-slots aria-hidden="true"></div>
+      <div class="slots-text" data-slots-text></div>
+    </div>
+    <button class="bar-btn" id="bar-btn" type="button"><span id="bar-label">Ver mi pedido</span><span class="tot" id="bar-total">$0</span></button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="overlay" id="cart-ov" hidden></div>
+<section class="sheet" id="cart" role="dialog" aria-modal="true" aria-labelledby="cart-h" hidden>
+  <div class="sheet-head">
+    <div><h2 id="cart-h">Tu pedido</h2><p id="order-no"></p></div>
+    <button class="close" id="cart-close" type="button">Cerrar</button>
+  </div>
+  <div class="promo-mini">
+    <div class="slots" data-slots aria-hidden="true"></div>
+    <div class="slots-text" data-slots-text></div>
+  </div>
+  <div class="items" id="items"></div>
+  <div class="sums" id="sums"></div>
+  <form class="fields" id="form" autocomplete="on" novalidate>
+    <label for="f-name">Tu nombre
+      <input id="f-name" type="text" autocomplete="name" placeholder="Nombre y apellido">
+    </label>
+    <div class="two">
+      <label for="f-ent">Entrega
+        <select id="f-ent"><option>Envío</option><option>Retiro</option><option>A coordinar</option></select>
+      </label>
+      <label for="f-pay">Pago
+        <select id="f-pay"><option>Transferencia</option><option>Efectivo</option><option>Mercado Pago</option></select>
+      </label>
+    </div>
+    <label for="f-city" id="city-wrap">Localidad y provincia
+      <input id="f-city" type="text" autocomplete="address-level2" placeholder="Ej: La Plata, Buenos Aires">
+    </label>
+    <label for="f-note">Aclaraciones (opcional)
+      <textarea id="f-note" placeholder="Color, modelo, horario, lo que necesites"></textarea>
+    </label>
+  </form>
+  <div class="err" id="err" role="alert"></div>
+  <a class="wa" id="wa-send" href="#" target="_blank" rel="noopener" aria-disabled="true">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>
+    Enviar pedido por WhatsApp
+  </a>
+  <button class="ghost" id="copy" type="button">Copiar pedido</button>
+  <textarea class="copy-box" id="copy-box" readonly hidden aria-label="Texto del pedido para copiar"></textarea>
+  <button class="linkish" id="clear-cart" type="button" hidden>Vaciar pedido</button>
+  <p class="hint">Se abre WhatsApp con tu pedido escrito: lo mandás y te respondemos para confirmar. El pedido queda guardado en este celular aunque cierres la página.</p>
+</section>
+
+<div class="overlay" id="prod-ov" hidden></div>
+<section class="sheet" id="prod" role="dialog" aria-modal="true" aria-labelledby="prod-h" hidden>
+  <div class="sheet-head">
+    <p class="eyebrow" id="prod-eye"></p>
+    <button class="close" id="prod-close" type="button">Cerrar</button>
+  </div>
+  <div id="prod-body"></div>
+</section>
+
+<script src="productos.js"></script>
+<script>
+(function () {
+  "use strict";
+  var C = window.CATALOGO;
+  var P = C.productos, CATS = C.categorias, OPC = C.opciones || {}, NOTAS = C.notas || {};
+  var DESDE = C.descuento.desde, PCT = C.descuento.porcentaje / 100, PCT_TXT = C.descuento.porcentaje + "%";
+  var WA = C.whatsapp;
+  var BY = {}, CAT = {}, SEC = {};
+  P.forEach(function (p) { BY[p.id] = p; });
+  CATS.forEach(function (c) { CAT[c.id] = c; (c.secciones || []).forEach(function (s) { SEC[c.id + "/" + s.id] = s; }); });
+
+  var PARA = { el: "Para él", ella: "Para ella", unisex: "Unisex" };
+  var LINEA = { arabes: "Árabe", disenador: "Diseñador", nicho: "Nicho" };
+  var AROMAS = [["dulce", "Dulces"], ["fresco", "Frescos"], ["intenso", "Intensos"], ["floral", "Florales"], ["amaderado", "Amaderados"], ["frutal", "Frutales"]];
+  var AROMA_TAG = { dulce: "Dulce", fresco: "Fresco", intenso: "Intenso", floral: "Floral", amaderado: "Amaderado", frutal: "Frutal" };
+  var CAT_FOTO = { perfumes: "khamrah", victoria: "vs-bombshell", audio: "jbl-flip5", iphone: "funda-magsafe", mate: "vaso-stanley", otros: "apple-watch-s2" };
+  var ICONS = {
+    perfumes: '<rect x="14" y="21" width="20" height="21" rx="4"/><rect x="20" y="14" width="8" height="7"/><rect x="19" y="7" width="10" height="7" rx="2"/>',
+    decants: '<rect x="19" y="16" width="10" height="26" rx="3"/><rect x="21" y="8" width="6" height="8" rx="1.5"/><path d="M19 26h10"/>',
+    victoria: '<path d="M17 18h14l2 4v16a4 4 0 0 1-4 4H19a4 4 0 0 1-4-4V22z"/><rect x="20" y="11" width="8" height="7" rx="1.5"/><path d="M20 30c2-3 6-3 8 0"/>',
+    audio: '<path d="M10 28v-4a14 14 0 0 1 28 0v4"/><rect x="8" y="26" width="8" height="13" rx="3"/><rect x="32" y="26" width="8" height="13" rx="3"/>',
+    iphone: '<rect x="14" y="6" width="20" height="36" rx="5"/><path d="M21 11h6"/>',
+    mate: '<path d="M13 18h22l-2 18a4 4 0 0 1-4 4H19a4 4 0 0 1-4-4z"/><path d="M30 6l-4 18"/>',
+    otros: '<rect x="15" y="15" width="18" height="18" rx="5"/><path d="M19 15l1-7h8l1 7M19 33l1 7h8l1-7"/>'
+  };
+
+  // Links: catálogo#5491122334455 manda los pedidos a ese WhatsApp; catálogo#perfumes abre esa categoría
+  var HASH_WA = "";
+  var state = { cat: "all", q: "", para: "", sec: "", aroma: "", sort: "sec" };
+  (function () {
+    var parts = (location.hash || "").replace("#", "").toLowerCase().split("-");
+    parts.forEach(function (pt) {
+      if (/^\d{10,15}$/.test(pt)) { HASH_WA = pt; WA = pt; }
+      else if (CAT[pt]) state.cat = pt;
+    });
+  })();
+  function setHash() {
+    var h = [HASH_WA, state.cat !== "all" ? state.cat : ""].filter(Boolean).join("-");
+    try { history.replaceState(null, "", h ? "#" + h : location.pathname + location.search); } catch (e) {}
+  }
+
+  function $(id) { return document.getElementById(id); }
+  function fmt(n) { return "$" + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function norm(s) { return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  function icon(cat) { return '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (ICONS[cat] || ICONS.otros) + "</svg>"; }
+  function img(p, eager) { return p.foto ? '<img src="fotos/' + esc(p.foto) + '" alt="' + esc(p.nombre) + '" width="420" height="420"' + (eager ? "" : ' loading="lazy"') + ' decoding="async">' : ""; }
+  function cmp(a, b) { return a.localeCompare(b, "es", { sensitivity: "base", numeric: true }); }
+
+  // Texto donde busca el buscador: nombre, detalle, categoría, sección, para quién, aroma y notas
+  P.forEach(function (p) {
+    var n = NOTAS[p.id], c = CAT[p.cat], s = SEC[p.cat + "/" + p.sec];
+    var t = [p.nombre, p.detalle, c ? c.nombre : "", s ? s.nombre : "", p.para ? PARA[p.para] : "", p.para === "el" ? "hombre masculino" : p.para === "ella" ? "mujer femenino dama" : "", p.aroma || "", p.texto || "", (OPC[p.opciones] || []).join(" ")];
+    if (n) t.push(n.familia, n.ideal, [].concat(n.salida || [], n.corazon || [], n.fondo || [], n.notas || []).join(" "));
+    p._q = norm(t.join(" "));
+  });
+
+  // Pedido
+  var cart = {}, sel = {}, orderNo = "", CART_KEY = "catalogo_pedido_v2";
+  function newOrderNo() { var d = new Date(); return "PED-" + String(d.getDate()).padStart(2, "0") + String(d.getMonth() + 1).padStart(2, "0") + "-" + Math.floor(1000 + Math.random() * 9000); }
+  function save() {
+    try { localStorage.setItem(CART_KEY, JSON.stringify({ cart: cart, no: orderNo, name: $("f-name").value, ent: $("f-ent").value, pay: $("f-pay").value, city: $("f-city").value, note: $("f-note").value })); } catch (e) {}
+  }
+  (function restore() {
+    try {
+      var d = JSON.parse(localStorage.getItem(CART_KEY) || "null");
+      if (!d || !d.cart) return;
+      Object.keys(d.cart).forEach(function (k) { var e = d.cart[k]; if (e && BY[e.id] && e.qty > 0) cart[k] = { id: e.id, opt: e.opt || "", qty: Math.min(999, Math.floor(e.qty)) }; });
+      orderNo = d.no || "";
+      ["name", "ent", "pay", "city", "note"].forEach(function (f) { if (d[f]) $("f-" + f).value = d[f]; });
+    } catch (e) {}
+  })();
+  function entries() { return Object.keys(cart).map(function (k) { return cart[k]; }); }
+  function units() { var n = 0; entries().forEach(function (e) { n += e.qty; }); return n; }
+  function qtyOf(id) { var n = 0; entries().forEach(function (e) { if (e.id === id) n += e.qty; }); return n; }
+  function active() { return units() >= DESDE; }
+  function disc(p) { return Math.round(p.precio * (1 - PCT) / 10) * 10; }
+  function totals() {
+    var sub = 0, tot = 0, n = 0;
+    entries().forEach(function (e) { var p = BY[e.id]; n += e.qty; sub += p.precio * e.qty; tot += disc(p) * e.qty; });
+    var on = n >= DESDE;
+    return { n: n, sub: sub, total: on ? tot : sub, save: on ? sub - tot : 0, on: on, falta: Math.max(0, DESDE - n), potencial: sub - tot };
+  }
+  function keyOf(id, opt) { return id + "|" + (opt || ""); }
+  function add(id, opt, n) {
+    var k = keyOf(id, opt);
+    if (!orderNo) orderNo = newOrderNo();
+    if (cart[k]) cart[k].qty = Math.min(999, cart[k].qty + (n || 1)); else cart[k] = { id: id, opt: opt || "", qty: n || 1 };
+    var before = units() - (n || 1);
+    save(); syncAll();
+    var p = BY[id];
+    if (before < DESDE && units() >= DESDE) toast("<b>¡Llegaste a " + DESDE + "!</b> " + PCT_TXT + " OFF aplicado a todo el pedido");
+    else toast("Agregado: <b>" + esc(p.nombre) + "</b>" + (opt ? " · " + esc(opt) : ""));
+  }
+  function change(k, d) {
+    if (!cart[k]) return;
+    cart[k].qty += d;
+    if (cart[k].qty <= 0) delete cart[k];
+    if (!entries().length) orderNo = "";
+    save(); syncAll();
+  }
+
+  var toastT = null;
+  function toast(html) {
+    var t = $("toast"); t.innerHTML = html; t.classList.add("show");
+    clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove("show"); }, 1800);
+  }
+
+  // Precio en tarjeta y ficha
+  function priceHTML(p) {
+    if (active()) return '<div class="price"><b>' + fmt(disc(p)) + "</b><s>" + fmt(p.precio) + '</s><span class="off">−' + PCT_TXT + "</span></div>";
+    return '<div class="price"><b>' + fmt(p.precio) + '</b></div><p class="hint10">Llevando ' + DESDE + "+: <b>" + fmt(disc(p)) + "</b></p>";
+  }
+  function actHTML(p) {
+    if (p.opciones) return '<button class="add" type="button" data-add="' + p.id + '">Agregar</button>';
+    var q = qtyOf(p.id);
+    if (!q) return '<button class="add" type="button" data-add="' + p.id + '">Agregar</button>';
+    return '<div class="stepper"><button type="button" data-dec="' + p.id + '" aria-label="Quitar uno de ' + esc(p.nombre) + '">−</button><span>' + q + '</span><button type="button" data-inc="' + p.id + '" aria-label="Sumar uno de ' + esc(p.nombre) + '">+</button></div>';
+  }
+  function metaLine(p) {
+    if (p.cat === "perfumes") return LINEA[p.sec] + (p.para ? " · " + PARA[p.para].replace("Para ", "") : "");
+    var s = SEC[p.cat + "/" + p.sec]; return s ? s.nombre : CAT[p.cat].nombre;
+  }
+  function cardHTML(p) {
+    var q = qtyOf(p.id);
+    var badge = p.destacado ? '<span class="badge top">Recomendado</span>' : p.nuevo ? '<span class="badge">Nuevo</span>' : "";
+    var opts = p.opciones && OPC[p.opciones] ? '<select class="opt" data-opt="' + p.id + '" aria-label="Elegí opción de ' + esc(p.nombre) + '">' + OPC[p.opciones].map(function (o) { return "<option" + (sel[p.id] === o ? " selected" : "") + ">" + esc(o) + "</option>"; }).join("") + "</select>" : "";
+    return '<article class="card" data-card="' + p.id + '">' +
+      '<button class="tile" type="button" data-open="' + p.id + '" aria-label="Ver ' + esc(p.nombre) + '">' + (p.foto ? img(p) : icon(p.cat) + '<span class="tname">' + esc(p.nombre.replace(/^Decant /, "")) + "</span>") + badge +
+      '<span class="in-cart" data-incart' + (q ? "" : " hidden") + ">" + q + "</span></button>" +
+      '<div class="cbody"><p class="cmeta">' + esc(metaLine(p)) + '</p><h3 class="cname"><button type="button" data-open="' + p.id + '">' + esc(p.nombre) + '</button></h3><p class="cdet">' + esc(p.detalle) + "</p>" + opts +
+      '<div class="cfoot"><div data-price>' + priceHTML(p) + '</div><div data-act>' + actHTML(p) + "</div></div></div></article>";
+  }
+
+  // Filtros
+  function inCat(p) { return state.cat === "all" || p.cat === state.cat; }
+  function perfOK(p, skip) {
+    if (state.cat !== "perfumes") return true;
+    if (skip !== "para" && state.para && p.para !== state.para) return false;
+    if (skip !== "sec" && state.sec && p.sec !== state.sec) return false;
+    if (skip !== "aroma" && state.aroma && p.aroma !== state.aroma) return false;
+    return true;
+  }
+  function qOK(p) {
+    var q = norm(state.q.trim());
+    if (!q) return true;
+    return q.split(/\s+/).every(function (w) { return p._q.indexOf(w) >= 0; });
+  }
+  function visible() { return P.filter(function (p) { return inCat(p) && perfOK(p) && qOK(p); }); }
+  function sorted(list) {
+    var l = list.slice();
+    if (state.sort === "asc") l.sort(function (a, b) { return a.precio - b.precio || cmp(a.nombre, b.nombre); });
+    if (state.sort === "desc") l.sort(function (a, b) { return b.precio - a.precio || cmp(a.nombre, b.nombre); });
+    if (state.sort === "az") l.sort(function (a, b) { return cmp(a.nombre, b.nombre); });
+    if (state.sort === "top") l.sort(function (a, b) { return (a.destacado || 999) - (b.destacado || 999) || (a.foto ? 0 : 1) - (b.foto ? 0 : 1); });
+    return l;
+  }
+  function preview(c) {
+    var l = P.filter(function (p) { return p.cat === c.id; }).map(function (p, i) { return { p: p, i: i }; });
+    l.sort(function (a, b) { return (a.p.destacado || 999) - (b.p.destacado || 999) || (a.p.foto ? 0 : 1) - (b.p.foto ? 0 : 1) || a.i - b.i; });
+    return l.slice(0, 8).map(function (x) { return x.p; });
+  }
+
+  function renderChips() {
+    var all = [{ id: "all", nombre: "Todo", n: P.length }].concat(CATS.map(function (c) { return { id: c.id, nombre: c.nombre, n: P.filter(function (p) { return p.cat === c.id; }).length }; }));
+    $("chips").innerHTML = all.map(function (c) { return '<button class="chip" type="button" data-cat="' + c.id + '" aria-pressed="' + (state.cat === c.id) + '">' + esc(c.nombre) + "<i>" + c.n + "</i></button>"; }).join("");
+  }
+  function renderCatGrid() {
+    $("cats-total").textContent = P.length + " productos";
+    $("cat-grid").innerHTML = CATS.map(function (c, i) {
+      var n = P.filter(function (p) { return p.cat === c.id; }).length, f = BY[CAT_FOTO[c.id]];
+      return '<button class="cat-tile' + (i === 0 ? " big" : "") + '" type="button" data-go="' + c.id + '">' +
+        (f && f.foto ? '<span class="bg" style="background-image:url(\'fotos/' + f.foto + '\')"></span>' : "") +
+        '<span class="ico">' + icon(c.id) + "</span><b>" + esc(c.nombre) + "</b><span><i>" + n + "</i> · " + esc(c.bajada) + "</span></button>";
+    }).join("");
+  }
+  function fchip(dim, val, label, n) { return '<button class="fchip" type="button" data-f="' + dim + '" data-v="' + val + '" aria-pressed="' + (state[dim] === val) + '">' + esc(label) + (n != null ? "<i>" + n + "</i>" : "") + "</button>"; }
+  function renderFilters(list) {
+    var html = "";
+    if (state.cat === "perfumes") {
+      var base = function (skip) { return P.filter(function (p) { return p.cat === "perfumes" && perfOK(p, skip) && qOK(p); }); };
+      var cnt = function (skip, key, v) { return base(skip).filter(function (p) { return p[key] === v; }).length; };
+      html += '<div class="frow" role="group" aria-label="Para quién"><span>Para</span>' + fchip("para", "", "Todos") + ["el", "ella", "unisex"].map(function (v) { return fchip("para", v, PARA[v].replace("Para ", ""), cnt("para", "para", v)); }).join("") + "</div>";
+      html += '<div class="frow" role="group" aria-label="Línea"><span>Línea</span>' + fchip("sec", "", "Todas") + CAT.perfumes.secciones.map(function (s) { return fchip("sec", s.id, s.nombre, cnt("sec", "sec", s.id)); }).join("") + "</div>";
+      html += '<div class="frow" role="group" aria-label="Aroma"><span>Aroma</span>' + fchip("aroma", "", "Todos") + AROMAS.map(function (a) { return fchip("aroma", a[0], a[1], cnt("aroma", "aroma", a[0])); }).join("") + "</div>";
+    }
+    var filtered = state.q || state.para || state.sec || state.aroma || state.cat !== "all";
+    var count = state.cat === "all" && !state.q ? P.length + " productos en " + CATS.length + " categorías" : "<b>" + list.length + "</b> " + (list.length === 1 ? "producto" : "productos");
+    html += '<div class="result-row"><span>' + count + (filtered ? ' · <button class="clear" type="button" id="clear-f">Ver todo</button>' : "") + "</span>" +
+      '<select class="sort" id="sort" aria-label="Ordenar">' +
+      [["sec", "Por sección"], ["top", "Recomendados"], ["asc", "Menor precio"], ["desc", "Mayor precio"], ["az", "A a Z"]].map(function (o) { return '<option value="' + o[0] + '"' + (state.sort === o[0] ? " selected" : "") + ">" + o[1] + "</option>"; }).join("") +
+      "</select></div>";
+    $("filters").innerHTML = html;
+  }
+  function secBlocks(c, list) {
+    if (!c.secciones || state.sort !== "sec") return '<div class="grid">' + sorted(list).map(cardHTML).join("") + "</div>";
+    return c.secciones.map(function (s) {
+      var items = list.filter(function (p) { return p.sec === s.id; });
+      if (!items.length) return "";
+      return '<div class="sec-head"><h3>' + esc(s.nombre) + "<i>" + items.length + "</i></h3></div>" + (s.bajada ? '<p class="sec-sub">' + esc(s.bajada) + "</p>" : "") + '<div class="grid">' + items.map(cardHTML).join("") + "</div>";
+    }).join("");
+  }
+  function shelfHead(c, n, more) {
+    return '<div class="shelf-head"><div><h2>' + esc(c.nombre) + "<i>" + n + "</i></h2><p>" + esc(c.bajada) + "</p></div>" + (more ? '<button class="see-all" type="button" data-cat="' + c.id + '">Ver los ' + n + "</button>" : "") + "</div>";
+  }
+  function renderList() {
+    var list = visible();
+    renderFilters(list);
+    var box = $("list");
+    if (!list.length) {
+      box.innerHTML = '<div class="empty">No encontramos «' + esc(state.q || "eso") + '» con estos filtros.<br><a href="' + waLink("¡Hola! Estoy buscando " + (state.q || "un producto") + ". ¿Lo tenés o lo podés conseguir?") + '" target="_blank" rel="noopener">Preguntanos por WhatsApp</a> y te lo conseguimos.</div>';
+      return;
+    }
+    if (state.cat === "all" && !state.q && state.sort === "sec") {
+      box.innerHTML = CATS.map(function (c) {
+        var n = P.filter(function (p) { return p.cat === c.id; }).length;
+        return '<section class="shelf">' + shelfHead(c, n, true) + '<div class="grid preview">' + preview(c).map(cardHTML).join("") + "</div></section>";
+      }).join("");
+      return;
+    }
+    if (state.cat !== "all") {
+      var c = CAT[state.cat];
+      box.innerHTML = '<section class="shelf">' + shelfHead(c, list.length, false) + secBlocks(c, list) + "</section>";
+      return;
+    }
+    if (state.sort !== "sec") { box.innerHTML = '<div class="grid" style="margin-top:16px">' + sorted(list).map(cardHTML).join("") + "</div>"; return; }
+    box.innerHTML = CATS.map(function (c) {
+      var items = list.filter(function (p) { return p.cat === c.id; });
+      return items.length ? '<section class="shelf">' + shelfHead(c, items.length, false) + '<div class="grid">' + items.map(cardHTML).join("") + "</div></section>" : "";
+    }).join("");
+  }
+
+  // Sincroniza precios, botones, barra y pedido sin redibujar la lista
+  function syncCards() {
+    var cards = document.querySelectorAll("[data-card]");
+    for (var i = 0; i < cards.length; i++) {
+      var el = cards[i], p = BY[el.getAttribute("data-card")], q = qtyOf(p.id);
+      el.querySelector("[data-price]").innerHTML = priceHTML(p);
+      var act = el.querySelector("[data-act]"), html = actHTML(p);
+      if (act.getAttribute("data-h") !== html) { act.innerHTML = html; act.setAttribute("data-h", html); }
+      var b = el.querySelector("[data-incart]"); b.hidden = !q; b.textContent = q;
+    }
+  }
+  function syncSlots() {
+    var t = totals();
+    var slots = "";
+    for (var i = 0; i < DESDE; i++) slots += "<i" + (i < t.n ? ' class="on"' : "") + "></i>";
+    var txt;
+    if (!t.n) txt = "<span>Llevás <b>0 de " + DESDE + "</b></span><span>Sumá productos y mirá cómo se llena</span>";
+    else if (!t.on) txt = "<span>Llevás <b>" + t.n + " de " + DESDE + "</b> · te " + (t.falta === 1 ? "falta 1" : "faltan " + t.falta) + "</span><span>" + PCT_TXT + " OFF a los " + DESDE + "</span>";
+    else txt = "<span><b>¡" + PCT_TXT + " OFF aplicado!</b> · " + t.n + " productos</span><span>Ahorrás <b>" + fmt(t.save) + "</b></span>";
+    document.querySelectorAll("[data-slots]").forEach(function (el) { el.innerHTML = slots; el.classList.toggle("full", t.on); });
+    document.querySelectorAll("[data-slots-text]").forEach(function (el) { el.innerHTML = txt; });
+  }
+  function syncBar() {
+    var t = totals();
+    $("count").textContent = t.n;
+    $("mini-count").textContent = t.n; $("mini-count").hidden = !t.n;
+    $("bar").hidden = !t.n;
+    document.body.classList.toggle("has-bar", !!t.n);
+    $("bar-label").textContent = "Ver mi pedido (" + t.n + ")";
+    $("bar-total").innerHTML = (t.on ? "<s>" + fmt(t.sub) + "</s>" : "") + fmt(t.total);
+  }
+  function renderCart() {
+    var t = totals(), list = entries();
+    $("order-no").textContent = orderNo ? "Pedido N° " + orderNo : "";
+    $("clear-cart").hidden = !list.length;
+    if (!list.length) {
+      $("items").innerHTML = '<div class="i-empty">Todavía no agregaste nada. Elegí productos y volvé acá.</div>';
+      $("sums").innerHTML = "";
+      updateLink(); return;
+    }
+    $("items").innerHTML = list.map(function (e) {
+      var p = BY[e.id], k = keyOf(e.id, e.opt), u = t.on ? disc(p) : p.precio;
+      return '<div class="item"><div class="th">' + (p.foto ? img(p, true) : icon(p.cat)) + "</div>" +
+        '<div><div class="i-name">' + esc(p.nombre) + '</div><div class="i-var">' + (e.opt ? esc(e.opt) + " · " : "") + (t.on ? "<s>" + fmt(p.precio) + "</s>" : "") + fmt(u) + " c/u</div></div>" +
+        '<div class="i-line">' + fmt(u * e.qty) + "</div>" +
+        '<div class="stepper"><button type="button" data-step="-1" data-key="' + esc(k) + '" aria-label="Quitar uno de ' + esc(p.nombre) + '">−</button><span>' + e.qty + '</span><button type="button" data-step="1" data-key="' + esc(k) + '" aria-label="Sumar uno de ' + esc(p.nombre) + '">+</button></div></div>';
+    }).join("");
+    var rows = '<div class="sum-row"><span>' + t.n + (t.n === 1 ? " producto" : " productos") + " a precio de lista</span><span>" + fmt(t.sub) + "</span></div>";
+    if (t.on) rows += '<div class="sum-row save"><span>Descuento ' + PCT_TXT + " por llevar " + DESDE + " o más</span><span>−" + fmt(t.save) + "</span></div>";
+    rows += '<div class="sum-row total"><span>Total</span><strong>' + fmt(t.total) + "</strong></div>";
+    if (!t.on) rows += '<p class="sum-note">Sumá <b>' + t.falta + (t.falta === 1 ? " producto más" : " productos más") + "</b> y se descuenta el " + PCT_TXT + " de todo el pedido: con lo que ya tenés, ahorrás <b>" + fmt(t.potencial) + "</b> o más.</p>";
+    $("sums").innerHTML = rows;
+    updateLink();
+  }
+  function syncAll() { syncCards(); syncSlots(); syncBar(); if (!$("cart").hidden) renderCart(); if (!$("prod").hidden && prodId) syncProd(); }
+
+  // WhatsApp
+  function waBase() { return "https://wa.me/" + WA; }
+  function waLink(text) { return waBase() + "?text=" + encodeURIComponent(text); }
+  function message() {
+    var t = totals();
+    var lines = entries().map(function (e) { var p = BY[e.id]; return "• " + e.qty + " x " + p.nombre + (e.opt ? " (" + e.opt + ")" : "") + " — " + fmt(p.precio * e.qty); });
+    var ent = $("f-ent").value, city = $("f-city").value.trim(), note = $("f-note").value.trim();
+    return "¡Hola! Quiero hacer este pedido del catálogo:" + (orderNo ? "\nPedido N° " + orderNo : "") + "\n\n" + lines.join("\n") +
+      "\n\nProductos: " + t.n +
+      "\nSubtotal: " + fmt(t.sub) +
+      (t.on ? "\nDescuento " + PCT_TXT + " por llevar " + DESDE + " o más: −" + fmt(t.save) : "") +
+      "\n*Total: " + fmt(t.total) + "*" +
+      "\n\nNombre: " + ($("f-name").value.trim() || "-") +
+      "\nEntrega: " + ent + (ent === "Envío" && city ? " a " + city : "") +
+      "\nPago: " + $("f-pay").value +
+      (note ? "\nAclaraciones: " + note : "") +
+      "\n\n¿Me confirmás disponibilidad y envío?";
+  }
+  function updateLink() {
+    var a = $("wa-send"), has = entries().length > 0;
+    a.setAttribute("href", has ? waLink(message()) : "#");
+    a.setAttribute("aria-disabled", has ? "false" : "true");
+  }
+
+  // Ficha de producto
+  var prodId = null, lastFocus = null;
+  function chips(a) { return '<div class="notes">' + a.map(function (x) { return "<span>" + esc(x) + "</span>"; }).join("") + "</div>"; }
+  function openProd(id) {
+    var p = BY[id]; if (!p) return;
+    prodId = id; lastFocus = document.activeElement;
+    var c = CAT[p.cat], s = SEC[p.cat + "/" + p.sec], n = NOTAS[id];
+    $("prod-eye").textContent = c.nombre + (s ? " · " + s.nombre : "");
+    var tags = [];
+    if (p.para) tags.push(PARA[p.para]);
+    if (p.aroma) tags.push(AROMA_TAG[p.aroma]);
+    if (p.destacado) tags.push("Recomendado");
+    if (p.nuevo) tags.push("Nuevo");
+    var html = '<div class="p-top"><div class="p-pic">' + (p.foto ? img(p, true) : icon(p.cat)) + '</div><div><h2 class="p-name" id="prod-h">' + esc(p.nombre) + '</h2><p class="cdet">' + esc(p.detalle) + "</p>" + (tags.length ? '<div class="p-tags">' + tags.map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("") + "</div>" : "") + "</div></div>";
+    if (n) {
+      html += '<p class="p-fam">' + esc(n.familia) + '</p><p class="p-use"><b>Ideal para:</b> ' + esc(n.ideal) + "</p>";
+      html += n.notas
+        ? '<div class="pyr"><div class="pyr-step"><p class="pyr-t">Notas</p>' + chips(n.notas) + "</div></div>"
+        : '<div class="pyr"><div class="pyr-step"><p class="pyr-t">Salida</p><p class="pyr-w">Lo primero que sentís, los primeros 15 minutos</p>' + chips(n.salida) + '</div><div class="pyr-step"><p class="pyr-t">Corazón</p><p class="pyr-w">El carácter del perfume, de 15 minutos a un par de horas</p>' + chips(n.corazon) + '</div><div class="pyr-step"><p class="pyr-t">Fondo</p><p class="pyr-w">Lo que queda en la piel durante horas</p>' + chips(n.fondo) + "</div></div>";
+      html += '<p class="p-foot">Notas orientativas: cómo se siente puede variar un poco en cada piel.</p>';
+    }
+    if (p.texto) html += '<p class="p-text">' + esc(p.texto) + "</p>";
+    var opts = p.opciones && OPC[p.opciones] ? '<label class="p-optl" for="p-opt">Elegí la opción<select class="opt" id="p-opt">' + OPC[p.opciones].map(function (o) { return "<option" + (sel[id] === o ? " selected" : "") + ">" + esc(o) + "</option>"; }).join("") + "</select></label>" : "";
+    html += '<div class="p-buy"><div id="p-price"></div>' + opts + '<button class="add" type="button" id="p-add">Agregar al pedido</button><p class="p-have" id="p-have"></p></div>';
+    $("prod-body").innerHTML = html;
+    syncProd();
+    $("prod-ov").hidden = false; $("prod").hidden = false; $("prod").scrollTop = 0;
+    document.body.classList.add("lock");
+    $("prod-close").focus();
+  }
+  function syncProd() {
+    var p = BY[prodId]; if (!p) return;
+    $("p-price").innerHTML = priceHTML(p);
+    var q = qtyOf(p.id), t = totals();
+    var falta = "te " + (t.falta === 1 ? "falta 1" : "faltan " + t.falta) + " para el " + PCT_TXT + " OFF";
+    $("p-have").textContent = q ? "Tenés " + q + " en tu pedido · " + (t.on ? PCT_TXT + " OFF aplicado" : falta)
+      : t.on ? "Tu pedido ya tiene el " + PCT_TXT + " OFF: este producto también entra con descuento."
+      : t.n ? "Llevás " + t.n + " de " + DESDE + ": " + falta + "." : "Con " + DESDE + " productos en el pedido se descuenta el " + PCT_TXT + ".";
+  }
+  function closeProd() {
+    $("prod-ov").hidden = true; $("prod").hidden = true; prodId = null;
+    if ($("cart").hidden) document.body.classList.remove("lock");
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  // Hoja del pedido
+  var cartFocus = null;
+  function openCart() {
+    cartFocus = document.activeElement;
+    $("toast").classList.remove("show");
+    renderCart();
+    $("city-wrap").hidden = $("f-ent").value !== "Envío";
+    $("err").textContent = ""; $("copy-box").hidden = true;
+    $("cart-ov").hidden = false; $("cart").hidden = false; $("cart").scrollTop = 0;
+    document.body.classList.add("lock");
+    $("cart-close").focus();
+  }
+  function closeCart() {
+    $("cart-ov").hidden = true; $("cart").hidden = true; resetClear();
+    document.body.classList.remove("lock");
+    if (cartFocus && cartFocus.focus) cartFocus.focus();
+  }
+  var clearArmed = false;
+  function resetClear() { clearArmed = false; var b = $("clear-cart"); b.textContent = "Vaciar pedido"; b.classList.remove("warn"); }
+
+  // Eventos
+  function goList() {
+    var a = $("list-anchor");
+    var y = a.getBoundingClientRect().top + window.pageYOffset - $("tools").offsetHeight - 4;
+    if (window.pageYOffset > y || window.pageYOffset < y - 40) window.scrollTo({ top: y, behavior: "smooth" });
+  }
+  function setCat(c) { state.cat = c; state.para = ""; state.sec = ""; state.aroma = ""; renderChips(); renderList(); setHash(); goList(); var ch = document.querySelector('.chip[data-cat="' + c + '"]'); if (ch && ch.scrollIntoView) ch.scrollIntoView({ block: "nearest", inline: "center" }); }
+
+  $("chips").addEventListener("click", function (e) { var b = e.target.closest("[data-cat]"); if (b) setCat(b.getAttribute("data-cat")); });
+  $("cat-grid").addEventListener("click", function (e) { var b = e.target.closest("[data-go]"); if (b) setCat(b.getAttribute("data-go")); });
+  $("filters").addEventListener("click", function (e) {
+    var f = e.target.closest("[data-f]");
+    if (f) { var d = f.getAttribute("data-f"), v = f.getAttribute("data-v"); state[d] = state[d] === v ? "" : v; renderList(); return; }
+    if (e.target.closest("#clear-f")) { state.q = ""; $("q").value = ""; $("q-clear").hidden = true; setCat("all"); }
+  });
+  $("filters").addEventListener("change", function (e) { if (e.target.id === "sort") { state.sort = e.target.value; renderList(); } });
+  var qT = null;
+  $("q").addEventListener("input", function (e) {
+    state.q = e.target.value; $("q-clear").hidden = !state.q;
+    clearTimeout(qT); qT = setTimeout(renderList, 120);
+  });
+  $("q").addEventListener("keydown", function (e) { if (e.key === "Enter") { e.target.blur(); goList(); } });
+  $("q-clear").addEventListener("click", function () { state.q = ""; $("q").value = ""; $("q-clear").hidden = true; renderList(); $("q").focus(); });
+
+  $("list").addEventListener("change", function (e) { var s = e.target.closest("[data-opt]"); if (s) sel[s.getAttribute("data-opt")] = s.value; });
+  $("list").addEventListener("click", function (e) {
+    var t;
+    if ((t = e.target.closest("[data-open]"))) { openProd(t.getAttribute("data-open")); return; }
+    if ((t = e.target.closest("[data-cat]"))) { setCat(t.getAttribute("data-cat")); return; }
+    if ((t = e.target.closest("[data-add]"))) {
+      var id = t.getAttribute("data-add"), p = BY[id], card = t.closest("[data-card]");
+      var s = card && card.querySelector("[data-opt]"), opt = p.opciones ? (s ? s.value : OPC[p.opciones][0]) : "";
+      add(id, opt);
+      var plus = card && card.querySelector("[data-inc]");
+      if (plus) plus.focus(); else if (card) { var b = card.querySelector("[data-add]"); if (b) { b.classList.remove("flash"); void b.offsetWidth; b.classList.add("flash"); b.focus(); } }
+      return;
+    }
+    if ((t = e.target.closest("[data-inc]"))) { var i = t.getAttribute("data-inc"); change(keyOf(i, ""), 1); var c1 = document.querySelector('[data-card="' + i + '"] [data-inc]'); if (c1) c1.focus(); return; }
+    if ((t = e.target.closest("[data-dec]"))) {
+      var j = t.getAttribute("data-dec"); change(keyOf(j, ""), -1);
+      var c2 = document.querySelector('[data-card="' + j + '"] [data-dec]') || document.querySelector('[data-card="' + j + '"] [data-add]'); if (c2) c2.focus();
+    }
+  });
+
+  $("prod-body").addEventListener("click", function (e) {
+    if (e.target.id !== "p-add") return;
+    var p = BY[prodId], s = $("p-opt"), opt = p.opciones ? (s ? s.value : OPC[p.opciones][0]) : "";
+    if (s) sel[p.id] = s.value;
+    add(p.id, opt);
+  });
+  $("prod-close").addEventListener("click", closeProd);
+  $("prod-ov").addEventListener("click", closeProd);
+
+  ["open-cart", "mini-cart", "bar-btn"].forEach(function (id) { $(id).addEventListener("click", openCart); });
+  $("cart-close").addEventListener("click", closeCart);
+  $("cart-ov").addEventListener("click", closeCart);
+  $("items").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-step]"); if (!b) return;
+    var k = b.getAttribute("data-key"), st = b.getAttribute("data-step");
+    change(k, +st);
+    var btns = $("items").querySelectorAll("[data-step]"), again = null;
+    for (var i = 0; i < btns.length; i++) if (btns[i].getAttribute("data-key") === k && btns[i].getAttribute("data-step") === st) again = btns[i];
+    (again || $("cart-close")).focus();
+  });
+  $("form").addEventListener("submit", function (e) { e.preventDefault(); });
+  ["f-name", "f-city", "f-note"].forEach(function (id) { $(id).addEventListener("input", function () { $("err").textContent = ""; updateLink(); save(); }); });
+  $("f-ent").addEventListener("change", function () { $("city-wrap").hidden = $("f-ent").value !== "Envío"; updateLink(); save(); });
+  $("f-pay").addEventListener("change", function () { updateLink(); save(); });
+  $("wa-send").addEventListener("click", function (e) {
+    if (!entries().length) { e.preventDefault(); return; }
+    if (!$("f-name").value.trim()) { e.preventDefault(); $("err").textContent = "Escribí tu nombre así sabemos de quién es el pedido."; $("f-name").focus(); return; }
+    if ($("f-ent").value === "Envío" && !$("f-city").value.trim()) { e.preventDefault(); $("err").textContent = "Escribí tu localidad para calcular el envío, o elegí «A coordinar»."; $("f-city").focus(); return; }
+    updateLink();
+  });
+  $("copy").addEventListener("click", function () {
+    var btn = $("copy"), text = message();
+    if (!entries().length) return;
+    function done(m) { btn.textContent = m; setTimeout(function () { btn.textContent = "Copiar pedido"; }, 1600); }
+    function fallback() { var b = $("copy-box"); b.value = text; b.hidden = false; b.focus(); b.select(); done("Seleccionado: copialo"); }
+    try { navigator.clipboard.writeText(text).then(function () { done("¡Pedido copiado!"); }, fallback); } catch (err) { fallback(); }
+  });
+  $("clear-cart").addEventListener("click", function () {
+    var b = $("clear-cart");
+    if (!clearArmed) { clearArmed = true; b.textContent = "¿Seguro? Tocá de nuevo para vaciar"; b.classList.add("warn"); setTimeout(resetClear, 3500); return; }
+    cart = {}; orderNo = ""; save(); resetClear(); syncAll(); renderCart();
+  });
+  document.addEventListener("keydown", function (e) { if (e.key !== "Escape") return; if (!$("prod").hidden) closeProd(); else if (!$("cart").hidden) closeCart(); });
+
+  // Inicio
+  $("seal-pct").textContent = PCT_TXT;
+  $("promo-h").textContent = "Llevando " + DESDE + " productos, " + PCT_TXT + " de descuento";
+  $("promo-p").textContent = "Se cuentan todas las unidades del pedido: combiná perfumes, decants, fundas o lo que quieras. El descuento se aplica solo al llegar a " + DESDE + ".";
+  var m = /^549(\d{3})(\d{3})(\d{4})$/.exec(WA);
+  $("wa-num").textContent = m ? "+54 9 " + m[1] + " " + m[2] + "-" + m[3] : "+" + WA;
+  $("wa-help").href = waLink("¡Hola! Quería hacerte una consulta.");
+  renderCatGrid(); renderChips(); renderList(); syncSlots(); syncBar();
+  if (state.cat !== "all") setTimeout(goList, 60);
+})();
+</script>
