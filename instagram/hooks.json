@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "descripcion": "Fórmulas de gancho para los primeros 1–3 segundos de un reel. 'base' es la fuerza típica de la fórmula (0–100) antes de ajustar por ejecución.",
+  "formulas": [
+    {"id": "secreto-incomodo", "nombre": "Verdad que nadie dice", "plantilla": "Nadie te dice que [verdad incómoda sobre X]...", "ejemplo": "Nadie te dice que tus primeros 30 reels tienen que fallar...", "usar_cuando": "Hay una creencia común que puedes matizar con experiencia", "base": 80},
+    {"id": "perdida-concreta", "nombre": "Pérdida con cifra", "plantilla": "Perdí [cifra concreta] por [error concreto].", "ejemplo": "Perdí 18.000 € por una cláusula que no estaba en el contrato.", "usar_cuando": "Tienes un error real con coste medible", "base": 82},
+    {"id": "deja-de", "nombre": "Deja de hacer X", "plantilla": "Deja de [hábito común] si quieres [resultado].", "ejemplo": "Deja de publicar a diario si quieres crecer.", "usar_cuando": "El hábito es muy extendido y la alternativa es sorprendente", "base": 60},
+    {"id": "error-numero", "nombre": "El error nº1", "plantilla": "El error nº1 que veo en [público] es [error].", "ejemplo": "El error nº1 que veo en freelancers es cobrar por horas.", "usar_cuando": "Tienes autoridad de haber visto muchos casos", "base": 68},
+    {"id": "antes-despues", "nombre": "Antes / después", "plantilla": "Hace [tiempo] [situación mala]. Hoy [situación buena]. Esto cambió:", "ejemplo": "Hace un año tenía 300 seguidores. Hoy 40.000. Cambié una sola cosa:", "usar_cuando": "Transformación real y verificable", "base": 78},
+    {"id": "contraintuitivo", "nombre": "Afirmación contraintuitiva", "plantilla": "[Cosa buena] es lo que te está [frenando].", "ejemplo": "Ser constante es lo que te está estancando.", "usar_cuando": "Puedes defender la tesis en el resto del vídeo", "base": 74},
+    {"id": "pregunta-espejo", "nombre": "Pregunta espejo", "plantilla": "¿Te pasa que [situación muy específica]?", "ejemplo": "¿Te pasa que grabas un reel, lo ves y lo borras?", "usar_cuando": "Dolor muy reconocible por tu público", "base": 62},
+    {"id": "lista-numerada", "nombre": "Lista con número", "plantilla": "[N] [cosas] que [resultado] (la [N] es la que nadie usa).", "ejemplo": "3 frases que cierran ventas (la 3 es la que nadie usa).", "usar_cuando": "Contenido de valor fragmentable", "base": 66},
+    {"id": "si-tienes", "nombre": "Filtro de audiencia", "plantilla": "Si eres [público] y [situación], mira esto.", "ejemplo": "Si eres fisio y tu agenda tiene huecos, mira esto.", "usar_cuando": "Quieres atraer solo a tu cliente ideal", "base": 64},
+    {"id": "prueba-directa", "nombre": "Demostración en vivo", "plantilla": "Voy a [hacer X] en [tiempo corto]. Mira.", "ejemplo": "Voy a escribir tu bio en 30 segundos. Mira.", "usar_cuando": "El resultado es visual y rápido", "base": 76},
+    {"id": "enemigo-comun", "nombre": "Enemigo común", "plantilla": "[Industria/creencia] no quiere que sepas esto.", "ejemplo": "Los bancos no quieren que sepas cómo funciona esta comisión.", "usar_cuando": "Hay un antagonista legítimo (no conspiración)", "base": 65},
+    {"id": "historia-in-media-res", "nombre": "Empezar en mitad de la historia", "plantilla": "Y entonces [momento de máxima tensión].", "ejemplo": "Y entonces el cliente me dijo: «no pienso pagarte».", "usar_cuando": "Tienes una anécdota con giro", "base": 79},
+    {"id": "comparacion", "nombre": "X vs Y", "plantilla": "[Opción A] vs [Opción B]: cuál te conviene de verdad.", "ejemplo": "Autónomo vs sociedad limitada: cuál te conviene de verdad.", "usar_cuando": "Decisión que tu público tiene que tomar", "base": 63},
+    {"id": "dato-shock", "nombre": "Dato que sorprende", "plantilla": "El [porcentaje]% de [grupo] [hace/sufre X].", "ejemplo": "El 80% de los reels se abandonan en los 3 primeros segundos.", "usar_cuando": "Tienes un dato fiable con fuente", "base": 70},
+    {"id": "como-yo", "nombre": "Cómo lo hice yo", "plantilla": "Cómo [logré resultado] sin [sacrificio esperado].", "ejemplo": "Cómo conseguí 10 clientes sin hacer anuncios.", "usar_cuando": "Resultado propio y método replicable", "base": 72},
+    {"id": "no-hagas", "nombre": "Advertencia", "plantilla": "No [acción] hasta que veas esto.", "ejemplo": "No firmes tu primer alquiler hasta que veas esto.", "usar_cuando": "Hay una decisión inminente con riesgo", "base": 73},
+    {"id": "opinion-impopular", "nombre": "Opinión impopular", "plantilla": "Opinión impopular: [tesis].", "ejemplo": "Opinión impopular: no necesitas un nicho para empezar.", "usar_cuando": "Puedes argumentarla sin ser polémico por serlo", "base": 67},
+    {"id": "lo-que-aprendi", "nombre": "Lecciones tras X", "plantilla": "[Tiempo/cantidad] de [experiencia] en [N] lecciones.", "ejemplo": "5 años como abogado en 4 lecciones.", "usar_cuando": "Experiencia acumulada que el público valora", "base": 66},
+    {"id": "pov", "nombre": "POV", "plantilla": "POV: [situación identificable de tu público].", "ejemplo": "POV: abres el correo y es Hacienda.", "usar_cuando": "Humor o identificación; formato visual", "base": 58},
+    {"id": "atajo", "nombre": "El atajo", "plantilla": "La forma más rápida de [resultado] (sin [dolor]).", "ejemplo": "La forma más rápida de aprender inglés sin academia.", "usar_cuando": "Tienes un método realmente más corto", "base": 61},
+    {"id": "senal", "nombre": "Señales de que...", "plantilla": "[N] señales de que [situación].", "ejemplo": "3 señales de que tu cliente no te va a pagar.", "usar_cuando": "Diagnóstico que el público quiere hacerse", "base": 65},
+    {"id": "guardalo", "nombre": "Guárdalo para luego", "plantilla": "Guarda este vídeo antes de [momento futuro].", "ejemplo": "Guarda este vídeo antes de tu próxima entrevista.", "usar_cuando": "Contenido de referencia (checklists, plantillas)", "base": 60},
+    {"id": "mito", "nombre": "Mito desmontado", "plantilla": "«[Frase hecha]» es mentira. Te explico.", "ejemplo": "«Haz lo que amas y no trabajarás ningún día» es mentira.", "usar_cuando": "Hay una frase hecha que tu experiencia contradice", "base": 69},
+    {"id": "reto", "nombre": "Reto / experimento", "plantilla": "Hice [experimento] durante [tiempo]. Esto pasó.", "ejemplo": "Publiqué un reel al día durante 30 días. Esto pasó.", "usar_cuando": "Has hecho el experimento de verdad", "base": 75},
+    {"id": "pregunta-cliente", "nombre": "Me preguntaron...", "plantilla": "Un [cliente/seguidor] me preguntó: «[pregunta]».", "ejemplo": "Una clienta me preguntó: «¿por qué cobras tanto?».", "usar_cuando": "Pregunta frecuente real de tu público", "base": 63},
+    {"id": "scroll-stop", "nombre": "Para el scroll", "plantilla": "Deja de hacer scroll si [condición de tu público].", "ejemplo": "Deja de hacer scroll si quieres crecer en Instagram en 2026.", "usar_cuando": "Último recurso: es genérico y está muy visto", "base": 50}
+  ],
+  "rubrica": {
+    "descripcion": "Puntuación final 0–100 = media ponderada de estos criterios (cada uno 0–10, ×10).",
+    "criterios": [
+      {"id": "especificidad", "peso": 0.25, "pregunta": "¿Tiene una cifra, nombre, tiempo o detalle concreto?"},
+      {"id": "curiosidad", "peso": 0.20, "pregunta": "¿Abre una pregunta que solo se responde viendo el vídeo?"},
+      {"id": "relevancia", "peso": 0.20, "pregunta": "¿El cliente ideal de marca.md se siente aludido?"},
+      {"id": "tension", "peso": 0.15, "pregunta": "¿Hay riesgo, pérdida, conflicto o contradicción?"},
+      {"id": "brevedad", "peso": 0.10, "pregunta": "¿Se lee/dice en menos de 3 segundos (≤ 12 palabras)?"},
+      {"id": "credibilidad", "peso": 0.10, "pregunta": "¿Suena a persona real, no a clickbait de IA?"}
+    ],
+    "etiquetas": [
+      {"desde": 75, "etiqueta": "FUERTE"},
+      {"desde": 55, "etiqueta": "OK"},
+      {"desde": 0, "etiqueta": "FLOJO"}
+    ]
+  }
+}
