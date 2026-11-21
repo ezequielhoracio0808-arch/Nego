@@ -95,7 +95,7 @@ h1, h2, h3 { text-wrap: balance; }
 .cats-head h2 { margin: 0; font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-hi); }
 .cats-head span { color: var(--muted); font-size: 12px; }
 .cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-@media (min-width: 760px) { .cat-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 760px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .cat-tile.big + .cat-tile.big { grid-column: auto; } }
 .cat-tile { position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; min-height: 124px; padding: 14px; border: 1px solid var(--line-strong); border-radius: 18px; background: radial-gradient(circle at 80% 20%, var(--soft), transparent 60%), var(--tile); color: var(--fg); text-align: left; }
 .cat-tile.big { grid-column: span 2; min-height: 150px; }
 .cat-tile .bg { position: absolute; inset: -12px; z-index: -2; background-size: cover; background-position: center; filter: blur(6px) saturate(1.1); transform: scale(1.06); opacity: 0.75; transition: transform 0.4s ease; }
@@ -321,7 +321,7 @@ h1, h2, h3 { text-wrap: balance; }
       <div class="seal" aria-hidden="true"><div><b id="seal-pct">10%</b><span>OFF</span></div></div>
       <div>
         <h2 id="promo-h">Llevando 10 productos, 10% de descuento</h2>
-        <p id="promo-p">Se cuentan todas las unidades del pedido: combiná perfumes, decants, fundas o lo que quieras. El descuento se aplica solo al llegar a 10.</p>
+        <p id="promo-p">Se cuentan todas las unidades del pedido: combiná perfumes, decants, fundas o lo que quieras. El descuento se aplica solo al llegar a 10. Los combos ya tienen su precio cerrado.</p>
       </div>
       <div class="slots-wrap">
         <div class="slots" data-slots aria-hidden="true"></div>
@@ -447,7 +447,7 @@ h1, h2, h3 { text-wrap: balance; }
   var LINEA = { arabes: "Árabe", disenador: "Diseñador", nicho: "Nicho" };
   var AROMAS = [["dulce", "Dulces"], ["fresco", "Frescos"], ["intenso", "Intensos"], ["floral", "Florales"], ["amaderado", "Amaderados"], ["frutal", "Frutales"]];
   var AROMA_TAG = { dulce: "Dulce", fresco: "Fresco", intenso: "Intenso", floral: "Floral", amaderado: "Amaderado", frutal: "Frutal" };
-  var CAT_FOTO = { perfumes: "khamrah", victoria: "vs-bombshell", audio: "jbl-flip5", iphone: "funda-magsafe", mate: "vaso-stanley", otros: "apple-watch-s2" };
+  var CAT_FOTO = { perfumes: "khamrah", combos: "ce-ganador", victoria: "vs-bombshell", audio: "jbl-flip5", iphone: "funda-magsafe", mate: "vaso-stanley", otros: "apple-watch-s2" };
   var ICONS = {
     perfumes: '<rect x="14" y="21" width="20" height="21" rx="4"/><rect x="20" y="14" width="8" height="7"/><rect x="19" y="7" width="10" height="7" rx="2"/>',
     decants: '<rect x="19" y="16" width="10" height="26" rx="3"/><rect x="21" y="8" width="6" height="8" rx="1.5"/><path d="M19 26h10"/>',
@@ -455,7 +455,8 @@ h1, h2, h3 { text-wrap: balance; }
     audio: '<path d="M10 28v-4a14 14 0 0 1 28 0v4"/><rect x="8" y="26" width="8" height="13" rx="3"/><rect x="32" y="26" width="8" height="13" rx="3"/>',
     iphone: '<rect x="14" y="6" width="20" height="36" rx="5"/><path d="M21 11h6"/>',
     mate: '<path d="M13 18h22l-2 18a4 4 0 0 1-4 4H19a4 4 0 0 1-4-4z"/><path d="M30 6l-4 18"/>',
-    otros: '<rect x="15" y="15" width="18" height="18" rx="5"/><path d="M19 15l1-7h8l1 7M19 33l1 7h8l1-7"/>'
+    otros: '<rect x="15" y="15" width="18" height="18" rx="5"/><path d="M19 15l1-7h8l1 7M19 33l1 7h8l1-7"/>',
+    combos: '<rect x="9" y="20" width="30" height="21" rx="3"/><path d="M9 27h30M24 20v21"/><path d="M24 20c-3-6-11-8-11-3s8 3 11 3c3 0 11 2 11-3s-8-3-11 3z"/>'
   };
 
   // Links: catálogo#5491122334455 manda los pedidos a ese WhatsApp; catálogo#perfumes abre esa categoría
@@ -505,15 +506,15 @@ h1, h2, h3 { text-wrap: balance; }
     } catch (e) {}
   })();
   function entries() { return Object.keys(cart).map(function (k) { return cart[k]; }); }
-  function units() { var n = 0; entries().forEach(function (e) { n += e.qty; }); return n; }
+  function units() { var n = 0; entries().forEach(function (e) { if (!BY[e.id].sinDescuento) n += e.qty; }); return n; }
   function qtyOf(id) { var n = 0; entries().forEach(function (e) { if (e.id === id) n += e.qty; }); return n; }
   function active() { return units() >= DESDE; }
-  function disc(p) { return Math.round(p.precio * (1 - PCT) / 10) * 10; }
+  function disc(p) { return p.sinDescuento ? p.precio : Math.round(p.precio * (1 - PCT) / 10) * 10; }
   function totals() {
-    var sub = 0, tot = 0, n = 0;
-    entries().forEach(function (e) { var p = BY[e.id]; n += e.qty; sub += p.precio * e.qty; tot += disc(p) * e.qty; });
-    var on = n >= DESDE;
-    return { n: n, sub: sub, total: on ? tot : sub, save: on ? sub - tot : 0, on: on, falta: Math.max(0, DESDE - n), potencial: sub - tot };
+    var sub = 0, tot = 0, n = 0, nd = 0, combos = 0;
+    entries().forEach(function (e) { var p = BY[e.id]; n += e.qty; if (p.sinDescuento) combos += e.qty; else nd += e.qty; sub += p.precio * e.qty; tot += disc(p) * e.qty; });
+    var on = nd >= DESDE;
+    return { n: n, nd: nd, combos: combos, sub: sub, total: on ? tot : sub, save: on ? sub - tot : 0, on: on, falta: Math.max(0, DESDE - nd), potencial: sub - tot };
   }
   function keyOf(id, opt) { return id + "|" + (opt || ""); }
   function add(id, opt, n) {
@@ -542,6 +543,7 @@ h1, h2, h3 { text-wrap: balance; }
 
   // Precio en tarjeta y ficha
   function priceHTML(p) {
+    if (p.sinDescuento) return '<div class="price"><b>' + fmt(p.precio) + "</b>" + (p.separado ? "<s>" + fmt(p.separado) + "</s>" : "") + '</div><p class="hint10">' + (p.separado ? "Ahorrás <b>" + fmt(p.separado - p.precio) + "</b> · precio cerrado" : "Precio cerrado") + "</p>";
     if (active()) return '<div class="price"><b>' + fmt(disc(p)) + "</b><s>" + fmt(p.precio) + '</s><span class="off">−' + PCT_TXT + "</span></div>";
     return '<div class="price"><b>' + fmt(p.precio) + '</b></div><p class="hint10">Llevando ' + DESDE + "+: <b>" + fmt(disc(p)) + "</b></p>";
   }
@@ -603,7 +605,7 @@ h1, h2, h3 { text-wrap: balance; }
     $("cats-total").textContent = P.length + " productos";
     $("cat-grid").innerHTML = CATS.map(function (c, i) {
       var n = P.filter(function (p) { return p.cat === c.id; }).length, f = BY[CAT_FOTO[c.id]];
-      return '<button class="cat-tile' + (i === 0 ? " big" : "") + '" type="button" data-go="' + c.id + '">' +
+      return '<button class="cat-tile' + (i < 2 ? " big" : "") + '" type="button" data-go="' + c.id + '">' +
         (f && f.foto ? '<span class="bg" style="background-image:url(\'fotos/' + f.foto + '\')"></span>' : "") +
         '<span class="ico">' + icon(c.id) + "</span><b>" + esc(c.nombre) + "</b><span><i>" + n + "</i> · " + esc(c.bajada) + "</span></button>";
     }).join("");
@@ -678,11 +680,11 @@ h1, h2, h3 { text-wrap: balance; }
   function syncSlots() {
     var t = totals();
     var slots = "";
-    for (var i = 0; i < DESDE; i++) slots += "<i" + (i < t.n ? ' class="on"' : "") + "></i>";
+    for (var i = 0; i < DESDE; i++) slots += "<i" + (i < t.nd ? ' class="on"' : "") + "></i>";
     var txt;
-    if (!t.n) txt = "<span>Llevás <b>0 de " + DESDE + "</b></span><span>Sumá productos y mirá cómo se llena</span>";
-    else if (!t.on) txt = "<span>Llevás <b>" + t.n + " de " + DESDE + "</b> · te " + (t.falta === 1 ? "falta 1" : "faltan " + t.falta) + "</span><span>" + PCT_TXT + " OFF a los " + DESDE + "</span>";
-    else txt = "<span><b>¡" + PCT_TXT + " OFF aplicado!</b> · " + t.n + " productos</span><span>Ahorrás <b>" + fmt(t.save) + "</b></span>";
+    if (!t.nd) txt = "<span>Llevás <b>0 de " + DESDE + "</b></span><span>" + (t.combos ? "Los combos no suman: ya tienen precio cerrado" : "Sumá productos y mirá cómo se llena") + "</span>";
+    else if (!t.on) txt = "<span>Llevás <b>" + t.nd + " de " + DESDE + "</b> · te " + (t.falta === 1 ? "falta 1" : "faltan " + t.falta) + "</span><span>" + PCT_TXT + " OFF a los " + DESDE + "</span>";
+    else txt = "<span><b>¡" + PCT_TXT + " OFF aplicado!</b> · " + t.nd + " productos</span><span>Ahorrás <b>" + fmt(t.save) + "</b></span>";
     document.querySelectorAll("[data-slots]").forEach(function (el) { el.innerHTML = slots; el.classList.toggle("full", t.on); });
     document.querySelectorAll("[data-slots-text]").forEach(function (el) { el.innerHTML = txt; });
   }
@@ -712,9 +714,9 @@ h1, h2, h3 { text-wrap: balance; }
         '<div class="stepper"><button type="button" data-step="-1" data-key="' + esc(k) + '" aria-label="Quitar uno de ' + esc(p.nombre) + '">−</button><span>' + e.qty + '</span><button type="button" data-step="1" data-key="' + esc(k) + '" aria-label="Sumar uno de ' + esc(p.nombre) + '">+</button></div></div>';
     }).join("");
     var rows = '<div class="sum-row"><span>' + t.n + (t.n === 1 ? " producto" : " productos") + " a precio de lista</span><span>" + fmt(t.sub) + "</span></div>";
-    if (t.on) rows += '<div class="sum-row save"><span>Descuento ' + PCT_TXT + " por llevar " + DESDE + " o más</span><span>−" + fmt(t.save) + "</span></div>";
+    if (t.on) rows += '<div class="sum-row save"><span>Descuento ' + PCT_TXT + " por llevar " + DESDE + " o más" + (t.combos ? " (sin combos)" : "") + "</span><span>−" + fmt(t.save) + "</span></div>";
     rows += '<div class="sum-row total"><span>Total</span><strong>' + fmt(t.total) + "</strong></div>";
-    if (!t.on) rows += '<p class="sum-note">Sumá <b>' + t.falta + (t.falta === 1 ? " producto más" : " productos más") + "</b> y se descuenta el " + PCT_TXT + " de todo el pedido: con lo que ya tenés, ahorrás <b>" + fmt(t.potencial) + "</b> o más.</p>";
+    if (!t.on) rows += '<p class="sum-note">Sumá <b>' + t.falta + (t.falta === 1 ? " producto más" : " productos más") + "</b> y se descuenta el " + PCT_TXT + " de " + (t.combos ? "los productos sueltos (los combos ya tienen precio cerrado)" : "todo el pedido") + (t.potencial ? ": con lo que ya tenés, ahorrás <b>" + fmt(t.potencial) + "</b> o más" : "") + ".</p>";
     $("sums").innerHTML = rows;
     updateLink();
   }
@@ -730,7 +732,7 @@ h1, h2, h3 { text-wrap: balance; }
     return "¡Hola! Quiero hacer este pedido del catálogo:" + (orderNo ? "\nPedido N° " + orderNo : "") + "\n\n" + lines.join("\n") +
       "\n\nProductos: " + t.n +
       "\nSubtotal: " + fmt(t.sub) +
-      (t.on ? "\nDescuento " + PCT_TXT + " por llevar " + DESDE + " o más: −" + fmt(t.save) : "") +
+      (t.on ? "\nDescuento " + PCT_TXT + " por llevar " + DESDE + " o más" + (t.combos ? " (sin combos)" : "") + ": −" + fmt(t.save) : "") +
       "\n*Total: " + fmt(t.total) + "*" +
       "\n\nNombre: " + ($("f-name").value.trim() || "-") +
       "\nEntrega: " + ent + (ent === "Envío" && city ? " a " + city : "") +
@@ -780,10 +782,11 @@ h1, h2, h3 { text-wrap: balance; }
     var p = BY[prodId]; if (!p) return;
     $("p-price").innerHTML = priceHTML(p);
     var q = qtyOf(p.id), t = totals();
+    if (p.sinDescuento) { $("p-have").textContent = (qtyOf(p.id) ? "Tenés " + qtyOf(p.id) + " en tu pedido · " : "") + "Precio cerrado: no suma para el " + PCT_TXT + " OFF."; return; }
     var falta = "te " + (t.falta === 1 ? "falta 1" : "faltan " + t.falta) + " para el " + PCT_TXT + " OFF";
     $("p-have").textContent = q ? "Tenés " + q + " en tu pedido · " + (t.on ? PCT_TXT + " OFF aplicado" : falta)
       : t.on ? "Tu pedido ya tiene el " + PCT_TXT + " OFF: este producto también entra con descuento."
-      : t.n ? "Llevás " + t.n + " de " + DESDE + ": " + falta + "." : "Con " + DESDE + " productos en el pedido se descuenta el " + PCT_TXT + ".";
+      : t.nd ? "Llevás " + t.nd + " de " + DESDE + ": " + falta + "." : "Con " + DESDE + " productos en el pedido se descuenta el " + PCT_TXT + ".";
   }
   function closeProd() {
     $("prod-ov").hidden = true; $("prod").hidden = true; prodId = null;
@@ -902,7 +905,7 @@ h1, h2, h3 { text-wrap: balance; }
   // Inicio
   $("seal-pct").textContent = PCT_TXT;
   $("promo-h").textContent = "Llevando " + DESDE + " productos, " + PCT_TXT + " de descuento";
-  $("promo-p").textContent = "Se cuentan todas las unidades del pedido: combiná perfumes, decants, fundas o lo que quieras. El descuento se aplica solo al llegar a " + DESDE + ".";
+  $("promo-p").textContent = "Se cuentan todas las unidades del pedido: combiná perfumes, decants, fundas o lo que quieras. El descuento se aplica solo al llegar a " + DESDE + ". Los combos ya tienen su precio cerrado.";
   var m = /^549(\d{3})(\d{3})(\d{4})$/.exec(WA);
   $("wa-num").textContent = m ? "+54 9 " + m[1] + " " + m[2] + "-" + m[3] : "+" + WA;
   $("wa-help").href = waLink("¡Hola! Quería hacerte una consulta.");

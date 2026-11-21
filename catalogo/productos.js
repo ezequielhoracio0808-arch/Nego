@@ -6,7 +6,8 @@ window.CATALOGO = {
   // Número de WhatsApp con código de país, sin + ni espacios
   whatsapp: "5492213584358",
 
-  // Descuento por cantidad: se cuentan TODAS las unidades del pedido (perfumes, decants, fundas, lo que sea).
+  // Descuento por cantidad: se cuentan TODAS las unidades del pedido (perfumes, decants, fundas, lo que sea),
+  // menos los productos con sinDescuento: true (los combos, que ya tienen precio cerrado).
   // Con "desde" productos o más, se descuenta "porcentaje" % a todo el pedido.
   descuento: { desde: 10, porcentaje: 10 },
 
@@ -15,6 +16,9 @@ window.CATALOGO = {
       { id: "arabes", nombre: "Árabes", bajada: "Más concentrados: duran horas y se sienten a un metro." },
       { id: "disenador", nombre: "Diseñador", bajada: "Dior, Armani, Versace, Valentino, Jean Paul Gaultier y más." },
       { id: "nicho", nombre: "Nicho y lujo", bajada: "Creed, Tom Ford, Louis Vuitton y Xerjoff." } ] },
+    { id: "combos", nombre: "Combos", bajada: "Precio cerrado, más barato que por separado", secciones: [
+      { id: "combos", nombre: "Combos" },
+      { id: "emprendedor", nombre: "Combos emprendedor", bajada: "Para arrancar a vender: varios productos juntos a precio cerrado." } ] },
     { id: "decants", nombre: "Decants", bajada: "35 ml para probar antes de comprar el frasco" },
     { id: "victoria", nombre: "Victoria's Secret", bajada: "Body splash 250 ml" },
     { id: "audio", nombre: "Audio", bajada: "Auriculares, parlantes y micrófonos", secciones: [
@@ -45,10 +49,12 @@ window.CATALOGO = {
     colluo: ["Fucsia","Negro","Verde"],
     col14: ["Verde","Azul","Blanco"],
     colhuevo: ["Rosa","Celeste","Fucsia","Naranja","Violeta"],
+    comboap: ["iPhone 11 · Funda silicona", "iPhone 11 · Funda MagSafe", "iPhone 11 Pro · Funda silicona", "iPhone 11 Pro · Funda MagSafe", "iPhone 11 Pro Max · Funda silicona", "iPhone 11 Pro Max · Funda MagSafe", "iPhone 12 · Funda silicona", "iPhone 12 · Funda MagSafe", "iPhone 12 Pro · Funda silicona", "iPhone 12 Pro · Funda MagSafe", "iPhone 12 Pro Max · Funda silicona", "iPhone 12 Pro Max · Funda MagSafe", "iPhone 13 · Funda silicona", "iPhone 13 · Funda MagSafe", "iPhone 13 Pro · Funda silicona", "iPhone 13 Pro · Funda MagSafe", "iPhone 13 Pro Max · Funda silicona", "iPhone 13 Pro Max · Funda MagSafe", "iPhone 14 · Funda silicona", "iPhone 14 · Funda MagSafe", "iPhone 14 Plus · Funda silicona", "iPhone 14 Plus · Funda MagSafe", "iPhone 14 Pro · Funda silicona", "iPhone 14 Pro · Funda MagSafe", "iPhone 14 Pro Max · Funda silicona", "iPhone 14 Pro Max · Funda MagSafe", "iPhone 15 · Funda silicona", "iPhone 15 · Funda MagSafe", "iPhone 15 Plus · Funda silicona", "iPhone 15 Plus · Funda MagSafe", "iPhone 15 Pro · Funda silicona", "iPhone 15 Pro · Funda MagSafe", "iPhone 15 Pro Max · Funda silicona", "iPhone 15 Pro Max · Funda MagSafe", "iPhone 16 · Funda silicona", "iPhone 16 · Funda MagSafe", "iPhone 16 Plus · Funda silicona", "iPhone 16 Plus · Funda MagSafe", "iPhone 16 Pro · Funda silicona", "iPhone 16 Pro · Funda MagSafe", "iPhone 16 Pro Max · Funda silicona", "iPhone 16 Pro Max · Funda MagSafe", "iPhone 17 · Funda silicona", "iPhone 17 · Funda MagSafe", "iPhone 17 Pro · Funda silicona", "iPhone 17 Pro · Funda MagSafe", "iPhone 17 Pro Max · Funda silicona", "iPhone 17 Pro Max · Funda MagSafe"],
     colstanley: ["Rojo","Fucsia","Violeta","Negro","Gris","Azul marino","Verde oliva","Verde agua","Lila","Durazno"]
   },
 
   // para: "el" | "ella" | "unisex". aroma: dulce, fresco, intenso, floral, amaderado, frutal.
+  // sinDescuento: precio cerrado, no entra en el 10% OFF. separado: lo que sale por separado (se muestra tachado).
   // destacado: posición en "Recomendados". nuevo: muestra la etiqueta "Nuevo".
   // credito: foto con licencia libre (Creative Commons); la ficha y el pie muestran autor y licencia, como pide la licencia.
   // ilustrativa: la foto es una ilustración (no foto real); la ficha lo aclara. Al subir la foto real, borrá esa marca.
@@ -117,6 +123,9 @@ window.CATALOGO = {
     { id: "yara-elixir", cat: "perfumes", sec: "arabes", nombre: "Yara Elixir", detalle: "Perfume 100 ml", precio: 32000, para: "ella", aroma: "dulce", foto: "yara-elixir.webp", destacado: 5 },
     { id: "yara-rosa", cat: "perfumes", sec: "arabes", nombre: "Yara Rosa", detalle: "Perfume 100 ml", precio: 32000, para: "ella", aroma: "floral", foto: "yara-rosa.webp" },
     { id: "yara-violeta", cat: "perfumes", sec: "arabes", nombre: "Yara Tendre (Violeta)", detalle: "Perfume 100 ml", precio: 36000, para: "ella", aroma: "floral", foto: "yara-violeta.webp" },
+    { id: "cdn-precieux-1", cat: "perfumes", sec: "arabes", nombre: "Club de Nuit Précieux I", detalle: "Perfume 100 ml", precio: 61000, para: "unisex", nuevo: true, foto: "cdn-precieux-1.webp", ilustrativa: true },
+    { id: "art-of-universe", cat: "perfumes", sec: "arabes", nombre: "Art of Universe", detalle: "Perfume 100 ml", precio: 52000, para: "unisex", nuevo: true, foto: "art-of-universe.webp", ilustrativa: true },
+    { id: "fakhar-gris", cat: "perfumes", sec: "arabes", nombre: "Fakhar Gris", detalle: "Perfume 100 ml", precio: 39000, para: "unisex", nuevo: true, foto: "fakhar-gris.webp", ilustrativa: true },
 
     // ── perfumes/disenador
     { id: "one-million-lucky", cat: "perfumes", sec: "disenador", nombre: "1 Million Lucky", detalle: "Perfume 100 ml", precio: 25500, para: "el", aroma: "dulce", foto: "one-million-lucky.webp", ilustrativa: true },
@@ -166,6 +175,11 @@ window.CATALOGO = {
     { id: "ysl", cat: "perfumes", sec: "disenador", nombre: "YSL Y Eau de Parfum Intense", detalle: "Perfume 100 ml", precio: 49500, para: "el", aroma: "fresco", foto: "ysl.webp" },
     { id: "n-ysl-y-edp", cat: "perfumes", sec: "disenador", nombre: "YSL Y EDP", detalle: "Perfume 100 ml", precio: 45500, para: "el", aroma: "fresco", foto: "n-ysl-y-edp.jpeg", nuevo: true },
     { id: "n-ysl-y-parfum", cat: "perfumes", sec: "disenador", nombre: "YSL Y Parfum", detalle: "Perfume 100 ml", precio: 45500, para: "el", aroma: "amaderado", foto: "n-ysl-y-parfum.jpeg", nuevo: true },
+    { id: "jpg-scandal-elixir", cat: "perfumes", sec: "disenador", nombre: "Jean Paul Gaultier Scandal Pour Homme Elixir", detalle: "Perfume 100 ml", precio: 54000, para: "el", nuevo: true, foto: "jpg-scandal-elixir.webp", ilustrativa: true },
+    { id: "jpg-scandal-le-parfum", cat: "perfumes", sec: "disenador", nombre: "Jean Paul Gaultier Scandal Pour Homme Le Parfum", detalle: "Perfume 100 ml", precio: 54000, para: "el", nuevo: true, foto: "jpg-scandal-le-parfum.webp", ilustrativa: true },
+    { id: "le-male", cat: "perfumes", sec: "disenador", nombre: "Jean Paul Gaultier Le Male", detalle: "Perfume 100 ml", precio: 46000, para: "el", nuevo: true, foto: "le-male.webp", ilustrativa: true },
+    { id: "le-beau-paradise-garden", cat: "perfumes", sec: "disenador", nombre: "Jean Paul Gaultier Le Beau Paradise Garden", detalle: "Perfume 100 ml", precio: 53000, para: "el", nuevo: true, foto: "le-beau-paradise-garden.webp", ilustrativa: true },
+    { id: "212-men-nyc-plateado", cat: "perfumes", sec: "disenador", nombre: "212 Men NYC plateado", detalle: "Perfume 100 ml", precio: 44000, para: "el", nuevo: true, foto: "212-men-nyc-plateado.webp", ilustrativa: true },
 
     // ── perfumes/nicho
     { id: "n-creed-aventus", cat: "perfumes", sec: "nicho", nombre: "Creed Aventus", detalle: "Perfume 100 ml", precio: 52000, para: "el", aroma: "frutal", foto: "n-creed-aventus.jpeg", destacado: 8, nuevo: true },
@@ -283,6 +297,7 @@ window.CATALOGO = {
     { id: "combo-cargador-c", cat: "iphone", sec: "carga", nombre: "Combo cargador C a C mallado", detalle: "Cargador 25W y cable C a C · iPhone 15 en adelante", precio: 12000, foto: "combo-cargador-c.webp", ilustrativa: true },
     { id: "cargador-portatil", cat: "iphone", sec: "carga", nombre: "Cargador portátil", detalle: "Batería externa", precio: 21000, foto: "cargador-portatil.webp", ilustrativa: true },
     { id: "battery-pack", cat: "iphone", sec: "carga", nombre: "Battery pack MagSafe 20.000 mAh", detalle: "Batería magnética", precio: 21500, foto: "battery-pack.webp" },
+    { id: "cargador-motorola-68w", cat: "iphone", sec: "carga", nombre: "Cargador Motorola 68W", detalle: "Carga rápida USB-C · Motorola y Android", precio: 13000, nuevo: true, foto: "cargador-motorola-68w.webp", ilustrativa: true },
 
     // ── iphone/extras
     { id: "pegatina", cat: "iphone", sec: "extras", nombre: "Pegatina para celular", detalle: "Diseños a elección", precio: 2000, foto: "pegatina.webp", ilustrativa: true },
@@ -309,7 +324,27 @@ window.CATALOGO = {
     // ── otros/tecno
     { id: "afeitadora", cat: "otros", sec: "tecno", nombre: "Afeitadora Daling", detalle: "Afeitadora eléctrica", precio: 22500, foto: "afeitadora.webp", ilustrativa: true },
     { id: "sandisk-128", cat: "otros", sec: "tecno", nombre: "Memoria SanDisk 128 GB", detalle: "Tarjeta de memoria", precio: 28000, foto: "sandisk-128.webp", ilustrativa: true },
-    { id: "apple-watch-s2", cat: "otros", sec: "tecno", nombre: "Apple Watch Serie 2", detalle: "Reloj inteligente", precio: 38000, foto: "apple-watch-s2.webp" }
+    { id: "apple-watch-s2", cat: "otros", sec: "tecno", nombre: "Apple Watch Serie 2", detalle: "Reloj inteligente", precio: 38000, foto: "apple-watch-s2.webp" },
+
+    // ── combos (precio cerrado: no suman para el descuento por cantidad ni se les descuenta)
+    { id: "combo-perfumes", cat: "combos", sec: "combos", nombre: "Combo Valentino + Erba Pura", detalle: "Valentino Born in Roma Uomo y Xerjoff Erba Pura, 100 ml cada uno", precio: 100000, sinDescuento: true, separado: 108500, foto: "combo-perfumes.webp" },
+    { id: "combo-airpods", cat: "combos", sec: "combos", nombre: "Combo AirPods Pro 2 + funda + templado", detalle: "AirPods Pro 2, funda de silicona o MagSafe y vidrio templado 9D", precio: 30000, sinDescuento: true, opciones: "comboap", separado: 31400, foto: "combo-airpods.webp" },
+    { id: "combo-perfumeros", cat: "combos", sec: "combos", nombre: "Combo 3 perfumeros", detalle: "Tres perfumeros para llevar tu perfume a todos lados", precio: 10000, sinDescuento: true, foto: "combo-perfumeros.webp", ilustrativa: true },
+    { id: "ce-disenador-h", cat: "combos", sec: "emprendedor", nombre: "Combo Diseñador Hombre", detalle: "Dior Sauvage EDT, Versace Eros, Valentino Uomo Born in Roma Intense, Creed Aventus e Invictus Parfum", precio: 171000, sinDescuento: true, separado: 252000, foto: "ce-disenador-h.webp" },
+    { id: "ce-disenador-m", cat: "combos", sec: "emprendedor", nombre: "Combo Diseñador Mujer", detalle: "La Bomba, Valentino Donna Born in Roma Extradose, Louis Vuitton California Dream, Tom Ford Lost Cherry y Club de Nuit Woman", precio: 165000, sinDescuento: true, separado: 230000, foto: "ce-disenador-m.webp", ilustrativa: true },
+    { id: "ce-arabes", cat: "combos", sec: "emprendedor", nombre: "Combo Árabes x6", detalle: "Bharara King, Club de Nuit Urban Man Elixir, Hawas Malibu, Hawas Kobra, Yara Elixir y Asad", precio: 166000, sinDescuento: true, separado: 250000, foto: "ce-arabes.webp" },
+    { id: "ce-nicho", cat: "combos", sec: "emprendedor", nombre: "Combo Nicho", detalle: "Louis Vuitton Ombre Nomade, Imagination y Pacific Chill, Tom Ford Oud Wood y Creed Millésime Imperial", precio: 174000, sinDescuento: true, separado: 258000, foto: "ce-nicho.webp" },
+    { id: "ce-hombre-airpods", cat: "combos", sec: "emprendedor", nombre: "Combo Hombre + AirPods", detalle: "Versace Eros Energy, YSL Y EDP, Acqua di Giò Profondo, 212 Men NYC, Invictus EDT y 5 AirPods Pro 2", precio: 219000, sinDescuento: true, separado: 375000, foto: "ce-hombre-airpods.webp" },
+    { id: "ce-perfumes-cargadores", cat: "combos", sec: "emprendedor", nombre: "Combo Perfumes + cargadores", detalle: "9PM, Club de Nuit Intense Man, Yara Candy, Hawas Malibu, Erba Pura y 5 combos cargador", precio: 179000, sinDescuento: true, separado: 284000, foto: "ce-perfumes-cargadores.webp", ilustrativa: true },
+    { id: "ce-mujer-vs", cat: "combos", sec: "emprendedor", nombre: "Combo Mujer + Victoria's Secret", detalle: "La Bomba, Yara Candy, Yara Rosa, Valentino Donna Extradose, Louis Vuitton California Dream y 5 body splash Victoria's Secret", precio: 187000, sinDescuento: true, separado: 301500, foto: "ce-mujer-vs.webp", ilustrativa: true },
+    { id: "ce-ganador", cat: "combos", sec: "emprendedor", nombre: "Combo Ganador · Los más vendidos", detalle: "Los 6 que más salen: 9PM Night Out, Odyssey Mandarin Sky, Erba Pura, La Bomba, Yara Rosa y Yara Candy", precio: 167000, sinDescuento: true, separado: 241000, foto: "ce-ganador.webp", ilustrativa: true },
+    { id: "ce-mix", cat: "combos", sec: "emprendedor", nombre: "Combo Árabes + Diseñador", detalle: "Khamrah, Asad Bourbon, Hawas Ice y Yara Candy, más Jean Paul Le Male Elixir y Stronger With You", precio: 160000, sinDescuento: true, separado: 238000, foto: "ce-mix.webp" },
+    { id: "ca-inicial", cat: "combos", sec: "emprendedor", nombre: "Combo Accesorios Inicial", detalle: "10 fundas de silicona, 8 fundas MagSafe, 4 combos cargador 20W + cable, 10 vidrios templados 9D, 1 AirPods Pro 2 y 1 battery pack MagSafe", precio: 126500, sinDescuento: true, separado: 161000, foto: "ca-inicial.webp" },
+    { id: "ca-revendedor", cat: "combos", sec: "emprendedor", nombre: "Combo Accesorios Revendedor", detalle: "20 fundas de silicona, 15 fundas MagSafe, 8 combos cargador 20W + cable, 20 vidrios templados 9D, 2 AirPods Pro 2 y 2 battery pack MagSafe", precio: 241000, sinDescuento: true, separado: 318000, foto: "ca-revendedor.webp" },
+    { id: "ca-mayorista", cat: "combos", sec: "emprendedor", nombre: "Combo Accesorios Mayorista", detalle: "40 fundas de silicona, 30 fundas MagSafe, 15 combos cargador 20W + cable, 40 vidrios templados 9D, 5 AirPods Pro 2 y 4 battery pack MagSafe", precio: 465000, sinDescuento: true, separado: 645000, foto: "ca-mayorista.webp" },
+    { id: "ce-fundas", cat: "combos", sec: "emprendedor", nombre: "Combo Fundas + cargadores", detalle: "30 fundas de silicona para iPhone (modelos surtidos) y 10 combos cargador", precio: 163000, sinDescuento: true, separado: 330000, foto: "ce-fundas.webp" },
+    { id: "ce-airpods", cat: "combos", sec: "emprendedor", nombre: "Combo AirPods + accesorios", detalle: "8 AirPods Pro 2, 15 fundas de silicona para iPhone y 5 combos cargador", precio: 200000, sinDescuento: true, separado: 381000, foto: "ce-airpods.webp" },
+    { id: "ce-vs-decants", cat: "combos", sec: "emprendedor", nombre: "Combo Victoria's Secret + decants", detalle: "10 body splash Victoria's Secret (fragancias surtidas) y 10 decants de 35 ml", precio: 155000, sinDescuento: true, separado: 229000, foto: "ce-vs-decants.webp" }
   ],
 
   // Notas de cada perfume: familia, ideal para, y la pirámide (salida, corazón, fondo) o una lista simple de notas
