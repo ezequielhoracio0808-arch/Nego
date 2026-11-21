@@ -108,6 +108,20 @@ h1, h2, h3 { text-wrap: balance; }
 .cat-tile span i { font-style: normal; color: var(--gold-hi); font-variant-numeric: tabular-nums; }
 @media (hover: hover) { .cat-tile:hover .bg { transform: scale(1.12); } .cat-tile:hover { border-color: var(--gold); } }
 
+/* Ocasiones */
+.oc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+@media (min-width: 760px) { .oc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.oc-tile { display: flex; flex-direction: column; gap: 3px; min-width: 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--fg); text-align: left; }
+.oc-tile b { font-family: var(--font-display); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-hi); }
+.oc-tile span { color: var(--muted); font-size: 12px; line-height: 1.35; }
+.oc-tile i { margin-top: 2px; color: var(--gold); font-size: 11px; font-style: normal; font-weight: 600; font-variant-numeric: tabular-nums; }
+.oc-tile[aria-pressed="true"] { border-color: var(--gold); background: var(--soft); box-shadow: 0 0 0 1px var(--gold) inset; }
+@media (hover: hover) { .oc-tile:hover { border-color: var(--line-strong); } }
+.cocas { margin: 1px 0 0; color: var(--gold); font-size: 11px; font-weight: 500; line-height: 1.35; }
+.p-oc { margin-top: 16px; }
+.p-oc .notes button { padding: 5px 11px; border: 1px solid var(--gold); border-radius: 999px; background: var(--soft); color: var(--gold-hi); font-size: 12.5px; }
+.p-oc p.p-foot { margin-top: 6px; }
+
 /* Buscador y categorías (fijos arriba) */
 .tools { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; margin-top: 18px; padding-block: 12px 10px; background: var(--bg); border-bottom: 1px solid var(--line); }
 .tools .wrap { display: flex; flex-direction: column; gap: 10px; }
@@ -335,12 +349,17 @@ h1, h2, h3 { text-wrap: balance; }
     <div class="cat-grid" id="cat-grid"></div>
   </section>
 
+  <section class="cats ocas wrap" aria-labelledby="ocas-h">
+    <div class="cats-head"><h2 id="ocas-h">¿Para qué ocasión?</h2><span>Tocá una y te mostramos las ideales</span></div>
+    <div class="oc-grid" id="oc-grid"></div>
+  </section>
+
   <div class="tools" id="tools">
     <div class="wrap">
       <div class="search-row">
         <div class="search-box">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-          <input class="search" id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Buscá perfume, marca, aroma o producto" aria-label="Buscar en el catálogo">
+          <input class="search" id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Buscá perfume, marca, aroma u ocasión" aria-label="Buscar en el catálogo">
           <button class="q-clear" id="q-clear" type="button" aria-label="Borrar búsqueda" hidden>×</button>
         </div>
         <button class="mini-cart" id="mini-cart" type="button" aria-label="Ver mi pedido">
@@ -444,6 +463,9 @@ h1, h2, h3 { text-wrap: balance; }
   CATS.forEach(function (c) { CAT[c.id] = c; (c.secciones || []).forEach(function (s) { SEC[c.id + "/" + s.id] = s; }); });
 
   var PARA = { el: "Para él", ella: "Para ella", unisex: "Unisex" };
+  var OCI = C.ocasionesInfo || [], OCN = {};
+  OCI.forEach(function (o) { OCN[o.id] = o; });
+  var OC_CORTO = { dia: "Día", oficina: "Trabajo", noche: "Noche", cita: "Cita", verano: "Verano", invierno: "Frío", especial: "Eventos", regalo: "Regalo" };
   var LINEA = { arabes: "Árabe", disenador: "Diseñador", nicho: "Nicho" };
   var AROMAS = [["dulce", "Dulces"], ["fresco", "Frescos"], ["intenso", "Intensos"], ["floral", "Florales"], ["amaderado", "Amaderados"], ["frutal", "Frutales"]];
   var AROMA_TAG = { dulce: "Dulce", fresco: "Fresco", intenso: "Intenso", floral: "Floral", amaderado: "Amaderado", frutal: "Frutal" };
@@ -461,7 +483,7 @@ h1, h2, h3 { text-wrap: balance; }
 
   // Links: catálogo#5491122334455 manda los pedidos a ese WhatsApp; catálogo#perfumes abre esa categoría
   var HASH_WA = "";
-  var state = { cat: "all", q: "", para: "", sec: "", aroma: "", sort: "sec" };
+  var state = { cat: "all", q: "", para: "", sec: "", aroma: "", ocasion: "", sort: "sec" };
   (function () {
     var parts = (location.hash || "").replace("#", "").toLowerCase().split("-");
     parts.forEach(function (pt) {
@@ -485,7 +507,7 @@ h1, h2, h3 { text-wrap: balance; }
   // Texto donde busca el buscador: nombre, detalle, categoría, sección, para quién, aroma y notas
   P.forEach(function (p) {
     var n = NOTAS[p.id], c = CAT[p.cat], s = SEC[p.cat + "/" + p.sec];
-    var t = [p.nombre, p.detalle, c ? c.nombre : "", s ? s.nombre : "", p.para ? PARA[p.para] : "", p.para === "el" ? "hombre masculino" : p.para === "ella" ? "mujer femenino dama" : "", p.aroma || "", p.texto || "", (OPC[p.opciones] || []).join(" ")];
+    var t = [(p.ocasiones || []).map(function (o) { return OCN[o] ? OCN[o].nombre + " " + OCN[o].bajada : ""; }).join(" "), p.nombre, p.detalle, c ? c.nombre : "", s ? s.nombre : "", p.para ? PARA[p.para] : "", p.para === "el" ? "hombre masculino" : p.para === "ella" ? "mujer femenino dama" : "", p.aroma || "", p.texto || "", (OPC[p.opciones] || []).join(" ")];
     if (n) t.push(n.familia, n.ideal, [].concat(n.salida || [], n.corazon || [], n.fondo || [], n.notas || []).join(" "));
     p._q = norm(t.join(" "));
   });
@@ -557,6 +579,18 @@ h1, h2, h3 { text-wrap: balance; }
     if (p.cat === "perfumes") return LINEA[p.sec] + (p.para ? " · " + PARA[p.para].replace("Para ", "") : "");
     var s = SEC[p.cat + "/" + p.sec]; return s ? s.nombre : CAT[p.cat].nombre;
   }
+  function ocasLine(p) {
+    var o = (p.ocasiones || []).filter(function (x) { return x !== "regalo" || p.ocasiones.length === 1; });
+    if (state.ocasion && o.indexOf(state.ocasion) > 0) o = [state.ocasion].concat(o.filter(function (x) { return x !== state.ocasion; }));
+    return o.length ? '<p class="cocas">' + o.slice(0, 3).map(function (x) { return OC_CORTO[x] || x; }).join(" · ") + "</p>" : "";
+  }
+  function renderOcas() {
+    $("oc-grid").innerHTML = OCI.map(function (o) {
+      var n = P.filter(function (p) { return (p.ocasiones || []).indexOf(o.id) >= 0; }).length;
+      return '<button class="oc-tile" type="button" data-oc="' + o.id + '" aria-pressed="' + (state.ocasion === o.id) + '"><b>' + esc(o.nombre) + "</b><span>" + esc(o.bajada) + "</span><i>" + n + " opciones</i></button>";
+    }).join("");
+  }
+  function setOcasion(id) { state.ocasion = state.ocasion === id ? "" : id; state.cat = "all"; state.para = ""; state.sec = ""; state.aroma = ""; renderChips(); renderOcas(); renderList(); setHash(); goList(); }
   function cardHTML(p) {
     var q = qtyOf(p.id);
     var badge = p.destacado ? '<span class="badge top">Recomendado</span>' : p.nuevo ? '<span class="badge">Nuevo</span>' : "";
@@ -564,7 +598,7 @@ h1, h2, h3 { text-wrap: balance; }
     return '<article class="card" data-card="' + p.id + '">' +
       '<button class="tile" type="button" data-open="' + p.id + '" aria-label="Ver ' + esc(p.nombre) + '">' + (p.foto ? img(p) : icon(p.cat) + '<span class="tname">' + esc(p.nombre.replace(/^Decant /, "")) + "</span>") + badge +
       '<span class="in-cart" data-incart' + (q ? "" : " hidden") + ">" + q + "</span></button>" +
-      '<div class="cbody"><p class="cmeta">' + esc(metaLine(p)) + '</p><h3 class="cname"><button type="button" data-open="' + p.id + '">' + esc(p.nombre) + '</button></h3><p class="cdet">' + esc(p.detalle) + "</p>" + opts +
+      '<div class="cbody"><p class="cmeta">' + esc(metaLine(p)) + '</p><h3 class="cname"><button type="button" data-open="' + p.id + '">' + esc(p.nombre) + '</button></h3><p class="cdet">' + esc(p.detalle) + "</p>" + ocasLine(p) + opts +
       '<div class="cfoot"><div data-price>' + priceHTML(p) + '</div><div data-act>' + actHTML(p) + "</div></div></div></article>";
   }
 
@@ -582,7 +616,8 @@ h1, h2, h3 { text-wrap: balance; }
     if (!q) return true;
     return q.split(/\s+/).every(function (w) { return p._q.indexOf(w) >= 0; });
   }
-  function visible() { return P.filter(function (p) { return inCat(p) && perfOK(p) && qOK(p); }); }
+  function ocOK(p) { return !state.ocasion || (p.ocasiones || []).indexOf(state.ocasion) >= 0; }
+  function visible() { return P.filter(function (p) { return inCat(p) && perfOK(p) && qOK(p) && ocOK(p); }); }
   function sorted(list) {
     var l = list.slice();
     if (state.sort === "asc") l.sort(function (a, b) { return a.precio - b.precio || cmp(a.nombre, b.nombre); });
@@ -614,19 +649,24 @@ h1, h2, h3 { text-wrap: balance; }
   function renderFilters(list) {
     var html = "";
     if (state.cat === "perfumes") {
-      var base = function (skip) { return P.filter(function (p) { return p.cat === "perfumes" && perfOK(p, skip) && qOK(p); }); };
+      var base = function (skip) { return P.filter(function (p) { return p.cat === "perfumes" && perfOK(p, skip) && qOK(p) && ocOK(p); }); };
       var cnt = function (skip, key, v) { return base(skip).filter(function (p) { return p[key] === v; }).length; };
       html += '<div class="frow" role="group" aria-label="Para quién"><span>Para</span>' + fchip("para", "", "Todos") + ["el", "ella", "unisex"].map(function (v) { return fchip("para", v, PARA[v].replace("Para ", ""), cnt("para", "para", v)); }).join("") + "</div>";
       html += '<div class="frow" role="group" aria-label="Línea"><span>Línea</span>' + fchip("sec", "", "Todas") + CAT.perfumes.secciones.map(function (s) { return fchip("sec", s.id, s.nombre, cnt("sec", "sec", s.id)); }).join("") + "</div>";
       html += '<div class="frow" role="group" aria-label="Aroma"><span>Aroma</span>' + fchip("aroma", "", "Todos") + AROMAS.map(function (a) { return fchip("aroma", a[0], a[1], cnt("aroma", "aroma", a[0])); }).join("") + "</div>";
     }
-    var filtered = state.q || state.para || state.sec || state.aroma || state.cat !== "all";
-    var count = state.cat === "all" && !state.q ? P.length + " productos en " + CATS.length + " categorías" : "<b>" + list.length + "</b> " + (list.length === 1 ? "producto" : "productos");
+    if (OCI.length && ["all", "perfumes", "decants", "victoria", "combos"].indexOf(state.cat) >= 0) {
+      var ocBase = P.filter(function (p) { return inCat(p) && perfOK(p) && qOK(p); });
+      html += '<div class="frow" role="group" aria-label="Ocasión"><span>Ocasión</span>' + fchip("ocasion", "", "Todas") + OCI.map(function (o) { var n = ocBase.filter(function (p) { return (p.ocasiones || []).indexOf(o.id) >= 0; }).length; return n ? fchip("ocasion", o.id, o.nombre, n) : ""; }).join("") + "</div>";
+    }
+    var filtered = state.q || state.para || state.sec || state.aroma || state.ocasion || state.cat !== "all";
+    var count = state.cat === "all" && !state.q && !state.ocasion ? P.length + " productos en " + CATS.length + " categorías" : "<b>" + list.length + "</b> " + (list.length === 1 ? "producto" : "productos");
     html += '<div class="result-row"><span>' + count + (filtered ? ' · <button class="clear" type="button" id="clear-f">Ver todo</button>' : "") + "</span>" +
       '<select class="sort" id="sort" aria-label="Ordenar">' +
       [["sec", "Por sección"], ["top", "Recomendados"], ["asc", "Menor precio"], ["desc", "Mayor precio"], ["az", "A a Z"]].map(function (o) { return '<option value="' + o[0] + '"' + (state.sort === o[0] ? " selected" : "") + ">" + o[1] + "</option>"; }).join("") +
       "</select></div>";
     $("filters").innerHTML = html;
+    $("filters").querySelectorAll('.fchip[aria-pressed="true"]').forEach(function (c) { if (c.getAttribute("data-v")) c.parentNode.scrollLeft = Math.max(0, c.offsetLeft - c.parentNode.offsetLeft - 70); });
   }
   function secBlocks(c, list) {
     if (!c.secciones || state.sort !== "sec") return '<div class="grid">' + sorted(list).map(cardHTML).join("") + "</div>";
@@ -647,7 +687,7 @@ h1, h2, h3 { text-wrap: balance; }
       box.innerHTML = '<div class="empty">No encontramos «' + esc(state.q || "eso") + '» con estos filtros.<br><a href="' + waLink("¡Hola! Estoy buscando " + (state.q || "un producto") + ". ¿Lo tenés o lo podés conseguir?") + '" target="_blank" rel="noopener">Preguntanos por WhatsApp</a> y te lo conseguimos.</div>';
       return;
     }
-    if (state.cat === "all" && !state.q && state.sort === "sec") {
+    if (state.cat === "all" && !state.q && !state.ocasion && state.sort === "sec") {
       box.innerHTML = CATS.map(function (c) {
         var n = P.filter(function (p) { return p.cat === c.id; }).length;
         return '<section class="shelf">' + shelfHead(c, n, true) + '<div class="grid preview">' + preview(c).map(cardHTML).join("") + "</div></section>";
@@ -760,6 +800,7 @@ h1, h2, h3 { text-wrap: balance; }
     if (p.destacado) tags.push("Recomendado");
     if (p.nuevo) tags.push("Nuevo");
     var html = '<div class="p-top"><div class="p-pic">' + (p.foto ? img(p, true) : icon(p.cat)) + '</div><div><h2 class="p-name" id="prod-h">' + esc(p.nombre) + '</h2><p class="cdet">' + esc(p.detalle) + "</p>" + (tags.length ? '<div class="p-tags">' + tags.map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("") + "</div>" : "") + "</div></div>";
+    if (p.ocasiones && p.ocasiones.length) html += '<div class="p-oc"><p class="pyr-t">Cuándo usarlo</p><div class="notes" style="margin-top:7px">' + p.ocasiones.map(function (o) { return OCN[o] ? '<button type="button" data-oc="' + o + '">' + esc(OCN[o].nombre) + "</button>" : ""; }).join("") + '</div><p class="p-foot">Tocá una ocasión para ver más opciones parecidas.</p></div>';
     if (n) {
       html += '<p class="p-fam">' + esc(n.familia) + '</p><p class="p-use"><b>Ideal para:</b> ' + esc(n.ideal) + "</p>";
       html += n.notas
@@ -824,10 +865,11 @@ h1, h2, h3 { text-wrap: balance; }
 
   $("chips").addEventListener("click", function (e) { var b = e.target.closest("[data-cat]"); if (b) setCat(b.getAttribute("data-cat")); });
   $("cat-grid").addEventListener("click", function (e) { var b = e.target.closest("[data-go]"); if (b) setCat(b.getAttribute("data-go")); });
+  $("oc-grid").addEventListener("click", function (e) { var b = e.target.closest("[data-oc]"); if (b) setOcasion(b.getAttribute("data-oc")); });
   $("filters").addEventListener("click", function (e) {
     var f = e.target.closest("[data-f]");
-    if (f) { var d = f.getAttribute("data-f"), v = f.getAttribute("data-v"); state[d] = state[d] === v ? "" : v; renderList(); return; }
-    if (e.target.closest("#clear-f")) { state.q = ""; $("q").value = ""; $("q-clear").hidden = true; setCat("all"); }
+    if (f) { var d = f.getAttribute("data-f"), v = f.getAttribute("data-v"); state[d] = state[d] === v ? "" : v; renderList(); if (d === "ocasion") renderOcas(); return; }
+    if (e.target.closest("#clear-f")) { state.q = ""; state.ocasion = ""; $("q").value = ""; $("q-clear").hidden = true; setCat("all"); renderOcas(); }
   });
   $("filters").addEventListener("change", function (e) { if (e.target.id === "sort") { state.sort = e.target.value; renderList(); } });
   var qT = null;
@@ -859,6 +901,8 @@ h1, h2, h3 { text-wrap: balance; }
   });
 
   $("prod-body").addEventListener("click", function (e) {
+    var oc = e.target.closest("[data-oc]");
+    if (oc) { closeProd(); setOcasion(oc.getAttribute("data-oc")); return; }
     if (e.target.id !== "p-add") return;
     var p = BY[prodId], s = $("p-opt"), opt = p.opciones ? (s ? s.value : OPC[p.opciones][0]) : "";
     if (s) sel[p.id] = s.value;
@@ -911,7 +955,7 @@ h1, h2, h3 { text-wrap: balance; }
   $("wa-help").href = waLink("¡Hola! Quería hacerte una consulta.");
   var cred = P.filter(function (p) { return p.credito; });
   if (cred.length) $("credits").innerHTML = "<br>Fotos de referencia con licencia libre: " + cred.map(function (p) { var c = p.credito; return esc(p.nombre) + ' (<a href="' + esc(c.fuente) + '" target="_blank" rel="noopener">' + esc(c.autor) + '</a>, <a href="' + esc(c.licenciaUrl) + '" target="_blank" rel="noopener">' + esc(c.licencia) + "</a>)"; }).join(" · ") + ". Recortadas.";
-  renderCatGrid(); renderChips(); renderList(); syncSlots(); syncBar();
+  renderCatGrid(); renderOcas(); renderChips(); renderList(); syncSlots(); syncBar();
   if (state.cat !== "all") setTimeout(goList, 60);
 })();
 </script>
