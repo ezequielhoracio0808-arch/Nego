@@ -62,6 +62,14 @@ h1, h2, h3 { text-wrap: balance; }
 .cart-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 8px 8px 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--gold-hi); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
 .cart-count { min-width: 24px; padding: 2px 7px; border-radius: 999px; background: var(--gold-grad); color: var(--on-gold); font-size: 12px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; }
 
+.brand-row { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.brand-logo { flex: none; width: 46px; height: 46px; border-radius: 10px; object-fit: cover; box-shadow: 0 0 0 1px var(--line-strong); }
+.brand-row .brand-name { font-size: clamp(13px, 3.9vw, 18px); letter-spacing: 0.04em; white-space: nowrap; }
+@media (max-width: 420px) { .cart-lbl { display: none; } .cart-btn { padding: 8px; } }
+.brand-row .brand-sub { letter-spacing: 0.16em; white-space: nowrap; }
+.brand-row .brand-sub::before, .brand-row .brand-sub::after { display: none; }
+.hero-logo { display: block; width: min(72vw, 300px); height: auto; margin: 4px auto 18px; border-radius: 22px; box-shadow: 0 0 0 1px var(--line-strong), 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(205, 174, 114, 0.18); }
+
 /* Portada */
 .intro { padding-block: 26px 8px; }
 .intro h1 { margin: 10px 0 0; max-width: 20ch; font-family: var(--font-display); font-weight: 600; font-size: clamp(26px, 7vw, 40px); line-height: 1.14; letter-spacing: 0.03em; text-transform: uppercase; background: var(--ivory-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
@@ -315,13 +323,14 @@ h1, h2, h3 { text-wrap: balance; }
 
 <header class="top">
   <div class="wrap top-row">
-    <div class="brand"><span class="brand-name">Emprendermariluz</span><span class="brand-sub">a tu puerta</span></div>
-    <button class="cart-btn" id="open-cart" type="button">Mi pedido <span class="cart-count" id="count">0</span></button>
+    <div class="brand-row"><img class="brand-logo" src="logo-mariluz.webp" alt="" width="46" height="46"><div class="brand"><span class="brand-name">Emprendermariluz</span><span class="brand-sub">Moda que te hace brillar</span></div></div>
+    <button class="cart-btn" id="open-cart" type="button" aria-label="Mi pedido"><span class="cart-lbl">Mi pedido</span> <span class="cart-count" id="count">0</span></button>
   </div>
 </header>
 
 <main>
   <section class="intro wrap" aria-labelledby="intro-h">
+    <img class="hero-logo" src="logo-mariluz.webp" alt="Emprendermariluz: moda que te hace brillar" width="600" height="600">
     <p class="eyebrow">Perfumes · Audio · Accesorios</p>
     <h1 id="intro-h">Armá tu pedido y lo cerramos por WhatsApp</h1>
     <p class="lead" id="lead">Todo ordenado por categoría y sección. Sumá lo que te guste y se abre WhatsApp con el pedido escrito.</p>
