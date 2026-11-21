@@ -6,10 +6,10 @@
 ## Cuenta
 - Usuario: @
 - Nicho (en una frase): Perfumes y accesorios electrónicos (parlantes, auriculares y similares)
-- A quién ayudo (cliente ideal):
+- A quién ayudo (cliente ideal): compradores finales y revendedores (venta por mayor y menor). Probablemente Argentina (zona 221) — por confirmar
 - Qué consigue esa persona gracias a mí:
-- Oferta / producto / servicio (si hay):
-- Llamada a la acción principal (seguir, DM con palabra clave, enlace en bio...):
+- Oferta / producto / servicio (si hay): tienda. Perfumes árabes (Lattafa, Afnan, Armaf…, 35 ml y 100 ml), body splash, parlantes JBL, joysticks PS4, cargadores, auriculares
+- Llamada a la acción principal (seguir, DM con palabra clave, enlace en bio...): consultas por WhatsApp [NÚMERO] / DM con palabra clave «LISTA»
 
 ## Voz
 - Tono (ej.: cercano, directo, con humor, técnico):
