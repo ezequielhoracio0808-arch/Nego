@@ -1,0 +1,7 @@
+# Datos de tus agentes (billetera, memoria, registros): son personales
+datos/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
