@@ -1,0 +1,130 @@
+# Hace vivir al agente en los servidores de GitHub: no necesitas computadora.
+#
+# - Cada hora revisa Telegram y despierta al agente si le toca.
+# - Desde el celular: pestaña "Actions" -> "Automaton" -> "Run workflow" y eliges qué hacer.
+# - La memoria, la billetera y los registros se guardan en la rama `automaton-datos`.
+#
+# IMPORTANTE: solo funciona si el repositorio es PRIVADO (si no, tus datos y lo que
+# hace el agente quedarían a la vista de cualquiera). Ver README, sección "Desde el celular".
+
+name: Automaton
+
+on:
+  schedule:
+    - cron: "23 * * * *" # cada hora, al minuto 23
+  workflow_dispatch:
+    inputs:
+      accion:
+        description: "¿Qué hacer?"
+        type: choice
+        default: despertar
+        options:
+          - despertar
+          - iniciar
+          - decir
+          - fondear
+          - pendientes
+          - aprobar
+          - rechazar
+          - estado
+          - pausar
+          - reanudar
+      texto:
+        description: "iniciar: la misión · decir: tu mensaje · fondear: monto en USD · aprobar/rechazar: el id"
+        required: false
+        default: ""
+
+# Nunca dos ejecuciones a la vez (se pisarían la memoria).
+concurrency:
+  group: automaton
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  automaton:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      AUTOMATON_HOME: datos
+      PYTHONUNBUFFERED: "1"
+    steps:
+      - name: Comprobar que el repositorio sea privado
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$(gh api "repos/$GITHUB_REPOSITORY" --jq .private)" != "true" ]; then
+            echo "::error::El repositorio es PÚBLICO. Hazlo privado (Settings -> General -> Change visibility) para que tus datos no queden expuestos."
+            exit 1
+          fi
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::Falta el secreto ANTHROPIC_API_KEY (Settings -> Secrets and variables -> Actions)."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false # el agente no debe poder leer el token de GitHub
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Recuperar la memoria del agente
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          AUTH="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          URL="https://github.com/${GITHUB_REPOSITORY}.git"
+          if git -c http.extraheader="$AUTH" clone -q --depth 1 --branch automaton-datos "$URL" datos 2>/dev/null; then
+            echo "Memoria recuperada."
+          else
+            mkdir -p datos && cd datos && git init -q -b automaton-datos && git remote add origin "$URL"
+            echo "Primera vez: memoria nueva."
+          fi
+
+      - name: Ejecutar
+        env:
+          ACCION: ${{ github.event_name == 'schedule' && 'latido' || inputs.accion }}
+          TEXTO: ${{ inputs.texto }}
+        run: |
+          set -e
+          necesita_texto() { [ -n "$TEXTO" ] || { echo "::error::Para '$ACCION' escribe algo en el campo 'texto'."; exit 1; }; }
+          case "$ACCION" in
+            latido)     python -m automaton latido --todos ;;
+            despertar)  python -m automaton despertar ;;
+            iniciar)    necesita_texto; python -m automaton iniciar --mision "$TEXTO" ;;
+            decir)      necesita_texto; python -m automaton decir "$TEXTO"; python -m automaton despertar ;;
+            fondear)    necesita_texto; python -m automaton fondear "$TEXTO" ;;
+            pendientes) python -m automaton pendientes ;;
+            aprobar)    necesita_texto; python -m automaton aprobar "$TEXTO" ;;
+            rechazar)   necesita_texto; python -m automaton rechazar "$TEXTO" ;;
+            estado)     python -m automaton estado --movimientos 10 ;;
+            pausar)     python -m automaton pausar --todos ;;
+            reanudar)   python -m automaton reanudar --todos ;;
+            *)          echo "::error::Acción desconocida: $ACCION"; exit 1 ;;
+          esac
+
+      - name: Guardar la memoria del agente
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -d datos/.git ] || exit 0
+          cd datos
+          git add -A
+          if git -c user.name="automaton" -c user.email="automaton@users.noreply.github.com" \
+               commit -q -m "estado $(date -u +%Y-%m-%dT%H:%MZ)"; then
+            AUTH="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+            git -c http.extraheader="$AUTH" push -q origin HEAD:refs/heads/automaton-datos
+            echo "Memoria guardada."
+          else
+            echo "Sin cambios que guardar."
+          fi

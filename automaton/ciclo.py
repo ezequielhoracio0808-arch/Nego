@@ -189,9 +189,26 @@ def comando_remoto(texto: str, principal: str) -> str:
         if cmd.startswith("/"):
             return "Comandos: /estado /pendientes /aprobar <id> /rechazar <id> /fondear <usd> [agente] /pausa /reanudar"
         Espacio(principal).dejar_en_bandeja("humano", texto)
-        return f"📨 Mensaje dejado en la bandeja de {principal}; despertará en breve."
+        return f"📨 Mensaje dejado en la bandeja de {principal}; lo leerá en su próximo despertar."
     except (KeyError, ValueError) as e:
         return f"Error: {e}"
+
+
+def latido(nombres: list[str] | None = None, cliente=None) -> None:
+    """Una sola revisión: atiende Telegram y despierta a quien le toque.
+
+    Es lo que ejecuta GitHub Actions cada hora (y `vivir` en bucle).
+    """
+    agentes = nombres or listar_agentes()
+    principal = "principal" if "principal" in agentes or not agentes else agentes[0]
+    for texto in telegram.recibir():
+        telegram.enviar(comando_remoto(texto, principal))
+    for n in agentes:
+        esp = Espacio(n)
+        if not esp.existe() or esp.pausado():
+            continue
+        if toca_despertar(esp):
+            despertar(esp, cliente)
 
 
 def vivir(nombres: list[str] | None = None, cliente=None, sondeo_seg: int = 30) -> None:
@@ -200,16 +217,7 @@ def vivir(nombres: list[str] | None = None, cliente=None, sondeo_seg: int = 30) 
     if telegram.configurado():
         print("📱 Control por Telegram activo.")
     while True:
-        agentes = nombres or listar_agentes()
-        principal = "principal" if "principal" in agentes or not agentes else agentes[0]
-        for texto in telegram.recibir():
-            telegram.enviar(comando_remoto(texto, principal))
-        for n in agentes:
-            esp = Espacio(n)
-            if not esp.existe() or esp.pausado():
-                continue
-            if toca_despertar(esp):
-                despertar(esp, cliente)
+        latido(nombres, cliente)
         time.sleep(sondeo_seg)
 
 

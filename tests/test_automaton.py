@@ -293,3 +293,18 @@ def test_control_remoto():
     assert "mayor que 0" in comando_remoto("/fondear -3", "principal")
     comando_remoto("hola agente", "principal")
     assert Espacio("principal").bandeja()[-1]["texto"] == "hola agente"
+
+
+def test_latido_despierta_solo_a_quien_le_toca():
+    from automaton.ciclo import latido
+    esp = nuevo()
+    cliente = ClienteFalso([
+        respuesta([herramienta("dormir", {"minutos": 180, "motivo": "nada urgente"})], stop="tool_use"),
+    ])
+    latido(None, cliente)
+    assert len(cliente.llamadas) == 1
+    latido(None, cliente)  # todavía no le toca: no llama al modelo
+    assert len(cliente.llamadas) == 1
+    esp.dejar_en_bandeja("humano", "¿cómo vas?")  # un mensaje tuyo lo despierta antes
+    latido(None, cliente)
+    assert len(cliente.llamadas) == 2

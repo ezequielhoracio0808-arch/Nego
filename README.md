@@ -18,6 +18,39 @@ La diferencia está en los **límites**: tú pones el presupuesto, tú apruebas 
 
 ---
 
+## 📱 Desde el celular (sin computadora)
+
+En el iPhone no puede vivir dentro del teléfono: iOS no deja que una app corra sin parar en segundo plano. Pero sí puedes tenerlo funcionando **y manejarlo 100 % desde el celular**: GitHub lo ejecuta gratis en sus servidores cada hora, y tú le hablas por Telegram o desde la app de GitHub.
+
+Hazlo una sola vez, desde el navegador del celular en github.com (algunas pantallas de configuración no están en la app):
+
+1. **Une estos cambios a `main`.** Crea un *pull request* desde la rama `claude/peaceful-keller-4f3pkn` (GitHub muestra el botón *Compare & pull request*) y haz *Merge*. GitHub solo ejecuta los flujos que están en `main`.
+2. **Haz el repositorio privado:** *Settings → General → Danger Zone → Change visibility → Private*. Si sigue siendo público, el flujo se niega a ejecutarse: tus datos y lo que hace el agente quedarían a la vista de todos.
+3. **Guarda tu clave:** *Settings → Secrets and variables → Actions → New repository secret*:
+   - `ANTHROPIC_API_KEY` = tu clave de [console.anthropic.com](https://console.anthropic.com)
+   - (opcional) `TELEGRAM_BOT_TOKEN` y `TELEGRAM_CHAT_ID` (ver más abajo cómo conseguirlos)
+4. **Créalo:** pestaña *Actions → Automaton → Run workflow*, elige `iniciar` y escribe la misión en **texto**. Empieza con 5 USD de presupuesto.
+
+Listo: desde ahí despierta solo cada hora. Para hablarle, en *Actions → Automaton → Run workflow* eliges:
+
+| Acción | Texto | Qué hace |
+|---|---|---|
+| `despertar` | — | Un ciclo ahora mismo |
+| `decir` | tu mensaje | Le deja el mensaje y lo despierta para que lo lea |
+| `fondear` | `5` | Le agrega 5 USD |
+| `pendientes` | — | Muestra lo que espera tu aprobación (míralo en el registro de la ejecución) |
+| `aprobar` / `rechazar` | el id | Aprueba (y ejecuta) o rechaza |
+| `estado` | — | Saldo y últimos movimientos |
+| `pausar` / `reanudar` | — | Interruptor general |
+
+Con Telegram configurado es más cómodo: te escribe él y tú le respondes con `/aprobar <id>`, `/fondear 5`, `/estado` o texto libre. Ojo: lo lee en la siguiente ejecución, así que puede tardar hasta una hora (o usa `despertar` para que sea al instante).
+
+Su memoria, billetera y registros se guardan en la rama `automaton-datos` del repositorio.
+
+Costos: el agente gasta de tu saldo de Anthropic como siempre (máx. 2 USD/día por defecto). GitHub da 2000 minutos gratis al mes para repositorios privados. Una revisión por hora usa unos 720 minutos al mes; los ciclos en que trabaja duran algo más. Si te acercas al límite, cambia el `cron` de `.github/workflows/automaton.yml` a cada 2 horas (`23 */2 * * *`).
+
+> **Si tienes Android**, también puedes correrlo dentro del teléfono con la app **Termux**: `pkg install python git`, y luego sigue la instalación de abajo. Para que siga vivo, activa `termux-wake-lock` y quita a Termux de la optimización de batería.
+
 ## Instalación (en tu computadora o un servidor)
 
 Necesitas Python 3.10+ y una clave de la API de Anthropic ([console.anthropic.com](https://console.anthropic.com)).
@@ -60,6 +93,7 @@ python -m automaton vivir
 | `python -m automaton habilidades` | Las herramientas que se programó |
 | `python -m automaton pausar --todos` / `reanudar --todos` | **Interruptor general** |
 | `python -m automaton vivir --todos` | Hace vivir también a sus subagentes |
+| `python -m automaton latido --todos` | Una sola revisión (para cron o GitHub Actions) |
 
 Los mensajes que te deja quedan en `datos/principal/mensajes_para_ti.md`, y todo lo que hace, en `datos/principal/registro.log`.
 

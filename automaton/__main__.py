@@ -12,6 +12,14 @@ from .acciones import describir, registro_habilidades, resolver, resumen_estado,
 from .espacio import Espacio, home, listar_agentes
 
 
+def _monto(texto: str) -> float:
+    """Acepta '2.5' y también '2,5'."""
+    try:
+        return float(str(texto).strip().replace(",", "."))
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"monto inválido: {texto!r}")
+
+
 def _agente(nombre: str) -> Espacio:
     esp = Espacio(nombre)
     if not esp.existe():
@@ -143,6 +151,11 @@ def cmd_despertar(a):
     despertar(_agente(a.agente))
 
 
+def cmd_latido(a):
+    from .ciclo import latido
+    latido(None if a.todos else [a.agente])
+
+
 def cmd_vivir(a):
     from .ciclo import vivir
     nombres = None if a.todos else [a.agente]
@@ -165,7 +178,7 @@ def main(argv=None):
     s = sub.add_parser("iniciar", help="crea un agente nuevo")
     s.add_argument("--nombre", default="principal")
     s.add_argument("--mision", default="")
-    s.add_argument("--fondos", type=float, default=5.0, help="presupuesto inicial en USD (por defecto 5)")
+    s.add_argument("--fondos", type=_monto, default=5.0, help="presupuesto inicial en USD (por defecto 5)")
     s.set_defaults(f=cmd_iniciar)
 
     s = sub.add_parser("estado", help="saldo, nivel y actividad")
@@ -184,13 +197,17 @@ def main(argv=None):
     s.add_argument("--sondeo", type=int, default=30, help="segundos entre revisiones")
     s.set_defaults(f=cmd_vivir)
 
+    s = con_agente(sub.add_parser("latido", help="una sola revisión (Telegram + despertar si toca); para GitHub Actions o cron"))
+    s.add_argument("--todos", action="store_true", help="incluye a todos los agentes y subagentes")
+    s.set_defaults(f=cmd_latido)
+
     s = con_agente(sub.add_parser("fondear", help="agrega presupuesto a la billetera"))
-    s.add_argument("monto", type=float)
+    s.add_argument("monto", type=_monto)
     s.add_argument("--nota", default="")
     s.set_defaults(f=cmd_fondear)
 
     s = con_agente(sub.add_parser("ingreso", help="registra dinero que el agente ayudó a ganar"))
-    s.add_argument("monto", type=float)
+    s.add_argument("monto", type=_monto)
     s.add_argument("nota")
     s.set_defaults(f=cmd_ingreso)
 
