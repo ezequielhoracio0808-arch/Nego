@@ -7,8 +7,8 @@ from datetime import datetime, timedelta
 
 import anthropic
 
-from . import telegram
-from .acciones import registro_habilidades, resolver, resumen_estado, todas_pendientes
+from . import oportunidades, telegram
+from .acciones import registro_habilidades, resumen_estado, todas_pendientes
 from .agente import Agente
 from .avisos import avisar_humano
 from .billetera import ahora, nivel
@@ -76,6 +76,7 @@ def _contexto_actual(esp: Espacio, encabezado: str, bandeja: list[dict]) -> str:
         "Tus solicitudes pendientes de aprobación: "
         + (", ".join(f"{p['id']} ({p['tipo']})" for p in pend) if pend else "ninguna")
     )
+    lineas.append(oportunidades.resumen_corto(esp))
     reg = registro_habilidades(esp)
     if reg:
         lineas.append("Habilidades: " + ", ".join(f"{n}{'' if d['aprobada'] else ' (pendiente)'}" for n, d in sorted(reg.items())))
@@ -84,8 +85,31 @@ def _contexto_actual(esp: Espacio, encabezado: str, bandeja: list[dict]) -> str:
     return "\n".join(lineas)
 
 
+def rutina_pendiente(esp: Espacio) -> dict | None:
+    """La primera rutina de hoy cuya hora ya pasó y que todavía no se hizo."""
+    t = ahora()
+    est = esp.estado()
+    hechas = est.get("rutinas_hechas", {})
+    creado = datetime.fromisoformat(est["creado"]) if est.get("creado") else None
+    for r in esp.config().get("rutinas", []):
+        try:
+            hh, mm = (int(x) for x in str(r["hora"]).split(":"))
+            momento = t.replace(hour=hh, minute=mm, second=0, microsecond=0)
+        except ValueError:
+            esp.log(f"rutina con hora inválida: {r}")
+            continue
+        if r.get("dias") and DIAS[t.weekday()] not in r["dias"]:
+            continue
+        if t < momento or hechas.get(r["nombre"]) == t.date().isoformat():
+            continue
+        if creado and creado > momento:
+            continue  # el día en que lo creas no corre lo que ya pasó
+        return r
+    return None
+
+
 def despertar(esp: Espacio, cliente=None) -> str:
-    """Ejecuta un ciclo autónomo. Devuelve cómo terminó."""
+    """Ejecuta un ciclo autónomo (con la rutina del día si toca). Devuelve cómo terminó."""
     cfg = esp.config()
     ok, motivo = puede_trabajar(esp)
     proximo = ahora() + timedelta(minutes=cfg["latido_minutos"])
@@ -116,14 +140,17 @@ def despertar(esp: Espacio, cliente=None) -> str:
             "actualizar_identidad, crea tus notas de memoria y preséntate a tu humano con avisar_humano "
             "(qué harás y qué podrías necesitar de él)."
         )
-    else:
+    rutina = rutina_pendiente(esp)
+    if rutina:
+        mensaje += f"\n\n🗓 RUTINA DIARIA «{rutina['nombre']}» ({rutina['hora']}):\n{rutina['instruccion']}"
+    elif n > 0:
         mensaje += (
             "\n\nDecide qué es lo más valioso que puedes hacer en este ciclo para tu misión. "
             "Si nada vale lo que cuesta, anota algo breve en tu memoria y duerme más tiempo."
         )
 
-    print(f"\n🌅 [{esp.nombre}] despierta ({ahora().strftime('%H:%M')})")
-    esp.log("=== despertar ===")
+    print(f"\n🌅 [{esp.nombre}] despierta ({ahora().strftime('%H:%M')})" + (f" · rutina {rutina['nombre']}" if rutina else ""))
+    esp.log("=== despertar ===" + (f" rutina {rutina['nombre']}" if rutina else ""))
     agente = Agente(esp, cliente, confirmar=None, autonomo=True)
     resultado = "ok"
     try:
@@ -133,6 +160,10 @@ def despertar(esp: Espacio, cliente=None) -> str:
         resultado = "error"
     if resultado == "ok":
         esp.bandeja_sin_leer(marcar=True)
+        if rutina:
+            hechas = esp.estado().get("rutinas_hechas", {})
+            hechas[rutina["nombre"]] = ahora().date().isoformat()
+            esp.actualizar_estado(rutinas_hechas=hechas)
     if agente.ctx.dormir_minutos:
         proximo = ahora() + timedelta(minutes=agente.ctx.dormir_minutos)
     esp.actualizar_estado(
@@ -150,8 +181,12 @@ def toca_despertar(esp: Espacio) -> bool:
     proximo = esp.estado().get("proximo_despertar")
     if not proximo or datetime.fromisoformat(proximo) <= ahora():
         return True  # despertar() decide si trabaja o solo avisa
-    # Si le escribiste, despierta antes (solo si puede trabajar).
-    return ok and any(m["de"] == "humano" for m in esp.bandeja_sin_leer(marcar=False))
+    # Despierta antes si toca una rutina o si le escribiste (solo si puede trabajar).
+    if not ok:
+        return False
+    return rutina_pendiente(esp) is not None or any(
+        m["de"] == "humano" for m in esp.bandeja_sin_leer(marcar=False)
+    )
 
 
 # --- control remoto (Telegram) ---------------------------------------------
@@ -168,9 +203,17 @@ def comando_remoto(texto: str, principal: str) -> str:
             from .acciones import describir
             return "\n\n".join(f"[{p['id']}] {p['agente']}: {describir(p['tipo'], p['detalle'])}" for p in pend)
         if cmd == "/aprobar" and len(partes) >= 2:
-            return "Aprobado.\n" + resolver(partes[1], True)
+            return "Aprobado.\n" + oportunidades.decidir(partes[1], True)
         if cmd == "/rechazar" and len(partes) >= 2:
-            return resolver(partes[1], False, " ".join(partes[2:]))
+            return oportunidades.decidir(partes[1], False, " ".join(partes[2:]))
+        if cmd == "/ideas":
+            return oportunidades.ranking_texto(Espacio(principal))
+        if cmd == "/ingreso" and len(partes) >= 2:
+            monto = float(partes[1].replace(",", "."))
+            resto = partes[2:]
+            id_ = resto.pop(0) if resto and oportunidades.ID_OP.match(resto[0]) else None
+            esp = oportunidades.buscar_en_agentes(id_) if id_ else Espacio(principal)
+            return oportunidades.registrar_ingreso(esp, monto, id_, " ".join(resto))
         if cmd == "/fondear" and len(partes) >= 2:
             monto = float(partes[1].replace(",", "."))
             if monto <= 0:
@@ -187,11 +230,12 @@ def comando_remoto(texto: str, principal: str) -> str:
             (home() / "PAUSA_TODO").unlink(missing_ok=True)
             return "▶️ Agentes reanudados."
         if cmd.startswith("/"):
-            return "Comandos: /estado /pendientes /aprobar <id> /rechazar <id> /fondear <usd> [agente] /pausa /reanudar"
+            return ("Comandos: /estado /ideas /pendientes /aprobar <id> /rechazar <id> "
+                    "/ingreso <usd> [id] [nota] /fondear <usd> [agente] /pausa /reanudar")
         Espacio(principal).dejar_en_bandeja("humano", texto)
         return f"📨 Mensaje dejado en la bandeja de {principal}; lo leerá en su próximo despertar."
     except (KeyError, ValueError) as e:
-        return f"Error: {e}"
+        return f"Error: {e.args[0] if e.args else e}"
 
 
 def latido(nombres: list[str] | None = None, cliente=None) -> None:

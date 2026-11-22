@@ -25,6 +25,7 @@ from .acciones import (
     solicitar,
     validar_subagente,
 )
+from . import oportunidades
 from .avisos import avisar_humano
 from .billetera import nivel
 from .espacio import Espacio
@@ -136,6 +137,48 @@ DEFINICIONES: list[dict] = [
             "No puedes cambiar tu constitución ni el código del sistema."
         ),
         "input_schema": _obj({"contenido": {**_S, "description": "El documento completo en markdown."}}),
+    },
+    {
+        "name": "oportunidades_ranking",
+        "description": (
+            "Muestra tus oportunidades de ingreso activas ordenadas por ganancia esperada por hora de tu "
+            "humano, más los resultados reales: cuánto se ganó, la calibración de tus estimaciones y qué "
+            "categorías rindieron."
+        ),
+        "input_schema": _obj({}),
+    },
+    {
+        "name": "oportunidad_registrar",
+        "description": (
+            "Registra una oportunidad concreta de generar ingresos para tu humano. Estima con honestidad: "
+            "tus estimaciones se comparan luego con lo que se gana de verdad. Los montos son en USD para "
+            "el primer mes (o el pago único si es algo puntual)."
+        ),
+        "input_schema": _obj({
+            "titulo": _S,
+            "descripcion": {**_S, "description": "Qué es, por qué funcionaría y riesgos."},
+            "categoria": {**_S, "description": "Una palabra o dos, p. ej. 'freelance', 'reventa', 'contenido', 'servicios'."},
+            "ingreso_estimado_usd": {"type": "number"},
+            "probabilidad": {"type": "number", "description": "Entre 0 y 1: probabilidad realista de lograrlo."},
+            "costo_estimado_usd": {"type": "number", "description": "Dinero a invertir (0 si nada)."},
+            "horas_tuyas": {"type": "number", "description": "Horas de trabajo de tu humano que requiere."},
+            "primer_paso": {**_S, "description": "Una acción concreta que tu humano pueda hacer hoy."},
+        }),
+    },
+    {
+        "name": "oportunidad_actualizar",
+        "description": (
+            "Actualiza una oportunidad: cambia su estado (idea, propuesta, descartada, fracasada), agrega "
+            "una nota o corrige la probabilidad o el ingreso estimado (null para no cambiarlos). Solo tu "
+            "humano puede ponerla en marcha o registrar ganancias."
+        ),
+        "input_schema": _obj({
+            "id": _S,
+            "estado": {"type": "string", "enum": ["sin_cambio", "idea", "propuesta", "descartada", "fracasada"]},
+            "nota": _S,
+            "probabilidad": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+            "ingreso_estimado_usd": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        }),
     },
     {
         "name": "solicitar_pago",
@@ -340,6 +383,41 @@ def ejecutar(nombre: str, entrada: dict, ctx: Contexto) -> str:
         esp.guardar_identidad(contenido + "\n")
         esp.log("identidad actualizada")
         return "Identidad actualizada. Entrará en vigor en tu próximo ciclo."
+
+    if nombre == "oportunidades_ranking":
+        return oportunidades.ranking_texto(esp)
+
+    if nombre == "oportunidad_registrar":
+        try:
+            op = oportunidades.registrar(
+                esp,
+                entrada["titulo"],
+                entrada["descripcion"],
+                entrada["categoria"],
+                entrada["ingreso_estimado_usd"],
+                entrada["probabilidad"],
+                entrada["costo_estimado_usd"],
+                entrada["horas_tuyas"],
+                entrada["primer_paso"],
+            )
+        except ValueError as e:
+            raise ErrorHerramienta(str(e)) from e
+        return (f"Registrada [{op['id']}] «{op['titulo']}»: ganancia esperada "
+                f"${oportunidades.ganancia_esperada(op):.2f}, ${oportunidades.puntaje(op):.2f} por hora de tu humano.")
+
+    if nombre == "oportunidad_actualizar":
+        try:
+            op = oportunidades.actualizar_por_agente(
+                esp,
+                entrada["id"],
+                entrada.get("estado", "sin_cambio"),
+                entrada.get("nota", ""),
+                entrada.get("probabilidad"),
+                entrada.get("ingreso_estimado_usd"),
+            )
+        except (KeyError, ValueError) as e:
+            raise ErrorHerramienta(e.args[0] if e.args else str(e)) from e
+        return f"[{op['id']}] ahora está en estado '{op['estado']}' (${oportunidades.puntaje(op):.2f} por hora)."
 
     if nombre == "solicitar_pago":
         monto = float(entrada["monto_usd"])

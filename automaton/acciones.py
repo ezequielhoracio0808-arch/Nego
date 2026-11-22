@@ -188,6 +188,7 @@ def crear_subagente(padre: Espacio, nombre: str, mision: str, presupuesto: float
             "es_subagente": True,
             "padre": padre.nombre,
             "max_subagentes": 0,
+            "rutinas": [],
             "max_gasto_diario_usd": min(cfg_padre["max_gasto_diario_usd"], presupuesto),
             "max_gasto_por_ciclo_usd": min(cfg_padre["max_gasto_por_ciclo_usd"], presupuesto),
             "umbral_ahorro_usd": min(cfg_padre["umbral_ahorro_usd"], presupuesto / 2),

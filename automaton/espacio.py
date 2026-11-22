@@ -35,8 +35,14 @@ CONFIG_POR_DEFECTO: dict = {
     # Esfuerzo de razonamiento según el nivel de saldo.
     "esfuerzo": {"normal": "medium", "ahorro": "low", "critico": "low"},
     "max_tokens": 16000,
-    # Cada cuántos minutos despierta en modo `vivir` (si no pidió otra cosa).
-    "latido_minutos": 60,
+    # Cada cuántos minutos despierta por su cuenta (si no pidió otra cosa).
+    "latido_minutos": 240,
+    # Tareas fijas a una hora del día (hora local; en GitHub, la de ZONA_HORARIA).
+    # Sin "instruccion" se usa la incorporada con ese nombre (ver RUTINAS_INCORPORADAS).
+    # Opcional: "dias": ["lunes", "martes", ...] para que no corra todos los días.
+    "rutinas": [{"nombre": "plan_del_dia", "hora": "08:00"}],
+    # Parte de lo que ganas gracias al agente que vuelve a su presupuesto (0.10 = 10 %).
+    "comision_ingresos": 0.10,
     # Límites duros por ciclo y por día.
     "max_llamadas_por_ciclo": 25,
     "max_gasto_por_ciclo_usd": 0.50,
@@ -58,6 +64,20 @@ CONFIG_POR_DEFECTO: dict = {
     "es_subagente": False,
     "padre": None,
 }
+
+RUTINAS_INCORPORADAS = {
+    "plan_del_dia": """Rutina de la mañana: el informe diario para tu humano con la jugada más rentable de hoy.
+1. Revisa `oportunidades_ranking` y tu memoria (qué recomendaste ayer, qué te respondió, qué resultó).
+2. Si tienes menos de 3 oportunidades activas que valgan la pena, investiga y registra nuevas con `oportunidad_registrar`: realistas, legales y acordes a lo que sabes de tu humano (habilidades, tiempo, dinero disponible, ciudad). Si te falta esa información, pregúntasela en el informe.
+3. Ajusta las estimaciones con lo aprendido. Si la calibración muestra que fuiste optimista, o una categoría no rindió, sé más conservador. Descarta las que ya no tengan sentido.
+4. Marca como `propuesta` la que recomiendes y envíale con `avisar_humano` UN mensaje breve y claro:
+   - 🎯 Hoy te conviene: la acción más beneficiosa (id, ganancia esperada y primer paso concreto que pueda hacer hoy).
+   - Top 3 con su id y ganancia esperada por hora.
+   - Cómo responder: "aprobar <id>" para ponerla en marcha, o contarte cuánto ganó.
+   Si hay oportunidades en marcha, prioriza el siguiente paso de esas antes que ideas nuevas.
+5. Anota en memoria lo que recomendaste y por qué, y duerme hasta tu próximo despertar.""",
+}
+
 
 PLANTILLA_IDENTIDAD = """# Identidad de {nombre}
 
@@ -146,6 +166,11 @@ class Espacio:
         esfuerzo = dict(CONFIG_POR_DEFECTO["esfuerzo"])
         esfuerzo.update(cfg.get("esfuerzo") or {})
         cfg["esfuerzo"] = esfuerzo
+        cfg["rutinas"] = [
+            {**r, "instruccion": r.get("instruccion") or RUTINAS_INCORPORADAS.get(r.get("nombre"), "")}
+            for r in (cfg.get("rutinas") or [])
+            if isinstance(r, dict) and r.get("nombre") and r.get("hora")
+        ]
         return cfg
 
     def guardar_config(self, cfg: dict) -> None:

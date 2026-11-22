@@ -20,17 +20,19 @@ on:
         default: despertar
         options:
           - despertar
-          - iniciar
-          - decir
-          - fondear
-          - pendientes
+          - ideas
           - aprobar
           - rechazar
+          - ingreso
+          - decir
+          - iniciar
+          - fondear
+          - pendientes
           - estado
           - pausar
           - reanudar
       texto:
-        description: "iniciar: la misión · decir: tu mensaje · fondear: monto en USD · aprobar/rechazar: el id"
+        description: "aprobar/rechazar: el id · ingreso: monto [id] [nota] · decir: tu mensaje · iniciar: la misión · fondear: USD"
         required: false
         default: ""
 
@@ -51,6 +53,9 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       AUTOMATON_HOME: datos
+      # Tu zona horaria para las rutinas (crea la variable ZONA_HORARIA en
+      # Settings -> Secrets and variables -> Actions -> Variables). Ej.: America/Argentina/Buenos_Aires
+      TZ: ${{ vars.ZONA_HORARIA || 'UTC' }}
       PYTHONUNBUFFERED: "1"
     steps:
       - name: Comprobar que el repositorio sea privado
@@ -104,6 +109,8 @@ jobs:
             decir)      necesita_texto; python -m automaton decir "$TEXTO"; python -m automaton despertar ;;
             fondear)    necesita_texto; python -m automaton fondear "$TEXTO" ;;
             pendientes) python -m automaton pendientes ;;
+            ideas)      python -m automaton ideas ;;
+            ingreso)    necesita_texto; read -ra PARTES <<< "$TEXTO"; python -m automaton ingreso "${PARTES[@]}" ;;
             aprobar)    necesita_texto; python -m automaton aprobar "$TEXTO" ;;
             rechazar)   necesita_texto; python -m automaton rechazar "$TEXTO" ;;
             estado)     python -m automaton estado --movimientos 10 ;;

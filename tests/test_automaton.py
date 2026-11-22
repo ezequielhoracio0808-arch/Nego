@@ -308,3 +308,121 @@ def test_latido_despierta_solo_a_quien_le_toca():
     esp.dejar_en_bandeja("humano", "¿cómo vas?")  # un mensaje tuyo lo despierta antes
     latido(None, cliente)
     assert len(cliente.llamadas) == 2
+
+
+# --- oportunidades de ingreso -----------------------------------------------------
+def _op(ctx, titulo, ingreso, prob, costo, horas, categoria="freelance"):
+    salida = ejecutar("oportunidad_registrar", {
+        "titulo": titulo, "descripcion": "d", "categoria": categoria, "ingreso_estimado_usd": ingreso,
+        "probabilidad": prob, "costo_estimado_usd": costo, "horas_tuyas": horas, "primer_paso": "hacer algo",
+    }, ctx)
+    return salida.split("[")[1].split("]")[0]
+
+
+def test_ranking_por_ganancia_por_hora():
+    from automaton import oportunidades as ops
+    esp = nuevo()
+    ctx = Contexto(esp, esp.config())
+    a = _op(ctx, "Mucho dinero, mucho tiempo", 1000, 0.5, 0, 100)   # 500 / 100 h = 5 $/h
+    b = _op(ctx, "Poco dinero, poco tiempo", 100, 0.8, 0, 4)        # 80 / 4 h = 20 $/h
+    c = _op(ctx, "Cara y dudosa", 300, 0.1, 50, 2)                  # -20 / 2 h = -10 $/h
+    orden = [op["id"] for op in ops.activas_ordenadas(esp)]
+    assert orden == [b, a, c]
+    texto_ = ejecutar("oportunidades_ranking", {}, ctx)
+    assert texto_.index(b) < texto_.index(a) < texto_.index(c)
+    # Probabilidad fuera de rango -> error para el modelo
+    _, err = ejecutar_seguro("oportunidad_registrar", {
+        "titulo": "x", "descripcion": "", "categoria": "x", "ingreso_estimado_usd": 1, "probabilidad": 3,
+        "costo_estimado_usd": 0, "horas_tuyas": 1, "primer_paso": "",
+    }, ctx)
+    assert err
+
+
+def test_el_agente_no_puede_marcar_ganada_ni_poner_en_marcha():
+    esp = nuevo()
+    ctx = Contexto(esp, esp.config())
+    id_ = _op(ctx, "Idea", 100, 0.5, 0, 2)
+    base = {"id": id_, "nota": "", "probabilidad": None, "ingreso_estimado_usd": None}
+    _, err = ejecutar_seguro("oportunidad_actualizar", {**base, "estado": "ganada"}, ctx)
+    assert err
+    salida, err = ejecutar_seguro("oportunidad_actualizar", {**base, "estado": "propuesta", "probabilidad": 0.7}, ctx)
+    assert not err and "propuesta" in salida
+
+
+def test_aprobar_oportunidad_ingreso_comision_y_calibracion():
+    from automaton import oportunidades as ops
+    esp = nuevo(fondos=5)
+    ctx = Contexto(esp, esp.config())
+    id_ = _op(ctx, "Clases particulares", 200, 0.5, 0, 10, categoria="servicios")
+    ops.decidir(f" {id_.upper()} ", True)  # tolera espacios y mayúsculas
+    assert ops.cargar(esp)[0]["estado"] == "en_marcha"
+    assert "EN MARCHA" in esp.bandeja()[-1]["texto"]
+    ops.registrar_ingreso(esp, 150, id_, "3 alumnos")
+    op = ops.cargar(esp)[0]
+    assert op["estado"] == "ganada" and op["ingreso_real_usd"] == 150
+    assert esp.billetera().saldo() == pytest.approx(5 + 15)  # 10 % de comisión
+    est = ops.estadisticas(esp)
+    assert est["total_real"] == 150 and est["calibracion"] == 0.75
+    assert "optimista" in ops.ranking_texto(esp)
+    assert est["por_categoria"]["servicios"]["ganadas"] == 1
+
+
+def test_cli_ingreso_y_aprobar(capsys):
+    from automaton.__main__ import main
+    from automaton import oportunidades as ops
+    esp = nuevo(fondos=1)
+    op = ops.registrar(esp, "Vender ropa usada", "", "reventa", 80, 0.6, 0, 5, "fotos")
+    main(["aprobar", op["id"]])
+    main(["ingreso", "40,5", op["id"], "vendí", "dos", "camperas"])
+    op2 = ops.cargar(esp)[0]
+    assert op2["estado"] == "ganada" and op2["ingreso_real_usd"] == 40.5
+    assert "vendí dos camperas" in op2["notas"][-1]
+    main(["ideas"])
+    assert "40.50" in capsys.readouterr().out
+
+
+# --- rutinas diarias -----------------------------------------------------------------
+def test_rutina_de_la_manana(monkeypatch):
+    from datetime import datetime, timedelta
+    import automaton.ciclo as ciclo
+    esp = nuevo()
+    ayer = datetime(2026, 11, 22, 15, 0).astimezone()
+    esp.actualizar_estado(creado=ayer.isoformat(), ciclos=3,
+                          proximo_despertar=(ayer + timedelta(days=5)).isoformat())
+    reloj = {"t": datetime(2026, 11, 23, 7, 30).astimezone()}
+    monkeypatch.setattr(ciclo, "ahora", lambda: reloj["t"])
+
+    assert ciclo.rutina_pendiente(esp) is None          # 7:30, todavía no
+    assert not ciclo.toca_despertar(esp)
+    reloj["t"] = datetime(2026, 11, 23, 8, 23).astimezone()
+    r = ciclo.rutina_pendiente(esp)
+    assert r and r["nombre"] == "plan_del_dia" and "oportunidades_ranking" in r["instruccion"]
+    assert ciclo.toca_despertar(esp)                     # la rutina adelanta el despertar
+
+    cliente = ClienteFalso([respuesta([herramienta("dormir", {"minutos": 240, "motivo": "listo"})], stop="tool_use")])
+    ciclo.despertar(esp, cliente)
+    assert "RUTINA DIARIA «plan_del_dia»" in cliente.llamadas[0]["messages"][0]["content"]
+    assert ciclo.rutina_pendiente(esp) is None           # ya se hizo hoy
+    reloj["t"] = datetime(2026, 11, 24, 8, 30).astimezone()
+    assert ciclo.rutina_pendiente(esp) is not None       # al día siguiente vuelve
+
+
+def test_rutina_no_corre_el_dia_de_creacion_ni_en_subagentes(monkeypatch):
+    from datetime import datetime
+    import automaton.ciclo as ciclo
+    esp = nuevo(fondos=10)
+    esp.actualizar_estado(creado=datetime(2026, 11, 23, 10, 0).astimezone().isoformat())
+    monkeypatch.setattr(ciclo, "ahora", lambda: datetime(2026, 11, 23, 11, 0).astimezone())
+    assert ciclo.rutina_pendiente(esp) is None
+    acciones.crear_subagente(esp, "hijo", "m", 2)
+    assert Espacio("hijo").config()["rutinas"] == []
+
+
+def test_control_remoto_oportunidades():
+    from automaton import oportunidades as ops
+    esp = nuevo()
+    op = ops.registrar(esp, "Diseño de logos", "", "freelance", 120, 0.5, 0, 6, "portfolio")
+    assert op["id"] in comando_remoto("/ideas", "principal")
+    assert "En marcha" in comando_remoto(f"/aprobar {op['id']}", "principal")
+    assert "Comisión" in comando_remoto(f"/ingreso 60 {op['id']} primer cliente", "principal")
+    assert ops.cargar(esp)[0]["estado"] == "ganada"

@@ -8,7 +8,8 @@ from __future__ import annotations
 import argparse
 import sys
 
-from .acciones import describir, registro_habilidades, resolver, resumen_estado, todas_pendientes
+from . import oportunidades
+from .acciones import describir, registro_habilidades, resumen_estado, todas_pendientes
 from .espacio import Espacio, home, listar_agentes
 
 
@@ -70,12 +71,18 @@ def cmd_fondear(a):
 
 
 def cmd_ingreso(a):
-    if a.monto <= 0:
-        sys.exit("El monto debe ser mayor que 0.")
-    esp = _agente(a.agente)
-    esp.billetera().registrar("ingreso", a.monto, nota=a.nota)
-    esp.dejar_en_bandeja("humano", f"Registré un ingreso de ${a.monto:.2f} gracias a ti: {a.nota}")
-    print(resumen_estado(a.agente))
+    resto = list(a.resto)
+    id_ = resto.pop(0) if resto and oportunidades.ID_OP.match(resto[0]) else None
+    try:
+        esp = oportunidades.buscar_en_agentes(id_) if id_ else _agente(a.agente)
+        print(oportunidades.registrar_ingreso(esp, a.monto, id_, " ".join(resto)))
+    except (KeyError, ValueError) as e:
+        sys.exit(e.args[0])
+    print(resumen_estado(esp.nombre))
+
+
+def cmd_ideas(a):
+    print(oportunidades.ranking_texto(_agente(a.agente), n=a.n))
 
 
 def cmd_decir(a):
@@ -101,14 +108,14 @@ def cmd_pendientes(a):
 
 def cmd_aprobar(a):
     try:
-        print(resolver(a.id, True))
+        print(oportunidades.decidir(a.id, True))
     except KeyError as e:
         sys.exit(e.args[0])
 
 
 def cmd_rechazar(a):
     try:
-        print(resolver(a.id, False, a.razon or ""))
+        print(oportunidades.decidir(a.id, False, a.razon or ""))
     except KeyError as e:
         sys.exit(e.args[0])
 
@@ -206,10 +213,14 @@ def main(argv=None):
     s.add_argument("--nota", default="")
     s.set_defaults(f=cmd_fondear)
 
-    s = con_agente(sub.add_parser("ingreso", help="registra dinero que el agente ayudó a ganar"))
+    s = con_agente(sub.add_parser("ingreso", help="registra dinero que ganaste gracias al agente: ingreso 50 [id] [nota]"))
     s.add_argument("monto", type=_monto)
-    s.add_argument("nota")
+    s.add_argument("resto", nargs="*", help="id de la oportunidad (opXXXX, opcional) y una nota")
     s.set_defaults(f=cmd_ingreso)
+
+    s = con_agente(sub.add_parser("ideas", help="ranking de oportunidades de ingreso y resultados reales"))
+    s.add_argument("-n", type=int, default=10)
+    s.set_defaults(f=cmd_ideas)
 
     s = con_agente(sub.add_parser("decir", help="deja un mensaje en la bandeja del agente"))
     s.add_argument("mensaje", nargs="+")
@@ -217,11 +228,11 @@ def main(argv=None):
 
     sub.add_parser("pendientes", help="acciones que esperan tu aprobación").set_defaults(f=cmd_pendientes)
 
-    s = sub.add_parser("aprobar", help="aprueba (y ejecuta) una acción pendiente")
+    s = sub.add_parser("aprobar", help="aprueba una acción pendiente o pone en marcha una oportunidad (opXXXX)")
     s.add_argument("id")
     s.set_defaults(f=cmd_aprobar)
 
-    s = sub.add_parser("rechazar", help="rechaza una acción pendiente")
+    s = sub.add_parser("rechazar", help="rechaza una acción pendiente o descarta una oportunidad (opXXXX)")
     s.add_argument("id")
     s.add_argument("--razon", default="")
     s.set_defaults(f=cmd_rechazar)
