@@ -16,7 +16,8 @@ window.CATALOGO = {
       { id: "arabes", nombre: "Árabes", bajada: "Más concentrados: duran horas y se sienten a un metro." },
       { id: "disenador", nombre: "Diseñador", bajada: "Dior, Armani, Versace, Valentino, Jean Paul Gaultier y más." },
       { id: "nicho", nombre: "Nicho y lujo", bajada: "Creed, Tom Ford, Louis Vuitton y Xerjoff." } ] },
-    { id: "combos", nombre: "Combos", bajada: "Precio cerrado, más barato que por separado", secciones: [
+    { id: "combos", nombre: "Promos y combos", bajada: "Precio cerrado, más barato que por separado", secciones: [
+      { id: "promos", nombre: "Promos", bajada: "10% menos que comprando cada producto por separado." },
       { id: "combos", nombre: "Combos" },
       { id: "emprendedor", nombre: "Combos emprendedor", bajada: "Para arrancar a vender: varios productos juntos a precio cerrado." } ] },
     { id: "decants", nombre: "Decants", bajada: "35 ml para probar antes de comprar el frasco" },
@@ -62,6 +63,7 @@ window.CATALOGO = {
     col14: ["Verde","Azul","Blanco"],
     colhuevo: ["Rosa","Celeste","Fucsia","Naranja","Violeta"],
     comboap: ["iPhone 11 · Funda silicona", "iPhone 11 · Funda MagSafe", "iPhone 11 Pro · Funda silicona", "iPhone 11 Pro · Funda MagSafe", "iPhone 11 Pro Max · Funda silicona", "iPhone 11 Pro Max · Funda MagSafe", "iPhone 12 · Funda silicona", "iPhone 12 · Funda MagSafe", "iPhone 12 Pro · Funda silicona", "iPhone 12 Pro · Funda MagSafe", "iPhone 12 Pro Max · Funda silicona", "iPhone 12 Pro Max · Funda MagSafe", "iPhone 13 · Funda silicona", "iPhone 13 · Funda MagSafe", "iPhone 13 Pro · Funda silicona", "iPhone 13 Pro · Funda MagSafe", "iPhone 13 Pro Max · Funda silicona", "iPhone 13 Pro Max · Funda MagSafe", "iPhone 14 · Funda silicona", "iPhone 14 · Funda MagSafe", "iPhone 14 Plus · Funda silicona", "iPhone 14 Plus · Funda MagSafe", "iPhone 14 Pro · Funda silicona", "iPhone 14 Pro · Funda MagSafe", "iPhone 14 Pro Max · Funda silicona", "iPhone 14 Pro Max · Funda MagSafe", "iPhone 15 · Funda silicona", "iPhone 15 · Funda MagSafe", "iPhone 15 Plus · Funda silicona", "iPhone 15 Plus · Funda MagSafe", "iPhone 15 Pro · Funda silicona", "iPhone 15 Pro · Funda MagSafe", "iPhone 15 Pro Max · Funda silicona", "iPhone 15 Pro Max · Funda MagSafe", "iPhone 16 · Funda silicona", "iPhone 16 · Funda MagSafe", "iPhone 16 Plus · Funda silicona", "iPhone 16 Plus · Funda MagSafe", "iPhone 16 Pro · Funda silicona", "iPhone 16 Pro · Funda MagSafe", "iPhone 16 Pro Max · Funda silicona", "iPhone 16 Pro Max · Funda MagSafe", "iPhone 17 · Funda silicona", "iPhone 17 · Funda MagSafe", "iPhone 17 Pro · Funda silicona", "iPhone 17 Pro · Funda MagSafe", "iPhone 17 Pro Max · Funda silicona", "iPhone 17 Pro Max · Funda MagSafe"],
+    promoyara: ["Yara Rosa + Yara Rosa", "Yara Rosa + Yara Candy", "Yara Rosa + Yara Elixir", "Yara Rosa + Yara Blanco", "Yara Candy + Yara Candy", "Yara Candy + Yara Elixir", "Yara Candy + Yara Blanco", "Yara Elixir + Yara Elixir", "Yara Elixir + Yara Blanco", "Yara Blanco + Yara Blanco"],
     colstanley: ["Rojo","Fucsia","Violeta","Negro","Gris","Azul marino","Verde oliva","Verde agua","Lila","Durazno"]
   },
 
@@ -357,7 +359,17 @@ window.CATALOGO = {
     { id: "ca-mayorista", cat: "combos", sec: "emprendedor", nombre: "Combo Accesorios Mayorista", detalle: "40 fundas de silicona, 30 fundas MagSafe, 15 combos cargador 20W + cable, 40 vidrios templados 9D, 5 AirPods Pro 2 y 4 battery pack MagSafe", precio: 465000, sinDescuento: true, separado: 645000, foto: "ca-mayorista.webp" },
     { id: "ce-fundas", cat: "combos", sec: "emprendedor", nombre: "Combo Fundas + cargadores", detalle: "30 fundas de silicona para iPhone (modelos surtidos) y 10 combos cargador", precio: 163000, sinDescuento: true, separado: 330000, foto: "ce-fundas.webp" },
     { id: "ce-airpods", cat: "combos", sec: "emprendedor", nombre: "Combo AirPods + accesorios", detalle: "8 AirPods Pro 2, 15 fundas de silicona para iPhone y 5 combos cargador", precio: 200000, sinDescuento: true, separado: 381000, foto: "ce-airpods.webp" },
-    { id: "ce-vs-decants", cat: "combos", sec: "emprendedor", nombre: "Combo Victoria's Secret + decants", detalle: "10 body splash Victoria's Secret (fragancias surtidas) y 10 decants de 35 ml", precio: 155000, sinDescuento: true, separado: 229000, foto: "ce-vs-decants.webp" }
+    { id: "ce-vs-decants", cat: "combos", sec: "emprendedor", nombre: "Combo Victoria's Secret + decants", detalle: "10 body splash Victoria's Secret (fragancias surtidas) y 10 decants de 35 ml", precio: 155000, sinDescuento: true, separado: 229000, foto: "ce-vs-decants.webp" },
+
+    // ── combos/promos (precio cerrado, 10% menos que por separado)
+    { id: "promo-2-yara", cat: "combos", sec: "promos", nombre: "Promo 2 Yara a elección", detalle: "Dos perfumes Yara de 100 ml: Rosa, Candy, Elixir o Blanco", precio: 57500, sinDescuento: true, separado: 64000, opciones: "promoyara", ocasiones: ["dia", "cita", "regalo"], foto: "promo-2-yara.webp" },
+    { id: "promo-5-decants", cat: "combos", sec: "promos", nombre: "Promo 5 decants a elección", detalle: "Cinco decants de 35 ml. Anotá los aromas en «Aclaraciones» del pedido", precio: 17500, sinDescuento: true, separado: 19500, ocasiones: ["regalo"], foto: "promo-5-decants.webp" },
+    { id: "promo-khamrah", cat: "combos", sec: "promos", nombre: "Promo dúo Khamrah", detalle: "Khamrah y Khamrah Qahwa, 100 ml cada uno", precio: 82500, sinDescuento: true, separado: 92000, ocasiones: ["noche", "cita", "invierno", "regalo"], foto: "promo-khamrah.webp" },
+    { id: "promo-9pm-pareja", cat: "combos", sec: "promos", nombre: "Promo pareja 9PM", detalle: "9PM para él y 9PM Pour Femme para ella, 100 ml cada uno", precio: 72500, sinDescuento: true, separado: 81000, ocasiones: ["noche", "cita", "regalo"], foto: "promo-9pm-pareja.webp", ilustrativa: true },
+    { id: "promo-asad-trio", cat: "combos", sec: "promos", nombre: "Promo trío Asad", detalle: "Asad, Asad Bourbon y Asad Elixir, 100 ml cada uno", precio: 86000, sinDescuento: true, separado: 96000, ocasiones: ["noche", "invierno", "regalo"], foto: "promo-asad-trio.webp" },
+    { id: "promo-odyssey-3", cat: "combos", sec: "promos", nombre: "Promo 3 Odyssey a elección", detalle: "Tres Odyssey de 100 ml: Aqua, Candy, Limoni o Spectra. Anotalos en «Aclaraciones»", precio: 95500, sinDescuento: true, separado: 106500, ocasiones: ["dia", "verano", "regalo"], foto: "promo-odyssey-3.webp", ilustrativa: true },
+    { id: "promo-hawas-2", cat: "combos", sec: "promos", nombre: "Promo 2 Hawas a elección", detalle: "Dos Hawas de 100 ml: Fire, Malibu, Kobra, for Him o Glitz. Anotalos en «Aclaraciones»", precio: 70000, sinDescuento: true, separado: 78000, ocasiones: ["dia", "noche", "regalo"], foto: "promo-hawas-2.webp" },
+    { id: "promo-yara-vs", cat: "combos", sec: "promos", nombre: "Promo Yara + body splash", detalle: "Un Yara de 100 ml y un body splash Victoria's Secret de 250 ml a elección", precio: 46000, sinDescuento: true, separado: 51500, ocasiones: ["dia", "cita", "regalo"], foto: "promo-yara-vs.webp" }
   ],
 
   // Notas de cada perfume: familia, ideal para, y la pirámide (salida, corazón, fondo) o una lista simple de notas

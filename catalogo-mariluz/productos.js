@@ -17,7 +17,8 @@ window.CATALOGO = {
       { id: "arabes", nombre: "Árabes", bajada: "Más concentrados: duran horas y se sienten a un metro." },
       { id: "disenador", nombre: "Diseñador", bajada: "Dior, Armani, Versace, Valentino, Jean Paul Gaultier y más." },
       { id: "nicho", nombre: "Nicho y lujo", bajada: "Creed, Tom Ford, Louis Vuitton y Xerjoff." } ] },
-    { id: "combos", nombre: "Combos", bajada: "Precio cerrado, más barato que por separado", secciones: [
+    { id: "combos", nombre: "Promos y combos", bajada: "Precio cerrado, más barato que por separado", secciones: [
+      { id: "promos", nombre: "Promos", bajada: "10% menos que comprando cada producto por separado." },
       { id: "combos", nombre: "Combos" },
       { id: "emprendedor", nombre: "Combos emprendedor", bajada: "Para arrancar a vender: varios productos juntos a precio cerrado." } ] },
     { id: "decants", nombre: "Decants", bajada: "35 ml para probar antes de comprar el frasco" },
@@ -63,6 +64,7 @@ window.CATALOGO = {
     col14: ["Verde","Azul","Blanco"],
     colhuevo: ["Rosa","Celeste","Fucsia","Naranja","Violeta"],
     comboap: ["iPhone 11 · Funda silicona", "iPhone 11 · Funda MagSafe", "iPhone 11 Pro · Funda silicona", "iPhone 11 Pro · Funda MagSafe", "iPhone 11 Pro Max · Funda silicona", "iPhone 11 Pro Max · Funda MagSafe", "iPhone 12 · Funda silicona", "iPhone 12 · Funda MagSafe", "iPhone 12 Pro · Funda silicona", "iPhone 12 Pro · Funda MagSafe", "iPhone 12 Pro Max · Funda silicona", "iPhone 12 Pro Max · Funda MagSafe", "iPhone 13 · Funda silicona", "iPhone 13 · Funda MagSafe", "iPhone 13 Pro · Funda silicona", "iPhone 13 Pro · Funda MagSafe", "iPhone 13 Pro Max · Funda silicona", "iPhone 13 Pro Max · Funda MagSafe", "iPhone 14 · Funda silicona", "iPhone 14 · Funda MagSafe", "iPhone 14 Plus · Funda silicona", "iPhone 14 Plus · Funda MagSafe", "iPhone 14 Pro · Funda silicona", "iPhone 14 Pro · Funda MagSafe", "iPhone 14 Pro Max · Funda silicona", "iPhone 14 Pro Max · Funda MagSafe", "iPhone 15 · Funda silicona", "iPhone 15 · Funda MagSafe", "iPhone 15 Plus · Funda silicona", "iPhone 15 Plus · Funda MagSafe", "iPhone 15 Pro · Funda silicona", "iPhone 15 Pro · Funda MagSafe", "iPhone 15 Pro Max · Funda silicona", "iPhone 15 Pro Max · Funda MagSafe", "iPhone 16 · Funda silicona", "iPhone 16 · Funda MagSafe", "iPhone 16 Plus · Funda silicona", "iPhone 16 Plus · Funda MagSafe", "iPhone 16 Pro · Funda silicona", "iPhone 16 Pro · Funda MagSafe", "iPhone 16 Pro Max · Funda silicona", "iPhone 16 Pro Max · Funda MagSafe", "iPhone 17 · Funda silicona", "iPhone 17 · Funda MagSafe", "iPhone 17 Pro · Funda silicona", "iPhone 17 Pro · Funda MagSafe", "iPhone 17 Pro Max · Funda silicona", "iPhone 17 Pro Max · Funda MagSafe"],
+    promoyara: ["Yara Rosa + Yara Rosa", "Yara Rosa + Yara Candy", "Yara Rosa + Yara Elixir", "Yara Rosa + Yara Blanco", "Yara Candy + Yara Candy", "Yara Candy + Yara Elixir", "Yara Candy + Yara Blanco", "Yara Elixir + Yara Elixir", "Yara Elixir + Yara Blanco", "Yara Blanco + Yara Blanco"],
     colstanley: ["Rojo","Fucsia","Violeta","Negro","Gris","Azul marino","Verde oliva","Verde agua","Lila","Durazno"]
   },
 
@@ -92,8 +94,8 @@ window.CATALOGO = {
     { id: "ameerat-al-arab", cat: "perfumes", sec: "arabes", nombre: "Asdaaf Ameerat Al Arab", detalle: "Perfume 100 ml", precio: 71000, para: "ella", foto: "ameerat-al-arab.webp", ilustrativa: true, ocasiones: ["dia","noche"] },
     { id: "bade-honor", cat: "perfumes", sec: "arabes", nombre: "Bade Honor & Glory", detalle: "Perfume 100 ml", precio: 60000, para: "unisex", foto: "bade-honor.webp", ilustrativa: true, aroma: "dulce", ocasiones: ["noche", "cita", "invierno", "especial"] },
     { id: "bade-noble", cat: "perfumes", sec: "arabes", nombre: "Bade Noble Blush", detalle: "Perfume 100 ml", precio: 60000, para: "ella", foto: "bade-noble.webp", ilustrativa: true, aroma: "dulce", ocasiones: ["dia", "noche", "cita"] },
-    { id: "bade-oud", cat: "perfumes", sec: "arabes", nombre: "Bade Oud for Glory", detalle: "Perfume 100 ml", precio: 65000, para: "unisex", aroma: "intenso", foto: "bade-oud.webp", ocasiones: ["noche","cita","invierno","especial"] },
-    { id: "bade-sublime", cat: "perfumes", sec: "arabes", nombre: "Bade Sublime", detalle: "Perfume 100 ml", precio: 65000, para: "ella", aroma: "frutal", foto: "bade-sublime.webp", ocasiones: ["dia","oficina","noche","cita"] },
+    { id: "bade-oud", cat: "perfumes", sec: "arabes", nombre: "Bade Oud for Glory", detalle: "Perfume 100 ml", precio: 60000, para: "unisex", aroma: "intenso", foto: "bade-oud.webp", ocasiones: ["noche","cita","invierno","especial"] },
+    { id: "bade-sublime", cat: "perfumes", sec: "arabes", nombre: "Bade Sublime", detalle: "Perfume 100 ml", precio: 60000, para: "ella", aroma: "frutal", foto: "bade-sublime.webp", ocasiones: ["dia","oficina","noche","cita"] },
     { id: "bharara-king", cat: "perfumes", sec: "arabes", nombre: "Bharara King", detalle: "Perfume 100 ml", precio: 84500, para: "el", aroma: "fresco", foto: "bharara-king.webp", ocasiones: ["dia","oficina"] },
     { id: "bonbon", cat: "perfumes", sec: "arabes", nombre: "Bonbon", detalle: "Perfume 100 ml", precio: 84500, para: "ella", aroma: "dulce", foto: "bonbon.webp", ocasiones: ["dia","cita","verano"] },
     { id: "cdn-bling", cat: "perfumes", sec: "arabes", nombre: "Club de Nuit Bling", detalle: "Perfume 100 ml", precio: 101500, para: "el", aroma: "fresco", foto: "cdn-bling.webp", ocasiones: ["dia","oficina","noche"] },
@@ -104,16 +106,16 @@ window.CATALOGO = {
     { id: "cdn-woman", cat: "perfumes", sec: "arabes", nombre: "Club de Nuit Woman", detalle: "Perfume 100 ml", precio: 69500, para: "ella", aroma: "floral", foto: "cdn-woman.webp", ocasiones: ["dia","oficina","noche","cita"] },
     { id: "eclaire", cat: "perfumes", sec: "arabes", nombre: "Eclaire", detalle: "Perfume 100 ml", precio: 60000, para: "ella", aroma: "dulce", foto: "eclaire.webp", ocasiones: ["dia","noche","cita","invierno","especial"] },
     { id: "fakhar-blanco", cat: "perfumes", sec: "arabes", nombre: "Fakhar Blanco", detalle: "Perfume 100 ml", precio: 60000, para: "ella", foto: "fakhar-blanco.webp", ilustrativa: true, aroma: "floral", ocasiones: ["dia", "oficina", "cita", "verano"] },
-    { id: "fakhar-dorado", cat: "perfumes", sec: "arabes", nombre: "Fakhar Dorado", detalle: "Perfume 100 ml", precio: 70000, para: "el", foto: "fakhar-dorado.webp", aroma: "intenso", ocasiones: ["noche", "cita", "invierno", "especial"] },
-    { id: "fakhar-negro", cat: "perfumes", sec: "arabes", nombre: "Fakhar Negro", detalle: "Perfume 100 ml", precio: 70000, para: "el", aroma: "amaderado", foto: "fakhar-negro.webp", ocasiones: ["dia","noche","cita","especial"] },
+    { id: "fakhar-dorado", cat: "perfumes", sec: "arabes", nombre: "Fakhar Dorado", detalle: "Perfume 100 ml", precio: 60000, para: "el", foto: "fakhar-dorado.webp", aroma: "intenso", ocasiones: ["noche", "cita", "invierno", "especial"] },
+    { id: "fakhar-negro", cat: "perfumes", sec: "arabes", nombre: "Fakhar Negro", detalle: "Perfume 100 ml", precio: 60000, para: "el", aroma: "amaderado", foto: "fakhar-negro.webp", ocasiones: ["dia","noche","cita","especial"] },
     { id: "fakhar-rose", cat: "perfumes", sec: "arabes", nombre: "Fakhar Rosé", detalle: "Perfume 100 ml", precio: 60000, para: "ella", aroma: "floral", foto: "fakhar-rose.jpeg", nuevo: true, ocasiones: ["dia","oficina","noche","cita"] },
     { id: "spectre-ghost", cat: "perfumes", sec: "arabes", nombre: "French Avenue Spectre Ghost", detalle: "Perfume 80 ml", precio: 80500, para: "unisex", aroma: "intenso", foto: "spectre-ghost.webp", ocasiones: ["noche","cita","especial"] },
-    { id: "hawas-fire", cat: "perfumes", sec: "arabes", nombre: "Hawas Fire", detalle: "Perfume 100 ml", precio: 69000, para: "el", aroma: "fresco", foto: "hawas-fire.webp", ocasiones: ["dia","oficina"] },
-    { id: "hawas-him", cat: "perfumes", sec: "arabes", nombre: "Hawas for Him", detalle: "Perfume 100 ml", precio: 69000, para: "el", aroma: "fresco", foto: "hawas-him.webp", ocasiones: ["dia","oficina","verano"] },
-    { id: "hawas-glitz", cat: "perfumes", sec: "arabes", nombre: "Hawas Glitz", detalle: "Perfume 100 ml", precio: 69000, para: "ella", aroma: "dulce", foto: "hawas-glitz.webp", ocasiones: ["noche","cita","especial"] },
-    { id: "hawas-ice", cat: "perfumes", sec: "arabes", nombre: "Hawas Ice", detalle: "Perfume 100 ml", precio: 69000, para: "el", aroma: "fresco", foto: "hawas-ice.webp", destacado: 9, ocasiones: ["dia","oficina","verano","regalo"] },
-    { id: "hawas-kobra", cat: "perfumes", sec: "arabes", nombre: "Hawas Kobra", detalle: "Perfume 100 ml", precio: 69000, para: "el", aroma: "fresco", foto: "hawas-kobra.webp", ocasiones: ["dia","oficina"] },
-    { id: "hawas-malibu", cat: "perfumes", sec: "arabes", nombre: "Hawas Malibu", detalle: "Perfume 100 ml", precio: 69000, para: "el", aroma: "frutal", foto: "hawas-malibu.webp", ocasiones: ["dia","oficina","cita","verano"] },
+    { id: "hawas-fire", cat: "perfumes", sec: "arabes", nombre: "Hawas Fire", detalle: "Perfume 100 ml", precio: 60000, para: "el", aroma: "fresco", foto: "hawas-fire.webp", ocasiones: ["dia","oficina"] },
+    { id: "hawas-him", cat: "perfumes", sec: "arabes", nombre: "Hawas for Him", detalle: "Perfume 100 ml", precio: 60000, para: "el", aroma: "fresco", foto: "hawas-him.webp", ocasiones: ["dia","oficina","verano"] },
+    { id: "hawas-glitz", cat: "perfumes", sec: "arabes", nombre: "Hawas Glitz", detalle: "Perfume 100 ml", precio: 60000, para: "ella", aroma: "dulce", foto: "hawas-glitz.webp", ocasiones: ["noche","cita","especial"] },
+    { id: "hawas-ice", cat: "perfumes", sec: "arabes", nombre: "Hawas Ice", detalle: "Perfume 100 ml", precio: 53000, para: "el", aroma: "fresco", foto: "hawas-ice.webp", destacado: 9, ocasiones: ["dia","oficina","verano","regalo"] },
+    { id: "hawas-kobra", cat: "perfumes", sec: "arabes", nombre: "Hawas Kobra", detalle: "Perfume 100 ml", precio: 60000, para: "el", aroma: "fresco", foto: "hawas-kobra.webp", ocasiones: ["dia","oficina"] },
+    { id: "hawas-malibu", cat: "perfumes", sec: "arabes", nombre: "Hawas Malibu", detalle: "Perfume 100 ml", precio: 60000, para: "el", aroma: "frutal", foto: "hawas-malibu.webp", ocasiones: ["dia","oficina","cita","verano"] },
     { id: "hawas-verde", cat: "perfumes", sec: "arabes", nombre: "Hawas Verde", detalle: "Perfume 100 ml", precio: 55500, para: "el", foto: "hawas-verde.webp", ilustrativa: true, aroma: "fresco", ocasiones: ["dia", "oficina", "verano"] },
     { id: "her-confession", cat: "perfumes", sec: "arabes", nombre: "Her Confession", detalle: "Perfume 100 ml", precio: 71000, para: "ella", foto: "her-confession.webp", ilustrativa: true, aroma: "intenso", ocasiones: ["noche", "cita", "invierno", "especial"] },
     { id: "khamrah", cat: "perfumes", sec: "arabes", nombre: "Khamrah", detalle: "Perfume 100 ml", precio: 71000, para: "unisex", aroma: "dulce", foto: "khamrah.webp", destacado: 1, ocasiones: ["noche","cita","invierno","especial","regalo"] },
@@ -139,7 +141,7 @@ window.CATALOGO = {
     { id: "yara-violeta", cat: "perfumes", sec: "arabes", nombre: "Yara Tendre (Violeta)", detalle: "Perfume 100 ml", precio: 55500, para: "ella", aroma: "floral", foto: "yara-violeta.webp", ocasiones: ["dia","oficina","noche","cita","invierno"] },
     { id: "cdn-precieux-1", cat: "perfumes", sec: "arabes", nombre: "Club de Nuit Précieux I", detalle: "Perfume 100 ml", precio: 94000, para: "unisex", nuevo: true, foto: "cdn-precieux-1.webp", ilustrativa: true, aroma: "frutal", ocasiones: ["noche", "cita", "invierno", "especial"] },
     { id: "art-of-universe", cat: "perfumes", sec: "arabes", nombre: "Art of Universe", detalle: "Perfume 100 ml", precio: 80000, para: "unisex", nuevo: true, foto: "art-of-universe.webp", ilustrativa: true, aroma: "fresco", ocasiones: ["dia", "oficina", "verano"] },
-    { id: "fakhar-gris", cat: "perfumes", sec: "arabes", nombre: "Fakhar Gris", detalle: "Perfume 100 ml", precio: 70000, para: "unisex", nuevo: true, foto: "fakhar-gris.webp", ilustrativa: true, aroma: "fresco", ocasiones: ["dia", "oficina", "noche"] },
+    { id: "fakhar-gris", cat: "perfumes", sec: "arabes", nombre: "Fakhar Gris", detalle: "Perfume 100 ml", precio: 60000, para: "unisex", nuevo: true, foto: "fakhar-gris.webp", ilustrativa: true, aroma: "fresco", ocasiones: ["dia", "oficina", "noche"] },
 
     // ── perfumes/disenador
     { id: "one-million-lucky", cat: "perfumes", sec: "disenador", nombre: "1 Million Lucky", detalle: "Perfume 100 ml", precio: 39000, para: "el", aroma: "dulce", foto: "one-million-lucky.webp", ilustrativa: true, ocasiones: ["noche","cita","especial","regalo"] },
@@ -178,7 +180,7 @@ window.CATALOGO = {
     { id: "stronger-absolutely", cat: "perfumes", sec: "disenador", nombre: "Stronger With You Absolutely", detalle: "Perfume 100 ml", precio: 64500, para: "el", foto: "stronger-absolutely.webp", ilustrativa: true, aroma: "dulce", ocasiones: ["noche", "cita", "invierno", "especial", "regalo"] },
     { id: "stronger-oud", cat: "perfumes", sec: "disenador", nombre: "Stronger With You Oud", detalle: "Perfume 100 ml", precio: 64500, para: "el", aroma: "intenso", foto: "stronger-oud.webp", ocasiones: ["noche","cita","invierno","especial","regalo"] },
     { id: "stronger-tobacco", cat: "perfumes", sec: "disenador", nombre: "Stronger With You Tobacco", detalle: "Perfume 100 ml", precio: 64500, para: "el", aroma: "intenso", foto: "stronger-tobacco.webp", ocasiones: ["noche","cita","invierno","especial","regalo"] },
-    { id: "valentino-born-roma", cat: "perfumes", sec: "disenador", nombre: "Valentino Born in Roma Uomo", detalle: "Perfume 100 ml", precio: 90000, para: "el", aroma: "amaderado", foto: "valentino-born-roma.webp", destacado: 2, ocasiones: ["dia","regalo"] },
+    { id: "valentino-born-roma", cat: "perfumes", sec: "disenador", nombre: "Valentino Born in Roma Uomo", detalle: "Perfume 100 ml", precio: 81000, para: "el", aroma: "amaderado", foto: "valentino-born-roma.webp", destacado: 2, ocasiones: ["dia","regalo"] },
     { id: "n-valentino-coral-fantasy", cat: "perfumes", sec: "disenador", nombre: "Valentino Coral Fantasy", detalle: "Perfume 100 ml", precio: 81500, para: "ella", aroma: "frutal", foto: "n-valentino-coral-fantasy.jpeg", nuevo: true, ocasiones: ["dia","oficina","cita","verano","regalo"] },
     { id: "n-valentino-donna-extra-rose", cat: "perfumes", sec: "disenador", nombre: "Valentino Donna Extradose", detalle: "Perfume 100 ml", precio: 81500, para: "ella", aroma: "floral", foto: "n-valentino-donna-extra-rose.jpeg", nuevo: true, ocasiones: ["dia","oficina","noche","cita","especial","regalo"] },
     { id: "n-valentino-donna-intense", cat: "perfumes", sec: "disenador", nombre: "Valentino Donna Intense", detalle: "Perfume 100 ml", precio: 81500, para: "ella", aroma: "floral", foto: "n-valentino-donna-intense.jpeg", nuevo: true, ocasiones: ["noche","cita","invierno","regalo"] },
@@ -290,21 +292,21 @@ window.CATALOGO = {
     { id: "mic-lambotech", cat: "audio", sec: "microfonos", nombre: "Micrófono corbatero magnético Lambotech", detalle: "Micrófono inalámbrico", precio: 43000, foto: "mic-lambotech.webp" },
 
     // ── iphone/fundas
-    { id: "funda-antishock", cat: "iphone", sec: "fundas", nombre: "Funda anti-shock transparente", detalle: "iPhone 11 al 16", precio: 4100, opciones: "iphone16", foto: "funda-antishock.webp" },
-    { id: "funda-antishock-17", cat: "iphone", sec: "fundas", nombre: "Funda anti-shock transparente línea 17", detalle: "iPhone 17, 17 Pro y Pro Max", precio: 4700, opciones: "iphone17", foto: "funda-antishock-17.webp" },
-    { id: "funda-silicona", cat: "iphone", sec: "fundas", nombre: "Funda de silicona", detalle: "iPhone 11 al 16", precio: 7200, opciones: "iphone16", foto: "funda-silicona.webp" },
-    { id: "funda-magsafe", cat: "iphone", sec: "fundas", nombre: "Funda MagSafe transparente", detalle: "iPhone 11 al 16", precio: 7700, opciones: "iphone16", foto: "funda-magsafe.webp" },
-    { id: "funda-silicona-17", cat: "iphone", sec: "fundas", nombre: "Funda de silicona línea 17", detalle: "iPhone 17, 17 Pro y Pro Max", precio: 8100, opciones: "iphone17", foto: "funda-silicona-17.webp" },
-    { id: "funda-magsafe-17", cat: "iphone", sec: "fundas", nombre: "Funda MagSafe transparente línea 17", detalle: "iPhone 17, 17 Pro y Pro Max", precio: 8100, opciones: "iphone17", foto: "funda-magsafe-17.webp" },
+    { id: "funda-antishock", cat: "iphone", sec: "fundas", nombre: "Funda anti-shock transparente", detalle: "iPhone 11 al 16", precio: 4000, opciones: "iphone16", foto: "funda-antishock.webp" },
+    { id: "funda-antishock-17", cat: "iphone", sec: "fundas", nombre: "Funda anti-shock transparente línea 17", detalle: "iPhone 17, 17 Pro y Pro Max", precio: 4500, opciones: "iphone17", foto: "funda-antishock-17.webp" },
+    { id: "funda-silicona", cat: "iphone", sec: "fundas", nombre: "Funda de silicona", detalle: "iPhone 11 al 16", precio: 7000, opciones: "iphone16", foto: "funda-silicona.webp" },
+    { id: "funda-magsafe", cat: "iphone", sec: "fundas", nombre: "Funda MagSafe transparente", detalle: "iPhone 11 al 16", precio: 7500, opciones: "iphone16", foto: "funda-magsafe.webp" },
+    { id: "funda-silicona-17", cat: "iphone", sec: "fundas", nombre: "Funda de silicona línea 17", detalle: "iPhone 17, 17 Pro y Pro Max", precio: 8000, opciones: "iphone17", foto: "funda-silicona-17.webp" },
+    { id: "funda-magsafe-17", cat: "iphone", sec: "fundas", nombre: "Funda MagSafe transparente línea 17", detalle: "iPhone 17, 17 Pro y Pro Max", precio: 8000, opciones: "iphone17", foto: "funda-magsafe-17.webp" },
 
     // ── iphone/proteccion
-    { id: "protector-camara", cat: "iphone", sec: "proteccion", nombre: "Protector de cámara", detalle: "Para iPhone", precio: 5100, opciones: "iphone", foto: "protector-camara.webp", ilustrativa: true },
-    { id: "templado", cat: "iphone", sec: "proteccion", nombre: "Vidrio templado 9D", detalle: "Para iPhone", precio: 5100, opciones: "iphone", foto: "templado.webp" },
+    { id: "protector-camara", cat: "iphone", sec: "proteccion", nombre: "Protector de cámara", detalle: "Para iPhone", precio: 5000, opciones: "iphone", foto: "protector-camara.webp", ilustrativa: true },
+    { id: "templado", cat: "iphone", sec: "proteccion", nombre: "Vidrio templado 9D", detalle: "Para iPhone", precio: 5000, opciones: "iphone", foto: "templado.webp" },
     { id: "templado-auto", cat: "iphone", sec: "proteccion", nombre: "Vidrio templado autocolocante", detalle: "Para iPhone", precio: 9500, opciones: "iphone", foto: "templado-auto.webp", ilustrativa: true },
 
     // ── iphone/carga
-    { id: "cable-lightning", cat: "iphone", sec: "carga", nombre: "Cable C a Lightning", detalle: "Carga y datos", precio: 6200, foto: "cable-lightning.webp", ilustrativa: true },
-    { id: "cable-cc", cat: "iphone", sec: "carga", nombre: "Cable C a C mallado", detalle: "Carga y datos", precio: 6200, foto: "cable-cc.webp", ilustrativa: true },
+    { id: "cable-lightning", cat: "iphone", sec: "carga", nombre: "Cable C a Lightning", detalle: "Carga y datos", precio: 4500, foto: "cable-lightning.webp", ilustrativa: true },
+    { id: "cable-cc", cat: "iphone", sec: "carga", nombre: "Cable C a C mallado", detalle: "Carga y datos", precio: 4500, foto: "cable-cc.webp", ilustrativa: true },
     { id: "cargador-magsafe", cat: "iphone", sec: "carga", nombre: "Cargador MagSafe", detalle: "Disco magnético con cable USB-C", precio: 19000, foto: "cargador-magsafe.webp" },
     { id: "cargador-samsung45", cat: "iphone", sec: "carga", nombre: "Cargador Samsung 45W", detalle: "Carga rápida con cable C a C · iPhone 15 en adelante y Android", precio: 19000, foto: "cargador-samsung45.webp" },
     { id: "combo-cargador", cat: "iphone", sec: "carga", nombre: "Combo cargador", detalle: "Cargador 25W y cable C a Lightning · iPhone 11 al 14", precio: 19000, foto: "combo-cargador.webp" },
@@ -314,7 +316,7 @@ window.CATALOGO = {
     { id: "cargador-motorola-68w", cat: "iphone", sec: "carga", nombre: "Cargador Motorola 68W", detalle: "Carga rápida USB-C · Motorola y Android", precio: 20500, nuevo: true, foto: "cargador-motorola-68w.webp", ilustrativa: true },
 
     // ── iphone/extras
-    { id: "pegatina", cat: "iphone", sec: "extras", nombre: "Pegatina para celular", detalle: "Diseños a elección", precio: 3100, foto: "pegatina.webp", ilustrativa: true },
+    { id: "pegatina", cat: "iphone", sec: "extras", nombre: "Pegatina para celular", detalle: "Diseños a elección", precio: 3000, foto: "pegatina.webp", ilustrativa: true },
     { id: "bases", cat: "iphone", sec: "extras", nombre: "Bases", detalle: "Soporte", precio: 10500, foto: "bases.webp", ilustrativa: true },
 
     // ── mate/
@@ -358,7 +360,17 @@ window.CATALOGO = {
     { id: "ca-mayorista", cat: "combos", sec: "emprendedor", nombre: "Combo Accesorios Mayorista", detalle: "40 fundas de silicona, 30 fundas MagSafe, 15 combos cargador 20W + cable, 40 vidrios templados 9D, 5 AirPods Pro 2 y 4 battery pack MagSafe", precio: 716000, sinDescuento: true, separado: 993500, foto: "ca-mayorista.webp" },
     { id: "ce-fundas", cat: "combos", sec: "emprendedor", nombre: "Combo Fundas + cargadores", detalle: "30 fundas de silicona para iPhone (modelos surtidos) y 10 combos cargador", precio: 251000, sinDescuento: true, separado: 508000, foto: "ce-fundas.webp" },
     { id: "ce-airpods", cat: "combos", sec: "emprendedor", nombre: "Combo AirPods + accesorios", detalle: "8 AirPods Pro 2, 15 fundas de silicona para iPhone y 5 combos cargador", precio: 308000, sinDescuento: true, separado: 586500, foto: "ce-airpods.webp" },
-    { id: "ce-vs-decants", cat: "combos", sec: "emprendedor", nombre: "Combo Victoria's Secret + decants", detalle: "10 body splash Victoria's Secret (fragancias surtidas) y 10 decants de 35 ml", precio: 238500, sinDescuento: true, separado: 352500, foto: "ce-vs-decants.webp" }
+    { id: "ce-vs-decants", cat: "combos", sec: "emprendedor", nombre: "Combo Victoria's Secret + decants", detalle: "10 body splash Victoria's Secret (fragancias surtidas) y 10 decants de 35 ml", precio: 238500, sinDescuento: true, separado: 352500, foto: "ce-vs-decants.webp" },
+
+    // ── combos/promos (precio cerrado, 10% menos que por separado)
+    { id: "promo-2-yara", cat: "combos", sec: "promos", nombre: "Promo 2 Yara a elección", detalle: "Dos perfumes Yara de 100 ml: Rosa, Candy, Elixir o Blanco", precio: 89000, sinDescuento: true, separado: 99000, opciones: "promoyara", ocasiones: ["dia", "cita", "regalo"], foto: "promo-2-yara.webp" },
+    { id: "promo-5-decants", cat: "combos", sec: "promos", nombre: "Promo 5 decants a elección", detalle: "Cinco decants de 35 ml. Anotá los aromas en «Aclaraciones» del pedido", precio: 45000, sinDescuento: true, separado: 50000, ocasiones: ["regalo"], foto: "promo-5-decants.webp" },
+    { id: "promo-khamrah", cat: "combos", sec: "promos", nombre: "Promo dúo Khamrah", detalle: "Khamrah y Khamrah Qahwa, 100 ml cada uno", precio: 127000, sinDescuento: true, separado: 142000, ocasiones: ["noche", "cita", "invierno", "regalo"], foto: "promo-khamrah.webp" },
+    { id: "promo-9pm-pareja", cat: "combos", sec: "promos", nombre: "Promo pareja 9PM", detalle: "9PM para él y 9PM Pour Femme para ella, 100 ml cada uno", precio: 112000, sinDescuento: true, separado: 125000, ocasiones: ["noche", "cita", "regalo"], foto: "promo-9pm-pareja.webp", ilustrativa: true },
+    { id: "promo-asad-trio", cat: "combos", sec: "promos", nombre: "Promo trío Asad", detalle: "Asad, Asad Bourbon y Asad Elixir, 100 ml cada uno", precio: 133000, sinDescuento: true, separado: 148500, ocasiones: ["noche", "invierno", "regalo"], foto: "promo-asad-trio.webp" },
+    { id: "promo-odyssey-3", cat: "combos", sec: "promos", nombre: "Promo 3 Odyssey a elección", detalle: "Tres Odyssey de 100 ml: Aqua, Candy, Limoni o Spectra. Anotalos en «Aclaraciones»", precio: 147000, sinDescuento: true, separado: 163500, ocasiones: ["dia", "verano", "regalo"], foto: "promo-odyssey-3.webp", ilustrativa: true },
+    { id: "promo-hawas-2", cat: "combos", sec: "promos", nombre: "Promo 2 Hawas a elección", detalle: "Dos Hawas de 100 ml: Fire, Malibu, Kobra, for Him o Glitz. Anotalos en «Aclaraciones»", precio: 108000, sinDescuento: true, separado: 120000, ocasiones: ["dia", "noche", "regalo"], foto: "promo-hawas-2.webp" },
+    { id: "promo-yara-vs", cat: "combos", sec: "promos", nombre: "Promo Yara + body splash", detalle: "Un Yara de 100 ml y un body splash Victoria's Secret de 250 ml a elección", precio: 71000, sinDescuento: true, separado: 79500, ocasiones: ["dia", "cita", "regalo"], foto: "promo-yara-vs.webp" }
   ],
 
   // Notas de cada perfume: familia, ideal para, y la pirámide (salida, corazón, fondo) o una lista simple de notas
