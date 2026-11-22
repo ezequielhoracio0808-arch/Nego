@@ -305,8 +305,8 @@ window.CATALOGO = {
     { id: "templado-auto", cat: "iphone", sec: "proteccion", nombre: "Vidrio templado autocolocante", detalle: "Para iPhone", precio: 9500, opciones: "iphone", foto: "templado-auto.webp", ilustrativa: true },
 
     // ── iphone/carga
-    { id: "cable-lightning", cat: "iphone", sec: "carga", nombre: "Cable C a Lightning", detalle: "Carga y datos", precio: 4500, foto: "cable-lightning.webp", ilustrativa: true },
-    { id: "cable-cc", cat: "iphone", sec: "carga", nombre: "Cable C a C mallado", detalle: "Carga y datos", precio: 4500, foto: "cable-cc.webp", ilustrativa: true },
+    { id: "cable-lightning", cat: "iphone", sec: "carga", nombre: "Cable C a Lightning", detalle: "Carga y datos", precio: 6500, foto: "cable-lightning.webp", ilustrativa: true },
+    { id: "cable-cc", cat: "iphone", sec: "carga", nombre: "Cable C a C mallado", detalle: "Carga y datos", precio: 6500, foto: "cable-cc.webp", ilustrativa: true },
     { id: "cargador-magsafe", cat: "iphone", sec: "carga", nombre: "Cargador MagSafe", detalle: "Disco magnético con cable USB-C", precio: 19000, foto: "cargador-magsafe.webp" },
     { id: "cargador-samsung45", cat: "iphone", sec: "carga", nombre: "Cargador Samsung 45W", detalle: "Carga rápida con cable C a C · iPhone 15 en adelante y Android", precio: 19000, foto: "cargador-samsung45.webp" },
     { id: "combo-cargador", cat: "iphone", sec: "carga", nombre: "Combo cargador", detalle: "Cargador 25W y cable C a Lightning · iPhone 11 al 14", precio: 19000, foto: "combo-cargador.webp" },
