@@ -39,23 +39,23 @@
     "escenas": [
       {
         "narracion": "En este pueblo de Alaska casi todos los vecinos viven en el mismo edificio.",
-        "imagen": "?WHIT1"
+        "imagen": "Whittier Alaska"
       },
       {
         "narracion": "Es Whittier. Tiene unos doscientos setenta habitantes, y la mayoría vive en Begich Towers, un antiguo cuartel del ejército de catorce plantas.",
-        "imagen": "?WHIT2"
+        "imagen": "Begich Towers"
       },
       {
         "narracion": "Dentro hay tienda, oficina de correos y clínica. Y un túnel lleva directamente al colegio, así que los niños pueden ir a clase sin pisar la nieve.",
-        "imagen": "?WHIT2"
+        "imagen": "Begich Towers"
       },
       {
         "narracion": "Para salir del pueblo en coche solo hay un túnel, y por la noche se cierra. Si llegas tarde, te quedas fuera hasta el día siguiente.",
-        "imagen": "?WHIT3"
+        "imagen": "Whittier Alaska#2"
       },
       {
         "narracion": "¿Vivirías aquí?",
-        "imagen": "?WHIT1"
+        "imagen": "Whittier Alaska"
       }
     ]
   },

@@ -39,23 +39,23 @@
     "escenas": [
       {
         "narracion": "Esta isla de Japón está llena de conejos. Pero esconde un secreto muy oscuro.",
-        "imagen": "?OKU1"
+        "imagen": "Okunoshima"
       },
       {
         "narracion": "Es Okunoshima. Entre 1929 y 1945, el ejército japonés fabricó aquí gas venenoso en secreto. Tanto, que la isla llegó a borrarse de los mapas.",
-        "imagen": "?OKU2"
+        "imagen": "Okunoshima#2"
       },
       {
         "narracion": "Hoy hay un museo sobre aquella fábrica, y algunas de sus ruinas siguen en pie.",
-        "imagen": "?OKU2"
+        "imagen": "Okunoshima#2"
       },
       {
         "narracion": "¿Y los conejos? Nadie sabe seguro de dónde salieron. Se dice que descienden de los de los experimentos, pero muchos creen que los soltaron años después de la guerra.",
-        "imagen": "?OKU1"
+        "imagen": "Okunoshima"
       },
       {
         "narracion": "¿Irías a verlos?",
-        "imagen": "?OKU1"
+        "imagen": "Okunoshima"
       }
     ]
   },

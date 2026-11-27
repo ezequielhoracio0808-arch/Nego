@@ -34,19 +34,19 @@
     "escenas": [
       {
         "narracion": "Hay un país en el que no eres ciudadano por nacer allí, ni por ser hijo de un ciudadano.",
-        "imagen": "?VAT1"
+        "imagen": "Vatican City"
       },
       {
         "narracion": "Es el Vaticano, el país más pequeño del mundo. Su nacionalidad se consigue por el cargo: cardenales, diplomáticos de la Santa Sede o guardias suizos, por ejemplo.",
-        "imagen": "?VAT2"
+        "imagen": "Vatican City#2"
       },
       {
         "narracion": "Y cuando dejas el puesto, la pierdes. Si al perderla te quedaras sin ninguna nacionalidad, pasas a ser italiano automáticamente.",
-        "imagen": "?VAT1"
+        "imagen": "Vatican City"
       },
       {
         "narracion": "Por eso solo tiene unos cientos de ciudadanos. ¿Lo sabías?",
-        "imagen": "?VAT2"
+        "imagen": "Vatican City#2"
       }
     ]
   }

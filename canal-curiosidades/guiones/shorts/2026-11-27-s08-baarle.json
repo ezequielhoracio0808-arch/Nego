@@ -40,19 +40,19 @@
     "escenas": [
       {
         "narracion": "En este pueblo, la frontera entre dos países pasa por dentro de algunas casas.",
-        "imagen": "?BAAR1"
+        "imagen": "Baarle border"
       },
       {
         "narracion": "Es Baarle, que en realidad son dos municipios: uno belga y otro neerlandés, mezclados como un puzle. Hay más de veinte trocitos de Bélgica dentro de Países Bajos, y trocitos de Países Bajos dentro de esos trocitos.",
-        "imagen": "?BAAR2"
+        "imagen": "Baarle border#2"
       },
       {
         "narracion": "En el suelo hay cruces y líneas que marcan la frontera. Y si una casa queda partida, normalmente cuenta su puerta principal: según dónde esté, vives en un país o en el otro.",
-        "imagen": "?BAAR1"
+        "imagen": "Baarle border"
       },
       {
         "narracion": "Todo viene de repartos de tierras de la Edad Media. ¿Te imaginas cenar en Bélgica y dormir en Países Bajos?",
-        "imagen": "?BAAR2"
+        "imagen": "Baarle border#2"
       }
     ]
   },

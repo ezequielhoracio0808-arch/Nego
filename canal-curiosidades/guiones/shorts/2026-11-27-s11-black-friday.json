@@ -1,0 +1,66 @@
+{
+  "tema": "Por qué se llama Black Friday: el origen real (policía de Filadelfia)",
+  "por_que": "Black Friday es hoy (27/11/2026) y está entre las búsquedas en tendencia de Google. Short de actualidad para publicar hoy.",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "blackfriday"
+  ],
+  "etiquetas": [
+    "black friday",
+    "origen black friday",
+    "por qué se llama black friday",
+    "viernes negro",
+    "curiosidades",
+    "datos curiosos"
+  ],
+  "pron": {
+    "Black Friday": "Blac Fráidei",
+    "Big Friday": "Big Fráidei"
+  },
+  "fuentes": [
+    {
+      "titulo": "History.com — Black Friday: origins and history",
+      "url": "https://www.history.com/news/black-friday-thanksgiving-origins-history"
+    },
+    {
+      "titulo": "CBS Philadelphia — The little-known Philadelphia origins of Black Friday",
+      "url": "https://www.cbsnews.com/philadelphia/news/the-little-known-philadelphia-origins-of-black-friday"
+    },
+    {
+      "titulo": "The Philadelphia Inquirer — Philly cops coined the term Black Friday",
+      "url": "https://www.inquirer.com/philly/blogs/trending/Philly-cops-coined-the-term-Black-Friday.html"
+    }
+  ],
+  "short": {
+    "titulo": "¿Por qué se llama BLACK FRIDAY? No es lo que crees 🛍️ #shorts",
+    "gancho": [
+      "¿POR QUÉ",
+      "BLACK FRIDAY?"
+    ],
+    "descripcion": "El nombre «Black Friday» no viene de las cuentas de las tiendas: lo inventó la policía de Filadelfia por el caos del día después de Acción de Gracias.",
+    "escenas": [
+      {
+        "narracion": "¿Sabes por qué el Black Friday se llama así? Seguramente te han contado una historia que no es la buena.",
+        "imagen": "Black Friday shopping"
+      },
+      {
+        "narracion": "La versión famosa dice que es el día en que las tiendas pasan de números rojos a números negros. Pero esa explicación se popularizó décadas después.",
+        "imagen": "Black Friday shopping#2"
+      },
+      {
+        "narracion": "El nombre lo usaba la policía de Filadelfia hacia los años sesenta. El viernes después de Acción de Gracias, la ciudad se llenaba de compradores y de visitantes, y los agentes tenían que hacer turnos larguísimos. Para ellos, era un viernes negro.",
+        "imagen": "Philadelphia Market Street"
+      },
+      {
+        "narracion": "Los comerciantes intentaron cambiarlo por Big Friday, el gran viernes. No funcionó.",
+        "imagen": "Black Friday shopping#3"
+      },
+      {
+        "narracion": "¿Tú vas a comprar algo hoy?",
+        "imagen": "Black Friday shopping"
+      }
+    ]
+  }
+}
