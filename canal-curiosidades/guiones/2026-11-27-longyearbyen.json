@@ -1,0 +1,174 @@
+{
+  "tema": "Longyearbyen (Svalbard): el pueblo donde no se entierra a nadie",
+  "por_que": "Tema perenne de los canales de curiosidades («lugares donde está prohibido morir»); se diferencia contando la verdad (no hay ley) y la expedición de 1998. Primer vídeo: sin datos de la API de YouTube todavía.",
+  "titulo": "El pueblo donde NO PUEDES MORIR (ni nacer): la historia real de Longyearbyen",
+  "miniatura": [
+    "AQUÍ NO",
+    "PUEDES MORIR"
+  ],
+  "miniatura_imagen": 2,
+  "acento": "#ffc22e",
+  "descripcion": "En Longyearbyen, en el archipiélago noruego de Svalbard, no se entierra a nadie desde 1950. El suelo está congelado todo el año y los cuerpos casi no se descomponen. ¿De verdad está prohibido morir? Te contamos qué hay de cierto, qué pasó con los mineros de la gripe de 1918 y por qué allí tampoco se nace ni se pueden tener gatos.",
+  "etiquetas": [
+    "curiosidades",
+    "datos curiosos",
+    "longyearbyen",
+    "svalbard",
+    "pueblo donde está prohibido morir",
+    "lugares extraños del mundo",
+    "noruega",
+    "permafrost",
+    "gripe española",
+    "sabías que"
+  ],
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "noruega"
+  ],
+  "pron": {
+    "Longyearbyen": "Long yir bien",
+    "Svalbard": "Sválbard",
+    "Kirsty Duncan": "Kérsti Dáncan",
+    "permafrost": "pérmafrost"
+  },
+  "fuentes": [
+    {
+      "titulo": "Svalbard Museum — The Spanish flu",
+      "url": "https://svalbardmuseum.no/en/the-spanish-flu"
+    },
+    {
+      "titulo": "CMAJ (1998) — expedición a Spitsbergen en busca del virus de 1918",
+      "url": "https://www.cmaj.ca/content/cmaj/158/11/1419.full-text.pdf"
+    },
+    {
+      "titulo": "Gobierno de Noruega — Meld. St. 26 (2023–2024) sobre Svalbard",
+      "url": "https://www.regjeringen.no/en/documents/meld.-st.-26-20232024/id3041130/?ch=2"
+    },
+    {
+      "titulo": "Sysselmesteren (Gobernador de Svalbard) — armas y protección contra osos polares",
+      "url": "https://www.sysselmesteren.no/en/news/2024/05/revised-guidelines-for-firearms-for-polar-bear-protection/"
+    },
+    {
+      "titulo": "Visit Norway — La noche polar en Svalbard",
+      "url": "https://visitnorway.com/places-to-go/svalbard-islands/polar-night"
+    },
+    {
+      "titulo": "Smithsonian — La noche polar en la ciudad más al norte del mundo",
+      "url": "https://www.smithsonianmag.com/travel/what-its-like-to-experience-polar-night-in-the-worlds-northernmost-town-180985271/"
+    }
+  ],
+  "escenas": [
+    {
+      "titulo": "LONGYEARBYEN, NORUEGA",
+      "capitulo": "Un pueblo muy extraño",
+      "narracion": "Hay un pueblo en el que, en la práctica, no te puedes morir. Tampoco puedes nacer. Y tener un gato está prohibido. Se llama Longyearbyen, y lo que pasa allí con los muertos parece una leyenda. Pero es real. Quédate hasta el final, porque te voy a contar por qué un equipo de científicos viajó hasta allí para desenterrar a siete mineros.",
+      "imagen": "File:Longyearbyen-from-above-Hiorthfjellet.jpg"
+    },
+    {
+      "titulo": "CASI EN EL POLO NORTE",
+      "capitulo": "Dónde está Longyearbyen",
+      "cifra": "78° NORTE",
+      "narracion": "Longyearbyen está en Svalbard, un archipiélago noruego en mitad del océano Ártico, a unos mil trescientos kilómetros del Polo Norte. Viven unas dos mil quinientas personas, y es una de las poblaciones más al norte del planeta. Para que te hagas una idea: entre noviembre y finales de enero, allí es de noche las veinticuatro horas del día.",
+      "imagen": "Longyearbyen polar night"
+    },
+    {
+      "titulo": "UN CEMENTERIO CERRADO",
+      "capitulo": "El cementerio cerrado",
+      "cifra": "DESDE 1950",
+      "narracion": "Y aquí empieza lo extraño. Longyearbyen tiene un pequeño cementerio en la ladera de una montaña. Pero desde 1950 no se entierra a nadie en él. ¿Por qué? Por culpa del permafrost.",
+      "imagen": "File:Longyearbyen Gruve 1 cemetery.jpg"
+    },
+    {
+      "titulo": "EL SUELO NUNCA SE DESHIELA",
+      "capitulo": "El permafrost",
+      "narracion": "El permafrost es suelo que permanece congelado todo el año. En Svalbard, en verano solo se deshiela la capa más superficial; por debajo, la tierra está helada de forma permanente. Y eso tiene una consecuencia inquietante: los cuerpos enterrados apenas se descomponen. Además, con los años el suelo helado se mueve y puede empujar los ataúdes hacia la superficie.",
+      "imagen": "File:Cemetery in Longyearbyen, Svalbard, July 2026.jpg"
+    },
+    {
+      "titulo": "LA GRIPE DE 1918",
+      "capitulo": "Los mineros de 1918",
+      "narracion": "En 1918, la gripe española llegó hasta este rincón del Ártico. Siete jóvenes mineros que acababan de llegar en barco murieron por la enfermedad, y los enterraron en ese cementerio. Y aquí está la pregunta que inquietaba a todos: si los cuerpos no se descomponen, ¿qué pasa con el virus que los mató?",
+      "imagen": "Longyearbyen coal mine"
+    },
+    {
+      "titulo": "LA EXPEDICIÓN DE 1998",
+      "capitulo": "La expedición de 1998",
+      "cifra": "1998",
+      "narracion": "Esa pregunta llevó hasta Longyearbyen a un equipo científico internacional en 1998, dirigido por la investigadora canadiense Kirsty Duncan. Con permiso de las autoridades y de las familias, exhumaron a los mineros para buscar restos del virus de la gripe de 1918, que mató a decenas de millones de personas. ¿El resultado? Los cuerpos estaban bastante peor conservados de lo que esperaban. Aun así, la historia dio la vuelta al mundo.",
+      "imagen": "File:Longyearbyen Friedhof.jpg"
+    },
+    {
+      "titulo": "¿PROHIBIDO MORIR?",
+      "capitulo": "¿De verdad está prohibido morir?",
+      "narracion": "Entonces, ¿de verdad está prohibido morir en Longyearbyen? No exactamente: no hay ninguna ley que lo prohíba. Lo que ocurre es que el pueblo no está preparado para ello. Tiene un pequeño hospital para urgencias, pero quien está gravemente enfermo, o necesita cuidados en la vejez, suele trasladarse al continente. Y la mayoría de los que mueren allí acaban enterrados en otra parte de Noruega.",
+      "imagen": "File:Longyearbyen-sykehus-2022.jpg"
+    },
+    {
+      "titulo": "TAMPOCO SE NACE AQUÍ",
+      "capitulo": "Tampoco se nace aquí",
+      "narracion": "Con los nacimientos pasa algo parecido. En Longyearbyen no hay planta de maternidad, así que a las embarazadas se les recomienda viajar al continente unas tres semanas antes de dar a luz. Por eso casi nadie puede decir que ha nacido en Longyearbyen.",
+      "imagen": "File:Longyearbyen colourful homes.jpg"
+    },
+    {
+      "titulo": "PROHIBIDO TENER GATOS",
+      "capitulo": "Prohibido tener gatos",
+      "narracion": "Y luego están los gatos. En Svalbard están prohibidos. No es un capricho: el archipiélago es el hogar de enormes colonias de aves marinas, muchas de las cuales anidan en el suelo o entre las rocas. Un gato suelto podría ser un desastre para ellas.",
+      "imagen": "little auk Svalbard"
+    },
+    {
+      "titulo": "CUIDADO CON LOS OSOS",
+      "capitulo": "Cuidado con los osos polares",
+      "narracion": "Si sales del pueblo, la ley te obliga a ir preparado para un encuentro con osos polares. Por eso, en Svalbard, es habitual ver a excursionistas con un rifle al hombro. A las afueras hay señales que avisan del peligro con la silueta de un oso.",
+      "imagen": "polar bear warning sign Svalbard"
+    },
+    {
+      "titulo": "SIN VISADO",
+      "capitulo": "Vivir allí sin visado",
+      "narracion": "Lo más curioso es que, gracias al Tratado de Svalbard de 1920, para vivir y trabajar allí no necesitas visado ni permiso de residencia. Eso sí, para llegar tienes que pasar por Noruega continental, donde rigen las normas de siempre. Y una vez allí tienes que poder mantenerte: si no tienes trabajo ni con qué vivir, las autoridades pueden pedirte que te vayas.",
+      "imagen": "Svalbard Airport Longyear"
+    },
+    {
+      "titulo": "LA BÓVEDA DEL FIN DEL MUNDO",
+      "capitulo": "La bóveda de semillas",
+      "narracion": "Y por si fuera poco, a las afueras de Longyearbyen está la Bóveda Global de Semillas de Svalbard, inaugurada en 2008. Dentro de la montaña se guardan copias de semillas de cultivos de todo el planeta, por si alguna catástrofe las hiciera desaparecer.",
+      "imagen": "File:Svalbard Global Seed Vault February 2025.jpg"
+    },
+    {
+      "titulo": "¿VIVIRÍAS AQUÍ?",
+      "capitulo": "¿Vivirías aquí?",
+      "narracion": "Un lugar donde no te entierran, donde casi nadie nace, sin gatos, con osos polares y con meses de noche. ¿Te irías a vivir a Longyearbyen? Te leo en los comentarios. Y si te ha gustado, suscríbete a Dato Oculto: cada día, una curiosidad nueva.",
+      "imagen": "File:Longyearbyen-spisshus-2022.jpg"
+    }
+  ],
+  "short": {
+    "titulo": "En este pueblo NO te puedes morir 😳 #shorts",
+    "gancho": [
+      "AQUÍ NO TE",
+      "PUEDES MORIR"
+    ],
+    "descripcion": "Longyearbyen (Noruega): desde 1950 no se entierra a nadie porque el suelo está congelado todo el año.",
+    "escenas": [
+      {
+        "narracion": "En este pueblo de Noruega no te puedes morir. Y tampoco puedes nacer.",
+        "imagen": "File:Longyearbyen-from-above-Hiorthfjellet.jpg"
+      },
+      {
+        "narracion": "Se llama Longyearbyen, y está tan al norte que el suelo está congelado todo el año. Por eso, desde 1950, su cementerio no acepta más entierros: los cuerpos casi no se descomponen.",
+        "imagen": "File:Cemetery in Longyearbyen, Svalbard, July 2026.jpg"
+      },
+      {
+        "narracion": "Allí están enterrados siete mineros que murieron en la gripe de 1918. En 1998, un equipo de científicos los desenterró para buscar el virus.",
+        "imagen": "File:Longyearbyen Gruve 1 cemetery.jpg"
+      },
+      {
+        "narracion": "Hoy, quien está muy enfermo se marcha al continente, y las embarazadas viajan semanas antes de dar a luz.",
+        "imagen": "File:Longyearbyen-sykehus-2022.jpg"
+      },
+      {
+        "narracion": "Ah, y los gatos están prohibidos. ¿Vivirías allí?",
+        "imagen": "File:Longyearbyen-spisshus-2022.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+_tmp/
+__pycache__/
+trabajo/
+*.part
+# Los vídeos no se suben a git (pesan ~100 MB/día): se entregan por la app y se pueden regenerar con producir.py
+salida/**/*.mp4

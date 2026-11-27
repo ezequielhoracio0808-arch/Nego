@@ -1,0 +1,42 @@
+{
+  "canal": "DATO OCULTO",
+  "eslogan": "CURIOSIDADES · HISTORIA · MISTERIOS",
+  "acento": "#ffc22e",
+  "zona_horaria": "Europe/Madrid",
+  "voz": {
+    "modelo": "es_ES-davefx-medium",
+    "url": "https://huggingface.co/rhasspy/piper-voices/resolve/main/es/es_ES/davefx/medium/",
+    "velocidad": 0.95
+  },
+  "investigacion": {
+    "busquedas": [
+      "curiosidades",
+      "datos curiosos",
+      "sabías que",
+      "misterios sin resolver",
+      "historia increíble",
+      "lugares más extraños del mundo",
+      "cosas que no sabías",
+      "inventos que cambiaron el mundo"
+    ],
+    "dias": 14,
+    "idioma": "es",
+    "max_por_busqueda": 25
+  },
+  "pronunciacion": {
+    "YouTube": "Yutub",
+    "\\bvs\\.?": "contra",
+    "\\bEE\\. ?UU\\.": "Estados Unidos",
+    "\\bkm\\b": "kilómetros",
+    "\\bm²": "metros cuadrados",
+    "\\bkg\\b": "kilos",
+    "\\b°C\\b": "grados",
+    "\\bsiglo XX\\b": "siglo veinte",
+    "\\bsiglo XXI\\b": "siglo veintiuno",
+    "\\bsiglo XIX\\b": "siglo diecinueve",
+    "\\bsiglo XVIII\\b": "siglo dieciocho",
+    "\\bsiglo XVII\\b": "siglo diecisiete",
+    "\\bsiglo XVI\\b": "siglo dieciséis",
+    "\\bsiglo XV\\b": "siglo quince"
+  }
+}

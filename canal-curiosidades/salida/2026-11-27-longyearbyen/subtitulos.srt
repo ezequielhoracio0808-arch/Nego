@@ -1,0 +1,472 @@
+1
+00:00:00,350 --> 00:00:02,239
+Hay un pueblo en el que, en la práctica,
+
+2
+00:00:02,239 --> 00:00:03,136
+no te puedes morir.
+
+3
+00:00:03,256 --> 00:00:04,789
+Tampoco puedes nacer.
+
+4
+00:00:04,909 --> 00:00:06,755
+Y tener un gato está prohibido.
+
+5
+00:00:06,875 --> 00:00:08,917
+Se llama Longyearbyen, y lo que pasa allí
+
+6
+00:00:08,917 --> 00:00:10,660
+con los muertos parece una leyenda.
+
+7
+00:00:10,780 --> 00:00:12,138
+Pero es real.
+
+8
+00:00:12,258 --> 00:00:14,074
+Quédate hasta el final, porque te voy
+
+9
+00:00:14,074 --> 00:00:16,087
+a contar por qué un equipo de científicos
+
+10
+00:00:16,087 --> 00:00:18,100
+viajó hasta allí para desenterrar a siete
+
+11
+00:00:18,100 --> 00:00:18,493
+mineros.
+
+12
+00:00:19,043 --> 00:00:20,787
+Longyearbyen está en Svalbard,
+
+13
+00:00:20,787 --> 00:00:23,287
+un archipiélago noruego en mitad del océano
+
+14
+00:00:23,287 --> 00:00:25,671
+Ártico, a unos mil trescientos kilómetros
+
+15
+00:00:25,671 --> 00:00:26,543
+del Polo Norte.
+
+16
+00:00:26,663 --> 00:00:28,931
+Viven unas dos mil quinientas personas, y es
+
+17
+00:00:28,931 --> 00:00:30,735
+una de las poblaciones más al norte
+
+18
+00:00:30,735 --> 00:00:31,353
+del planeta.
+
+19
+00:00:31,473 --> 00:00:33,770
+Para que te hagas una idea: entre noviembre
+
+20
+00:00:33,770 --> 00:00:35,692
+y finales de enero, allí es de noche
+
+21
+00:00:35,692 --> 00:00:37,348
+las veinticuatro horas del día.
+
+22
+00:00:37,898 --> 00:00:39,570
+Y aquí empieza lo extraño.
+
+23
+00:00:39,690 --> 00:00:41,766
+Longyearbyen tiene un pequeño cementerio
+
+24
+00:00:41,766 --> 00:00:43,219
+en la ladera de una montaña.
+
+25
+00:00:43,339 --> 00:00:46,528
+Pero desde 1950 no se entierra a nadie
+
+26
+00:00:46,528 --> 00:00:47,031
+en él.
+
+27
+00:00:47,151 --> 00:00:48,033
+¿Por qué?
+
+28
+00:00:48,153 --> 00:00:49,918
+Por culpa del permafrost.
+
+29
+00:00:50,468 --> 00:00:52,522
+El permafrost es suelo que permanece
+
+30
+00:00:52,522 --> 00:00:53,777
+congelado todo el año.
+
+31
+00:00:53,897 --> 00:00:55,921
+En Svalbard, en verano solo se deshiela
+
+32
+00:00:55,921 --> 00:00:57,789
+la capa más superficial; por debajo,
+
+33
+00:00:57,789 --> 00:00:59,969
+la tierra está helada de forma permanente.
+
+34
+00:01:00,089 --> 00:01:02,301
+Y eso tiene una consecuencia inquietante:
+
+35
+00:01:02,301 --> 00:01:03,866
+los cuerpos enterrados apenas
+
+36
+00:01:03,866 --> 00:01:04,675
+se descomponen.
+
+37
+00:01:04,795 --> 00:01:06,807
+Además, con los años el suelo helado
+
+38
+00:01:06,807 --> 00:01:09,155
+se mueve y puede empujar los ataúdes hacia
+
+39
+00:01:09,155 --> 00:01:09,938
+la superficie.
+
+40
+00:01:10,488 --> 00:01:13,639
+En 1918, la gripe española llegó hasta este
+
+41
+00:01:13,639 --> 00:01:14,958
+rincón del Ártico.
+
+42
+00:01:15,078 --> 00:01:17,286
+Siete jóvenes mineros que acababan de llegar
+
+43
+00:01:17,286 --> 00:01:19,092
+en barco murieron por la enfermedad,
+
+44
+00:01:19,092 --> 00:01:20,848
+y los enterraron en ese cementerio.
+
+45
+00:01:20,968 --> 00:01:22,817
+Y aquí está la pregunta que inquietaba
+
+46
+00:01:22,817 --> 00:01:24,859
+a todos: si los cuerpos no se descomponen,
+
+47
+00:01:24,859 --> 00:01:26,611
+¿qué pasa con el virus que los mató?
+
+48
+00:01:27,161 --> 00:01:29,656
+Esa pregunta llevó hasta Longyearbyen
+
+49
+00:01:29,656 --> 00:01:32,084
+a un equipo científico internacional
+
+50
+00:01:32,084 --> 00:01:34,646
+en 1998, dirigido por la investigadora
+
+51
+00:01:34,646 --> 00:01:36,332
+canadiense Kirsty Duncan.
+
+52
+00:01:36,452 --> 00:01:38,416
+Con permiso de las autoridades
+
+53
+00:01:38,416 --> 00:01:41,165
+y de las familias, exhumaron a los mineros
+
+54
+00:01:41,165 --> 00:01:43,784
+para buscar restos del virus de la gripe
+
+55
+00:01:43,784 --> 00:01:46,337
+de 1918, que mató a decenas de millones
+
+56
+00:01:46,337 --> 00:01:47,122
+de personas.
+
+57
+00:01:47,242 --> 00:01:48,438
+¿El resultado?
+
+58
+00:01:48,558 --> 00:01:50,273
+Los cuerpos estaban bastante peor
+
+59
+00:01:50,273 --> 00:01:51,936
+conservados de lo que esperaban.
+
+60
+00:01:52,056 --> 00:01:54,750
+Aun así, la historia dio la vuelta al mundo.
+
+61
+00:01:55,300 --> 00:01:57,363
+Entonces, ¿de verdad está prohibido morir
+
+62
+00:01:57,363 --> 00:01:58,168
+en Longyearbyen?
+
+63
+00:01:58,288 --> 00:02:00,036
+No exactamente: no hay ninguna ley
+
+64
+00:02:00,036 --> 00:02:00,807
+que lo prohíba.
+
+65
+00:02:00,927 --> 00:02:02,897
+Lo que ocurre es que el pueblo no está
+
+66
+00:02:02,897 --> 00:02:03,934
+preparado para ello.
+
+67
+00:02:04,054 --> 00:02:06,138
+Tiene un pequeño hospital para urgencias,
+
+68
+00:02:06,138 --> 00:02:07,917
+pero quien está gravemente enfermo,
+
+69
+00:02:07,917 --> 00:02:09,849
+o necesita cuidados en la vejez, suele
+
+70
+00:02:09,849 --> 00:02:11,171
+trasladarse al continente.
+
+71
+00:02:11,291 --> 00:02:13,385
+Y la mayoría de los que mueren allí acaban
+
+72
+00:02:13,385 --> 00:02:15,180
+enterrados en otra parte de Noruega.
+
+73
+00:02:15,730 --> 00:02:17,948
+Con los nacimientos pasa algo parecido.
+
+74
+00:02:18,068 --> 00:02:20,444
+En Longyearbyen no hay planta de maternidad,
+
+75
+00:02:20,444 --> 00:02:22,767
+así que a las embarazadas se les recomienda
+
+76
+00:02:22,767 --> 00:02:25,144
+viajar al continente unas tres semanas antes
+
+77
+00:02:25,144 --> 00:02:25,846
+de dar a luz.
+
+78
+00:02:25,966 --> 00:02:28,350
+Por eso casi nadie puede decir que ha nacido
+
+79
+00:02:28,350 --> 00:02:29,217
+en Longyearbyen.
+
+80
+00:02:29,767 --> 00:02:31,416
+Y luego están los gatos.
+
+81
+00:02:31,536 --> 00:02:33,509
+En Svalbard están prohibidos.
+
+82
+00:02:33,629 --> 00:02:35,842
+No es un capricho: el archipiélago es
+
+83
+00:02:35,842 --> 00:02:37,995
+el hogar de enormes colonias de aves
+
+84
+00:02:37,995 --> 00:02:40,148
+marinas, muchas de las cuales anidan
+
+85
+00:02:40,148 --> 00:02:41,942
+en el suelo o entre las rocas.
+
+86
+00:02:42,062 --> 00:02:44,308
+Un gato suelto podría ser un desastre
+
+87
+00:02:44,308 --> 00:02:44,976
+para ellas.
+
+88
+00:02:45,526 --> 00:02:47,772
+Si sales del pueblo, la ley te obliga a ir
+
+89
+00:02:47,772 --> 00:02:49,696
+preparado para un encuentro con osos
+
+90
+00:02:49,696 --> 00:02:50,124
+polares.
+
+91
+00:02:50,244 --> 00:02:52,258
+Por eso, en Svalbard, es habitual ver
+
+92
+00:02:52,258 --> 00:02:54,435
+a excursionistas con un rifle al hombro.
+
+93
+00:02:54,555 --> 00:02:56,485
+A las afueras hay señales que avisan
+
+94
+00:02:56,485 --> 00:02:58,468
+del peligro con la silueta de un oso.
+
+95
+00:02:59,018 --> 00:03:01,668
+Lo más curioso es que, gracias al Tratado
+
+96
+00:03:01,668 --> 00:03:04,383
+de Svalbard de 1920, para vivir y trabajar
+
+97
+00:03:04,383 --> 00:03:06,646
+allí no necesitas visado ni permiso
+
+98
+00:03:06,646 --> 00:03:07,551
+de residencia.
+
+99
+00:03:07,671 --> 00:03:09,485
+Eso sí, para llegar tienes que pasar
+
+100
+00:03:09,485 --> 00:03:11,299
+por Noruega continental, donde rigen
+
+101
+00:03:11,299 --> 00:03:12,408
+las normas de siempre.
+
+102
+00:03:12,528 --> 00:03:14,812
+Y una vez allí tienes que poder mantenerte:
+
+103
+00:03:14,812 --> 00:03:16,831
+si no tienes trabajo ni con qué vivir,
+
+104
+00:03:16,831 --> 00:03:19,169
+las autoridades pueden pedirte que te vayas.
+
+105
+00:03:19,719 --> 00:03:21,586
+Y por si fuera poco, a las afueras
+
+106
+00:03:21,586 --> 00:03:23,618
+de Longyearbyen está la Bóveda Global
+
+107
+00:03:23,618 --> 00:03:26,035
+de Semillas de Svalbard, inaugurada en 2008.
+
+108
+00:03:26,155 --> 00:03:27,974
+Dentro de la montaña se guardan copias
+
+109
+00:03:27,974 --> 00:03:30,033
+de semillas de cultivos de todo el planeta,
+
+110
+00:03:30,033 --> 00:03:31,757
+por si alguna catástrofe las hiciera
+
+111
+00:03:31,757 --> 00:03:32,331
+desaparecer.
+
+112
+00:03:32,881 --> 00:03:35,166
+Un lugar donde no te entierran, donde casi
+
+113
+00:03:35,166 --> 00:03:37,288
+nadie nace, sin gatos, con osos polares
+
+114
+00:03:37,288 --> 00:03:38,431
+y con meses de noche.
+
+115
+00:03:38,551 --> 00:03:40,431
+¿Te irías a vivir a Longyearbyen?
+
+116
+00:03:40,551 --> 00:03:42,432
+Te leo en los comentarios.
+
+117
+00:03:42,552 --> 00:03:44,576
+Y si te ha gustado, suscríbete a Dato
+
+118
+00:03:44,576 --> 00:03:46,709
+Oculto: cada día, una curiosidad nueva.
+
