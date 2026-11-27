@@ -1,0 +1,62 @@
+{
+  "tema": "Lanjarón (Granada): el bando de 1999 que «prohibía» morir",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "espana"
+  ],
+  "etiquetas": [
+    "lanjarón",
+    "prohibido morir",
+    "pueblos de españa",
+    "granada",
+    "curiosidades de españa",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "Wikipedia — Prohibition of dying",
+      "url": "https://en.wikipedia.org/wiki/Prohibition_of_dying"
+    },
+    {
+      "titulo": "The Local — The towns in Spain where it was illegal to die",
+      "url": "https://www.thelocal.es/20240221/the-towns-in-spain-where-it-was-illegal-to-die"
+    },
+    {
+      "titulo": "VICE — It's now illegal to die in this small town",
+      "url": "https://www.vice.com/en/article/its-now-illegal-to-die-in-this-small-town-heres-why"
+    }
+  ],
+  "short": {
+    "titulo": "En este pueblo de España se PROHIBIÓ MORIR 😳 #shorts",
+    "gancho": [
+      "PROHIBIDO",
+      "MORIR AQUÍ"
+    ],
+    "descripcion": "En 1999, el alcalde de Lanjarón (Granada) firmó un bando que «prohibía» morir: el cementerio estaba lleno.",
+    "escenas": [
+      {
+        "narracion": "En 1999, un pueblo de Granada prohibió a sus vecinos morirse.",
+        "imagen": "?LANJARON1"
+      },
+      {
+        "narracion": "Pasó en Lanjarón, el pueblo famoso por su agua. Su alcalde firmó un bando que decía, literalmente, que estaba prohibido morir.",
+        "imagen": "?LANJARON2"
+      },
+      {
+        "narracion": "¿El motivo? El cementerio estaba lleno y no había terreno para ampliarlo. Así que pidió a los vecinos que cuidaran mucho su salud hasta que el ayuntamiento encontrara una solución.",
+        "imagen": "?LANJARON3"
+      },
+      {
+        "narracion": "Era una protesta, claro, pero dio la vuelta al mundo. Y no es el único caso: alcaldes de Francia, Italia y Brasil han hecho lo mismo.",
+        "imagen": "?LANJARON1"
+      },
+      {
+        "narracion": "¿Tú le harías caso al alcalde?",
+        "imagen": "?LANJARON2"
+      }
+    ]
+  }
+}

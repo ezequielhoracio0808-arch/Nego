@@ -1,0 +1,66 @@
+{
+  "tema": "Monte Athos: prohibida la entrada a las mujeres desde hace casi mil años",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "grecia"
+  ],
+  "etiquetas": [
+    "monte athos",
+    "grecia",
+    "monasterios",
+    "lugares prohibidos",
+    "prohibido a mujeres",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "Wikipedia — Monastic community of Mount Athos (avaton)",
+      "url": "https://en.wikipedia.org/wiki/Monastic_community_of_Mount_Athos"
+    },
+    {
+      "titulo": "Rough Guides — Mount Athos: the monks' republic",
+      "url": "https://www.roughguides.com/destinations/europe/greece/the-northern-mainland/halkidhiki/mount-athos-the-monks-republic"
+    },
+    {
+      "titulo": "Athos Guide — How did the avaton begin?",
+      "url": "https://athos.guide/en/blog/athos-avaton"
+    }
+  ],
+  "short": {
+    "titulo": "El lugar de Europa donde las MUJERES tienen PROHIBIDA la entrada #shorts",
+    "gancho": [
+      "PROHIBIDAS",
+      "LAS MUJERES"
+    ],
+    "descripcion": "En el Monte Athos (Grecia), una península de monasterios ortodoxos, las mujeres no pueden entrar desde hace casi mil años.",
+    "escenas": [
+      {
+        "narracion": "Hay un lugar en Europa donde las mujeres tienen prohibida la entrada desde hace casi mil años.",
+        "imagen": "File:Mount Athos- Monastery Iviron.jpg"
+      },
+      {
+        "narracion": "Es el Monte Athos, en Grecia: una península con veinte monasterios ortodoxos donde solo viven monjes.",
+        "imagen": "File:Mount Athos- Monastery Filotheou- Katholikon.jpg"
+      },
+      {
+        "narracion": "La norma se llama ávaton, y en teoría se aplica también a muchos animales hembra de granja. Pero hay una excepción famosa: las gatas, porque cazan ratones.",
+        "imagen": "File:Refectory in a Greek Monastery (Mount Athos).png"
+      },
+      {
+        "narracion": "Y los hombres tampoco entran como quieren: necesitan un permiso especial, y el número de visitantes al día está limitado.",
+        "imagen": "File:The ruins of the Amalfion Monastery on Mount Athos.jpg"
+      },
+      {
+        "narracion": "¿Qué opinas de esta norma?",
+        "imagen": "File:Mount Athos- Monastery Iviron.jpg"
+      }
+    ]
+  },
+  "pron": {
+    "Athos": "Atos",
+    "ávaton": "ábaton"
+  }
+}

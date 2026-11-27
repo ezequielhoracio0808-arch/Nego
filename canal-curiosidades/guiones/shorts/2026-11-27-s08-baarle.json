@@ -1,0 +1,62 @@
+{
+  "tema": "Baarle: la frontera entre Bélgica y Países Bajos pasa por dentro de las casas",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "belgica"
+  ],
+  "etiquetas": [
+    "baarle",
+    "baarle-hertog",
+    "baarle-nassau",
+    "fronteras raras",
+    "bélgica",
+    "países bajos",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "Wikipedia — Baarle-Hertog",
+      "url": "https://en.wikipedia.org/wiki/Baarle-Hertog"
+    },
+    {
+      "titulo": "Dutch Genealogy — The bizarre borders of Baarle",
+      "url": "https://www.dutchgenealogy.nl/the-bizarre-borders-of-baarle/"
+    },
+    {
+      "titulo": "Euronews — The world's most complex border situation",
+      "url": "https://www.euronews.com/2018/03/21/this-is-the-world-s-most-complex-border-situation"
+    }
+  ],
+  "short": {
+    "titulo": "El pueblo donde la FRONTERA pasa por dentro de las casas 🇧🇪🇳🇱 #shorts",
+    "gancho": [
+      "LA FRONTERA",
+      "EN TU CASA"
+    ],
+    "descripcion": "En Baarle, Bélgica y Países Bajos están mezclados como un puzle: la frontera cruza calles, tiendas y hasta casas.",
+    "escenas": [
+      {
+        "narracion": "En este pueblo, la frontera entre dos países pasa por dentro de algunas casas.",
+        "imagen": "?BAAR1"
+      },
+      {
+        "narracion": "Es Baarle, que en realidad son dos municipios: uno belga y otro neerlandés, mezclados como un puzle. Hay más de veinte trocitos de Bélgica dentro de Países Bajos, y trocitos de Países Bajos dentro de esos trocitos.",
+        "imagen": "?BAAR2"
+      },
+      {
+        "narracion": "En el suelo hay cruces y líneas que marcan la frontera. Y si una casa queda partida, normalmente cuenta su puerta principal: según dónde esté, vives en un país o en el otro.",
+        "imagen": "?BAAR1"
+      },
+      {
+        "narracion": "Todo viene de repartos de tierras de la Edad Media. ¿Te imaginas cenar en Bélgica y dormir en Países Bajos?",
+        "imagen": "?BAAR2"
+      }
+    ]
+  },
+  "pron": {
+    "Baarle": "Barle"
+  }
+}

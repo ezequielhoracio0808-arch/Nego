@@ -1,0 +1,65 @@
+{
+  "tema": "Okunoshima: la isla de los conejos que fabricó gas venenoso",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "japon"
+  ],
+  "etiquetas": [
+    "okunoshima",
+    "isla de los conejos",
+    "japón",
+    "historia oscura",
+    "conejos",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "Prefectura de Hiroshima — The island erased from the map, Okunoshima",
+      "url": "https://www.pref.hiroshima.lg.jp/soshiki/232/the-island-erased-from-the-map-okunoshima.html"
+    },
+    {
+      "titulo": "Smithsonian — Japan's rabbit island has a dark history",
+      "url": "https://www.smithsonianmag.com/travel/japan-rabbit-island-dark-history-180962631/"
+    },
+    {
+      "titulo": "National Geographic — This island is overrun with rabbits",
+      "url": "https://www.nationalgeographic.com/animals/article/rabbit-island-japan-overrun-tourism-spd"
+    }
+  ],
+  "short": {
+    "titulo": "La isla de los conejos que ESCONDE un secreto oscuro 🐰 #shorts",
+    "gancho": [
+      "LA ISLA DE",
+      "LOS CONEJOS"
+    ],
+    "descripcion": "Okunoshima (Japón) está llena de conejos, pero entre 1929 y 1945 fue una fábrica secreta de gas venenoso borrada de los mapas.",
+    "escenas": [
+      {
+        "narracion": "Esta isla de Japón está llena de conejos. Pero esconde un secreto muy oscuro.",
+        "imagen": "?OKU1"
+      },
+      {
+        "narracion": "Es Okunoshima. Entre 1929 y 1945, el ejército japonés fabricó aquí gas venenoso en secreto. Tanto, que la isla llegó a borrarse de los mapas.",
+        "imagen": "?OKU2"
+      },
+      {
+        "narracion": "Hoy hay un museo sobre aquella fábrica, y algunas de sus ruinas siguen en pie.",
+        "imagen": "?OKU2"
+      },
+      {
+        "narracion": "¿Y los conejos? Nadie sabe seguro de dónde salieron. Se dice que descienden de los de los experimentos, pero muchos creen que los soltaron años después de la guerra.",
+        "imagen": "?OKU1"
+      },
+      {
+        "narracion": "¿Irías a verlos?",
+        "imagen": "?OKU1"
+      }
+    ]
+  },
+  "pron": {
+    "Okunoshima": "Okunoshima"
+  }
+}

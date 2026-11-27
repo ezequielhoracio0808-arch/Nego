@@ -1,0 +1,66 @@
+{
+  "tema": "Whittier (Alaska): casi todo el pueblo vive en un mismo edificio",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "alaska"
+  ],
+  "etiquetas": [
+    "whittier",
+    "alaska",
+    "begich towers",
+    "pueblo en un edificio",
+    "lugares extraños",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "Smithsonian — In this Alaskan town, every resident lives in the same building",
+      "url": "https://www.smithsonianmag.com/travel/visit-town-where-every-resident-lives-same-building-180959081/"
+    },
+    {
+      "titulo": "NPR — Welcome to Whittier, Alaska: a community under one roof",
+      "url": "https://www.wfae.org/2015-01-18/welcome-to-whittier-alaska-a-community-under-one-roof"
+    },
+    {
+      "titulo": "CBS News — Whittier, Alaska",
+      "url": "https://www.cbsnews.com/news/whittier-alaska-begich-towers"
+    }
+  ],
+  "short": {
+    "titulo": "El pueblo donde casi TODOS viven en el MISMO EDIFICIO 🏢 #shorts",
+    "gancho": [
+      "TODO EL PUEBLO",
+      "EN UN EDIFICIO"
+    ],
+    "descripcion": "En Whittier (Alaska) casi todos los vecinos viven en Begich Towers, y la única carretera es un túnel que cierra por la noche.",
+    "escenas": [
+      {
+        "narracion": "En este pueblo de Alaska casi todos los vecinos viven en el mismo edificio.",
+        "imagen": "?WHIT1"
+      },
+      {
+        "narracion": "Es Whittier. Tiene unos doscientos setenta habitantes, y la mayoría vive en Begich Towers, un antiguo cuartel del ejército de catorce plantas.",
+        "imagen": "?WHIT2"
+      },
+      {
+        "narracion": "Dentro hay tienda, oficina de correos y clínica. Y un túnel lleva directamente al colegio, así que los niños pueden ir a clase sin pisar la nieve.",
+        "imagen": "?WHIT2"
+      },
+      {
+        "narracion": "Para salir del pueblo en coche solo hay un túnel, y por la noche se cierra. Si llegas tarde, te quedas fuera hasta el día siguiente.",
+        "imagen": "?WHIT3"
+      },
+      {
+        "narracion": "¿Vivirías aquí?",
+        "imagen": "?WHIT1"
+      }
+    ]
+  },
+  "pron": {
+    "Whittier": "Uítier",
+    "Begich Towers": "Bégich Táuers"
+  }
+}

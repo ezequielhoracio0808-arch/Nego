@@ -176,7 +176,7 @@ def main():
     cred = json.load(open(cpath, encoding="utf-8")) if os.path.exists(cpath) else {}
     descartes = cred.setdefault("_descartes", {})
 
-    escenas = [(f"h{i}", sc) for i, sc in enumerate(g["escenas"])] + \
+    escenas = [(f"h{i}", sc) for i, sc in enumerate(g.get("escenas", []))] + \
               [(f"s{i}", sc) for i, sc in enumerate(g.get("short", {}).get("escenas", []))]
     usados = {v["titulo"] for k, v in cred.items() if not k.startswith("_") and isinstance(v, dict)}
     for etq in a.forzar:

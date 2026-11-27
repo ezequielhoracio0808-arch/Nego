@@ -1,0 +1,65 @@
+{
+  "tema": "Queimada Grande: la isla de las serpientes donde está prohibido desembarcar",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "brasil"
+  ],
+  "etiquetas": [
+    "isla de las serpientes",
+    "queimada grande",
+    "brasil",
+    "serpientes",
+    "lugares prohibidos",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "Wikipedia — Ilha da Queimada Grande",
+      "url": "https://en.wikipedia.org/wiki/Ilha_da_Queimada_Grande"
+    },
+    {
+      "titulo": "Live Science — Snake Island",
+      "url": "https://www.livescience.com/planet-earth/snake-island-the-isle-writhing-with-vipers-where-only-brazilian-military-and-scientists-are-allowed"
+    },
+    {
+      "titulo": "BioOne — Extinction risk and population size of Bothrops insularis",
+      "url": "https://bioone.org/journals/south-american-journal-of-herpetology/volume-19/issue-1/SAJH-D-17-00104.1/Extinction-Risk-Evaluation-and-Population-Size-Estimation-of-Bothrops-insularis/10.2994/SAJH-D-17-00104.1.short"
+    }
+  ],
+  "short": {
+    "titulo": "La isla de Brasil donde está PROHIBIDO desembarcar 🐍 #shorts",
+    "gancho": [
+      "LA ISLA DE",
+      "LAS SERPIENTES"
+    ],
+    "descripcion": "Queimada Grande (Brasil) es el único hogar de la cabeza de lanza dorada. Solo la Marina y científicos autorizados pueden desembarcar.",
+    "escenas": [
+      {
+        "narracion": "Frente a la costa de Brasil hay una isla donde está prohibido desembarcar.",
+        "imagen": "File:Rogerio Cassimiro Itanhaem ilha queimada grande Itanhaem SP (39779744450).jpg"
+      },
+      {
+        "narracion": "Se llama Queimada Grande, y es el único lugar del mundo donde vive la cabeza de lanza dorada, una serpiente con un veneno muy potente.",
+        "imagen": "File:Jararaca-ilhoa-ARIE Ilhas Queimada Grande e Queimada Pequena-Rafael Mitsuo(003).jpg"
+      },
+      {
+        "narracion": "Solo la Marina de Brasil y algunos científicos autorizados pueden pisarla. La serpiente, además, está en peligro crítico de extinción.",
+        "imagen": "File:Navio Balizador Faroleiro Mario Seixas (H26) na Ilha da Queimada Grande (52695024263).jpg"
+      },
+      {
+        "narracion": "¿Y eso de que hay una serpiente por metro cuadrado? Es un mito. Las estimaciones hablan de unos pocos miles en toda la isla. Que tampoco es poco.",
+        "imagen": "File:Bothrops insularis Queimada Grande SP OAVM.jpg"
+      },
+      {
+        "narracion": "¿Irías?",
+        "imagen": "File:ROGERIO CASSIMIRO-SP Itanhaem ilha queimada grande (40845897812).jpg"
+      }
+    ]
+  },
+  "pron": {
+    "Queimada Grande": "Keimada Grande"
+  }
+}

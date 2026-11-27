@@ -46,6 +46,13 @@ python3 tools/marca.py                          # foto de perfil, banner y marca
 ```
 El nombre, el color y las búsquedas de la investigación están en `config.json`.
 
+### Lotes de Shorts sueltos
+Un guion sin `escenas` (solo con `short`) produce únicamente el Short, su portada y su descripción.
+Van en `guiones/shorts/` y salen en `salida/<id>/`:
+```bash
+for g in guiones/shorts/2026-11-27-s*.json; do python3 tools/imagenes.py $g && python3 tools/producir.py $g; done
+```
+
 ## La clave de la API de YouTube (para investigar con datos reales)
 Sin ella, la investigación se hace con búsquedas web, que son menos precisas. Para conseguirla (gratis, unos 5 minutos):
 1. Entra en **console.cloud.google.com** y crea un proyecto (por ejemplo «dato-oculto»).

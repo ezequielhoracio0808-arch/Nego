@@ -203,6 +203,9 @@ def vista(base, size, p, i, over):
     z = 1 + (zmax - 1) * (p if i % 2 == 0 else 1 - p)
     vh = BH / z
     vw = vh * W_ / H_
+    if vw > BW:  # imagen justa de ancho (retratos, fondo de marca): no salirse del borde
+        vw = BW
+        vh = vw * H_ / W_
     if W_ > H_:
         dx, dy = rnd.choice([-1, 1]) * rnd.uniform(0.4, 1), rnd.uniform(-0.5, 0.5)
         cx = BW / 2 + dx * (BW - vw) / 2 * (p * 2 - 1)
@@ -213,7 +216,9 @@ def vista(base, size, p, i, over):
         cy = BH / 2
     cx = min(max(cx, vw / 2), BW - vw / 2)
     cy = min(max(cy, vh / 2), BH - vh / 2)
-    return np.asarray(base.resize((W_, H_), Image.BILINEAR, box=(cx - vw / 2, cy - vh / 2, cx + vw / 2, cy + vh / 2)))
+    x0, y0 = max(0.0, cx - vw / 2), max(0.0, cy - vh / 2)
+    box = (x0, y0, min(BW, x0 + vw), min(BH, y0 + vh))
+    return np.asarray(base.resize((W_, H_), Image.BILINEAR, box=box))
 
 
 def mascara(size, zonas):
@@ -409,7 +414,7 @@ def short(g, ctx):
         creds.append(credito(c))
     m = mascara((W_, H_), [(0, 0.3, 0.45, 1), (0.5, 0.75, 1, 0.75), (0.75, 1, 0.75, 0.5)])
     f_cap = ImageFont.truetype(C.F_HEAD, 112)
-    gancho = S.get("gancho") or g["miniatura"]
+    gancho = S.get("gancho") or g.get("miniatura")
     f_g = C.fit_font(C.F_HEAD, max(gancho, key=len), 960, 150)
     g_img = texto_rgba(gancho, f_g, (255, 255, 255, 255), 6, (10, 10, 20), shadow=(0, 8, acc + (255,), 0), gap=0.05)
     icon = np.array(cerradura(48, acc + (255,)))
@@ -450,6 +455,18 @@ def short(g, ctx):
 # ================================================================== miniaturas
 def miniatura(g, ctx):
     acc = ctx["acc"]
+    spec = None
+    if g.get("escenas"):
+        miniatura_horizontal(g, ctx)
+        spec = g.get("miniatura_busqueda") or g["escenas"][g.get("miniatura_imagen", 0)].get("imagen")
+    S = g.get("short")
+    if S:
+        portada_short(g, ctx, S, spec)
+    print("OK miniaturas")
+
+
+def miniatura_horizontal(g, ctx):
+    acc = ctx["acc"]
     k = g.get("miniatura_imagen", 0)
     spec = g.get("miniatura_busqueda") or g["escenas"][k].get("imagen")
     path, _ = ctx["img"](spec)
@@ -476,23 +493,23 @@ def miniatura(g, ctx):
     base.alpha_composite(cerradura(120, (10, 12, 22, 255), acc + (255,)), (W_ - 170, 50))
     base.convert("RGB").resize((1280, 720), Image.LANCZOS).save(os.path.join(ctx["out"], "miniatura.jpg"), quality=92)
 
-    # portada del Short (1080×1920)
-    S = g.get("short")
-    if S:
-        sspec = S["escenas"][0].get("imagen") or spec
-        p2, _ = ctx["img"](sspec)
-        pb = cargar_base(p2, (1080, 1920), 1.0, acc, 1)
-        bw = pb.width
-        pb = pb.crop(((bw - 1080) // 2, 0, (bw - 1080) // 2 + 1080, 1920)).convert("RGBA")
-        veil = Image.fromarray(np.dstack([np.full((1920, 1080, 3), FONDO, np.uint8),
-                                          (np.clip(np.linspace(0.75, -0.4, 1920), 0, 1)[:, None] * np.ones(1080) * 230).astype(np.uint8)]))
-        pb.alpha_composite(veil)
-        gancho = S.get("gancho") or g["miniatura"]
-        fg = C.fit_font(C.F_HEAD, max(gancho, key=len), 960, 190)
-        ti = Image.fromarray(texto_rgba(gancho, fg, (255, 255, 255, 255), 8, (10, 10, 20), shadow=(0, 10, acc + (255,), 0), gap=0.04))
-        pb.alpha_composite(ti, ((1080 - ti.width) // 2, 330))
-        pb.convert("RGB").save(os.path.join(ctx["out"], "portada-short.jpg"), quality=90)
-    print("OK miniatura.jpg + portada-short.jpg")
+
+def portada_short(g, ctx, S, spec):
+    """Portada del Short (1080×1920)."""
+    acc = ctx["acc"]
+    sspec = S.get("portada_imagen") or S["escenas"][0].get("imagen") or spec
+    p2, _ = ctx["img"](sspec)
+    pb = cargar_base(p2, (1080, 1920), 1.0, acc, 1)
+    bw = pb.width
+    pb = pb.crop(((bw - 1080) // 2, 0, (bw - 1080) // 2 + 1080, 1920)).convert("RGBA")
+    veil = Image.fromarray(np.dstack([np.full((1920, 1080, 3), FONDO, np.uint8),
+                                      (np.clip(np.linspace(0.75, -0.4, 1920), 0, 1)[:, None] * np.ones(1080) * 230).astype(np.uint8)]))
+    pb.alpha_composite(veil)
+    gancho = S.get("gancho") or g.get("miniatura")
+    fg = C.fit_font(C.F_HEAD, max(gancho, key=len), 960, 190)
+    ti = Image.fromarray(texto_rgba(gancho, fg, (255, 255, 255, 255), 8, (10, 10, 20), shadow=(0, 10, acc + (255,), 0), gap=0.04))
+    pb.alpha_composite(ti, ((1080 - ti.width) // 2, 330))
+    pb.convert("RGB").save(os.path.join(ctx["out"], "portada-short.jpg"), quality=90)
 
 
 # ================================================================== textos para YouTube
@@ -539,6 +556,9 @@ def textos(g, ctx):
         cap_txt = "\n".join(f"{C.mmss(s)} {t}" for s, t in caps) if len(caps) >= 3 else ""
     else:
         cap_txt = ""
+    S = g.get("short")
+    if not g.get("escenas"):  # lote de solo Shorts
+        return textos_short(g, ctx, S, hashtags, tags, None)
     partes = [g["titulo"], "", g.get("descripcion", "").strip()]
     if cap_txt:
         partes += ["", "📌 Capítulos", cap_txt]
@@ -552,19 +572,26 @@ def textos(g, ctx):
                "", "Etiquetas: " + ", ".join(tags)]
     open(os.path.join(out, "descripcion.txt"), "w", encoding="utf-8").write("\n".join(partes).strip() + "\n")
 
-    S = g.get("short")
     if S:
-        cr2 = creditos_txt(g, ctx, S["escenas"])
-        ht = hashtags + (" #shorts" if "#shorts" not in hashtags.lower() else "")
-        p2 = [S.get("titulo") or g["titulo"], "", S.get("descripcion", "").strip(), "",
-              f"🎬 Vídeo completo en el canal: {g['titulo']}", ""]
-        if g.get("fuentes"):
-            p2 += ["📚 Fuentes", *fuentes_txt(g), ""]
-        if cr2:
-            p2 += ["📷 Imágenes", *cr2, ""]
-        p2 += [ht]
-        open(os.path.join(out, "descripcion-short.txt"), "w", encoding="utf-8").write("\n".join(p2).strip() + "\n")
-    print("OK descripcion.txt + descripcion-short.txt")
+        textos_short(g, ctx, S, hashtags, tags, g["titulo"])
+    print("OK descripcion.txt")
+
+
+def textos_short(g, ctx, S, hashtags, tags, largo):
+    cr2 = creditos_txt(g, ctx, S["escenas"])
+    ht = hashtags + (" #shorts" if "#shorts" not in hashtags.lower() else "")
+    p2 = [S.get("titulo") or g.get("titulo"), "", S.get("descripcion", "").strip(), ""]
+    p2 += [f"🎬 Vídeo completo en el canal: {largo}", ""] if largo else \
+          [f"🔔 Suscríbete a {C.CANAL.title()}: una curiosidad nueva cada día.", ""]
+    if g.get("fuentes"):
+        p2 += ["📚 Fuentes", *fuentes_txt(g), ""]
+    if cr2:
+        p2 += ["📷 Imágenes", *cr2, ""]
+    p2 += [ht]
+    if not largo and tags:
+        p2 += ["", "Etiquetas: " + ", ".join(tags)]
+    open(os.path.join(ctx["out"], "descripcion-short.txt"), "w", encoding="utf-8").write("\n".join(p2).strip() + "\n")
+    print("OK descripcion-short.txt")
 
 
 # ================================================================== revisión
@@ -601,7 +628,8 @@ def historial(g):
     hp = os.path.join(C.ROOT, "historial.json")
     h = json.load(open(hp, encoding="utf-8")) if os.path.exists(hp) else []
     h = [x for x in h if x["id"] != g["_id"]]
-    h.append({"fecha": g["_id"][:10], "id": g["_id"], "titulo": g["titulo"], "tema": g.get("tema", "")})
+    h.append({"fecha": g["_id"][:10], "id": g["_id"], "titulo": g.get("titulo") or g["short"]["titulo"],
+              "tema": g.get("tema", ""), "formato": "video+short" if g.get("escenas") else "short"})
     h.sort(key=lambda x: x["id"])
     json.dump(h, open(hp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
@@ -621,14 +649,14 @@ def main():
         c = cred.get(spec) if spec and not spec.startswith("@") else None
         return (os.path.join(idir, c["archivo"]) if c else None), c
 
-    faltan = [sc.get("imagen") for sc in g["escenas"] + g.get("short", {}).get("escenas", [])
+    faltan = [sc.get("imagen") for sc in g.get("escenas", []) + g.get("short", {}).get("escenas", [])
               if sc.get("imagen") and not sc["imagen"].startswith("@") and sc["imagen"] not in cred]
     if faltan:
         print(f"AVISO: {len(faltan)} imágenes sin descargar (se usará el fondo de la marca): {faltan[:5]}", file=sys.stderr)
     ctx = {"out": out, "img": img, "acc": C.hex2rgb(g.get("acento") or C.CFG["acento"]),
            "seed": int(hashlib.sha1(g["_id"].encode()).hexdigest()[:6], 16)}
     tp = os.path.join(C.trabajo(g["_id"]), "tiempos.json")
-    if "video" in a.solo:
+    if "video" in a.solo and g.get("escenas"):
         video(g, ctx)
     if "short" in a.solo and g.get("short"):
         short(g, ctx)

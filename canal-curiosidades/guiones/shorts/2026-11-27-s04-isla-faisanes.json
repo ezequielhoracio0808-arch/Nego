@@ -1,0 +1,68 @@
+{
+  "tema": "Isla de los Faisanes: española seis meses y francesa otros seis",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "espana"
+  ],
+  "etiquetas": [
+    "isla de los faisanes",
+    "bidasoa",
+    "irún",
+    "hendaya",
+    "españa y francia",
+    "condominio",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "¡Hola! — ¿Sabes lo que es un condominio? La isla de los Faisanes",
+      "url": "https://www.hola.com/viajes/20250717844825/isla-de-los-faisanes-francia-espana-condominio/"
+    },
+    {
+      "titulo": "El Orden Mundial — ¿Cómo se gestiona la isla de los Faisanes?",
+      "url": "https://elordenmundial.com/como-se-gestiona-la-isla-de-los-faisanes-compartida-entre-espana-y-francia/"
+    },
+    {
+      "titulo": "Muy Interesante — La isla de los Faisanes",
+      "url": "https://muyinteresante.okdiario.com/historia/61637.html"
+    }
+  ],
+  "short": {
+    "titulo": "La isla que es de ESPAÑA y de FRANCIA (por turnos) 🇪🇸🇫🇷 #shorts",
+    "gancho": [
+      "CAMBIA DE PAÍS",
+      "CADA 6 MESES"
+    ],
+    "descripcion": "La isla de los Faisanes, en el río Bidasoa, es española del 1 de febrero al 31 de julio y francesa el resto del año.",
+    "escenas": [
+      {
+        "narracion": "Esta isla cambia de país cada seis meses.",
+        "imagen": "File:Bidasoa - Konpantzia uhartea 5.jpg"
+      },
+      {
+        "narracion": "Es la isla de los Faisanes, en el río Bidasoa, entre Irún y Hendaya. Del uno de febrero al treinta y uno de julio es española, y del uno de agosto al treinta y uno de enero, francesa.",
+        "imagen": "File:Bidasoa - Konpantzia uhartea 3.jpg"
+      },
+      {
+        "narracion": "Aquí se firmó la Paz de los Pirineos en 1659, y al año siguiente se reunieron Felipe IV y Luis XIV para entregar a la infanta María Teresa, que se casaba con el rey francés.",
+        "imagen": "File:Ile des Faisans vue de l'amont.jpg"
+      },
+      {
+        "narracion": "Siglos después, los dos países acordaron compartirla por turnos. Es uno de los territorios compartidos más pequeños del mundo, y casi nunca se puede pisar.",
+        "imagen": "File:Bidasoa - Konpantzia uhartea 1.jpg"
+      },
+      {
+        "narracion": "¿Sabías que España tenía una isla a medias?",
+        "imagen": "File:Bidasoa - Konpantzia uhartea 5.jpg"
+      }
+    ]
+  },
+  "pron": {
+    "Felipe IV": "Felipe cuarto",
+    "Luis XIV": "Luis catorce",
+    "Hendaya": "Endaya"
+  }
+}

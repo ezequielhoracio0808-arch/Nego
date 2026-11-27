@@ -1,0 +1,53 @@
+{
+  "tema": "Vaticano: la nacionalidad que no se hereda",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "vaticano"
+  ],
+  "etiquetas": [
+    "vaticano",
+    "nacionalidad vaticana",
+    "país más pequeño del mundo",
+    "guardia suiza",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "Wikipedia — Vatican citizenship law",
+      "url": "https://en.wikipedia.org/wiki/Vatican_citizenship_law"
+    },
+    {
+      "titulo": "Aleteia — Who can be a Vatican citizen",
+      "url": "https://aleteia.org/2025/01/18/who-can-be-a-vatican-citizen-and-what-are-their-privileges"
+    }
+  ],
+  "short": {
+    "titulo": "El país del que NO eres ciudadano aunque nazcas allí 🇻🇦 #shorts",
+    "gancho": [
+      "EL PAÍS QUE",
+      "NO SE HEREDA"
+    ],
+    "descripcion": "La nacionalidad vaticana no se consigue por nacer allí ni se hereda: va ligada al cargo y se pierde al dejarlo.",
+    "escenas": [
+      {
+        "narracion": "Hay un país en el que no eres ciudadano por nacer allí, ni por ser hijo de un ciudadano.",
+        "imagen": "?VAT1"
+      },
+      {
+        "narracion": "Es el Vaticano, el país más pequeño del mundo. Su nacionalidad se consigue por el cargo: cardenales, diplomáticos de la Santa Sede o guardias suizos, por ejemplo.",
+        "imagen": "?VAT2"
+      },
+      {
+        "narracion": "Y cuando dejas el puesto, la pierdes. Si al perderla te quedaras sin ninguna nacionalidad, pasas a ser italiano automáticamente.",
+        "imagen": "?VAT1"
+      },
+      {
+        "narracion": "Por eso solo tiene unos cientos de ciudadanos. ¿Lo sabías?",
+        "imagen": "?VAT2"
+      }
+    ]
+  }
+}

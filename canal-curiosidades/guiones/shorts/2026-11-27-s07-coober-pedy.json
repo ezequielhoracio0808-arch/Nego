@@ -1,0 +1,65 @@
+{
+  "tema": "Coober Pedy (Australia): el pueblo que vive bajo tierra",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "australia"
+  ],
+  "etiquetas": [
+    "coober pedy",
+    "australia",
+    "casas bajo tierra",
+    "ópalo",
+    "lugares extraños",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "Smithsonian — Unearthing Coober Pedy, Australia's hidden city",
+      "url": "https://www.smithsonianmag.com/travel/unearthing-coober-pedy-australias-hidden-city-180958162/"
+    },
+    {
+      "titulo": "The Week — Coober Pedy: the town where people live underground",
+      "url": "https://theweek.com/news/world-news/962095/coober-pedy-australian-town-people-live-underground"
+    },
+    {
+      "titulo": "District Council of Coober Pedy — Community",
+      "url": "https://www.cooberpedy.sa.gov.au/community"
+    }
+  ],
+  "short": {
+    "titulo": "El pueblo de Australia donde la gente vive BAJO TIERRA 🏜️ #shorts",
+    "gancho": [
+      "UN PUEBLO",
+      "BAJO TIERRA"
+    ],
+    "descripcion": "En Coober Pedy (Australia), mucha gente vive en casas excavadas en la roca para escapar del calor del desierto.",
+    "escenas": [
+      {
+        "narracion": "En este pueblo de Australia, mucha gente vive bajo tierra.",
+        "imagen": "?COOB1"
+      },
+      {
+        "narracion": "Es Coober Pedy, en pleno desierto. En verano se pueden superar los cuarenta y cinco grados, pero dentro de las casas excavadas en la roca la temperatura se mantiene agradable todo el año.",
+        "imagen": "?COOB2"
+      },
+      {
+        "narracion": "Se calcula que alrededor de la mitad de los vecinos vive así. Hay incluso iglesias y un hotel bajo tierra.",
+        "imagen": "?COOB3"
+      },
+      {
+        "narracion": "¿Y por qué hay un pueblo aquí? Por el ópalo: de esta zona sale buena parte del ópalo del mundo.",
+        "imagen": "?COOB1"
+      },
+      {
+        "narracion": "¿Te mudarías a una casa bajo tierra?",
+        "imagen": "?COOB2"
+      }
+    ]
+  },
+  "pron": {
+    "Coober Pedy": "Cúber Pidi"
+  }
+}

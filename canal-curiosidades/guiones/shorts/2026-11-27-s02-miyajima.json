@@ -1,0 +1,66 @@
+{
+  "tema": "Miyajima (Itsukushima): la isla sagrada donde no se podía nacer ni morir",
+  "por_que": "Lote de Shorts de lugares y normas increíbles, en la línea del vídeo de Longyearbyen (tema que funciona en los canales de curiosidades).",
+  "acento": "#ffc22e",
+  "hashtags": [
+    "curiosidades",
+    "datoscuriosos",
+    "japon"
+  ],
+  "etiquetas": [
+    "miyajima",
+    "itsukushima",
+    "japón",
+    "isla sagrada",
+    "curiosidades de japón",
+    "datos curiosos"
+  ],
+  "fuentes": [
+    {
+      "titulo": "Britannica — Itsuku Island",
+      "url": "https://www.britannica.com/place/Itsuku-Island"
+    },
+    {
+      "titulo": "Wikipedia — Itsukushima Shrine",
+      "url": "https://en.wikipedia.org/wiki/Itsukushima_Shrine"
+    },
+    {
+      "titulo": "Frommer's — Miyajima",
+      "url": "https://www.frommers.com/destinations/miyajima"
+    }
+  ],
+  "short": {
+    "titulo": "La isla de Japón donde NO podías NACER ni MORIR ⛩️ #shorts",
+    "gancho": [
+      "NI NACER",
+      "NI MORIR"
+    ],
+    "descripcion": "Durante siglos, en la isla sagrada de Miyajima (Japón) no se podía nacer ni morir. Hoy sigue sin haber cementerio.",
+    "escenas": [
+      {
+        "narracion": "En esta isla de Japón, durante siglos, no se podía nacer ni morir.",
+        "imagen": "File:Itsukushima-jinja torii at sunset, Miyajima, Japan, 20240816 1812 4144.jpg"
+      },
+      {
+        "narracion": "Es Miyajima, una isla sagrada. Para no romper su pureza, las embarazadas cruzaban al continente para dar a luz, y a los enfermos graves también se los llevaban.",
+        "imagen": "File:Torii and Itsukushima Shrine.jpg"
+      },
+      {
+        "narracion": "Hoy las normas son mucho más suaves, pero hay algo que no ha cambiado: en la isla no hay cementerio. Los muertos se entierran en tierra firme.",
+        "imagen": "File:Itsukushima Gate.jpg"
+      },
+      {
+        "narracion": "Eso sí, ciervos hay cientos, y pasean por las calles como si fueran los dueños.",
+        "imagen": "File:20190318 Miyajima deer.jpg"
+      },
+      {
+        "narracion": "¿Sabías que existía un lugar así?",
+        "imagen": "File:Itsukushima-jinja torii, Miyajima, Japan, 20240816 1716 4048.jpg"
+      }
+    ]
+  },
+  "pron": {
+    "Miyajima": "Miyayima",
+    "Itsukushima": "Itsukushima"
+  }
+}
