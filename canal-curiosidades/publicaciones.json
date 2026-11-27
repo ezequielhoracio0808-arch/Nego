@@ -15,7 +15,8 @@
    "publicar": "2026-11-28T10:00:00+01:00",
    "vidiq_post": "92b47690-b414-441f-a956-d506e2fa7c23",
    "revision": "a4295b62",
-   "estado": "borrador"
+   "estado": "programado",
+   "url": "https://www.youtube.com/watch?v=jng4auGu0v8"
   },
   {
    "id": "2026-11-27-11-lugares",
@@ -24,7 +25,8 @@
    "publicar": "2026-11-28T18:00:00+01:00",
    "vidiq_post": "1a18e93f-d1f3-4f75-bda0-8e63592ae0a9",
    "revision": "303c0df7",
-   "estado": "borrador"
+   "estado": "programado",
+   "url": "https://www.youtube.com/watch?v=PbGAsE0VjNU"
   },
   {
    "id": "2026-11-27-s03-monte-athos",
@@ -33,7 +35,8 @@
    "publicar": "2026-11-28T21:00:00+01:00",
    "vidiq_post": "04ec5815-91ee-45cf-ada0-1960d57b5c1e",
    "revision": "91a45bcb",
-   "estado": "borrador"
+   "estado": "programado",
+   "url": "https://www.youtube.com/watch?v=zwob2Xp4Xj4"
   },
   {
    "id": "2026-11-27-s05-isla-serpientes",
@@ -42,7 +45,8 @@
    "publicar": "2026-11-29T10:00:00+01:00",
    "vidiq_post": "93eb8f0d-45c7-46a6-9411-8af89e164c9b",
    "revision": "f9a16145",
-   "estado": "borrador"
+   "estado": "aprobado",
+   "subir_el": "2026-11-28"
   },
   {
    "id": "2026-11-27-s08-baarle",
@@ -51,16 +55,8 @@
    "publicar": "2026-11-29T21:00:00+01:00",
    "vidiq_post": "9b39123b-2305-428e-882a-784a5aba0683",
    "revision": "8264aab5",
-   "estado": "borrador"
-  },
-  {
-   "id": "2026-11-27-s09-vaticano",
-   "formato": "short",
-   "titulo": "El país del que NO eres ciudadano aunque nazcas allí 🇻🇦 #shorts",
-   "publicar": "2026-11-30T10:00:00+01:00",
-   "vidiq_post": "226151c5-b0ab-46ab-889e-a59d8fa85f6e",
-   "revision": "c637d246",
-   "estado": "borrador"
+   "estado": "aprobado",
+   "subir_el": "2026-11-29"
   },
   {
    "id": "2026-11-27-s01-lanjaron",
@@ -69,16 +65,8 @@
    "publicar": "2026-11-30T21:00:00+01:00",
    "vidiq_post": "8b2cc139-2ce6-468c-9e68-90bb1d9c3961",
    "revision": "2adaf22f",
-   "estado": "borrador"
-  },
-  {
-   "id": "2026-11-27-s07-coober-pedy",
-   "formato": "short",
-   "titulo": "El pueblo de Australia donde la gente vive BAJO TIERRA 🏜️ #shorts",
-   "publicar": "2026-12-01T10:00:00+01:00",
-   "vidiq_post": "ef8bf71a-c01a-4c4b-a677-f4a16fcdc1c6",
-   "revision": "e13af9d5",
-   "estado": "borrador"
+   "estado": "aprobado",
+   "subir_el": "2026-11-30"
   },
   {
    "id": "2026-11-27-s06-whittier",
@@ -87,16 +75,8 @@
    "publicar": "2026-12-01T21:00:00+01:00",
    "vidiq_post": "f687f97c-e52c-437d-bd64-a729817904d6",
    "revision": "28dc4535",
-   "estado": "borrador"
-  },
-  {
-   "id": "2026-11-27-s02-miyajima",
-   "formato": "short",
-   "titulo": "La isla de Japón donde NO podías NACER ni MORIR ⛩️ #shorts",
-   "publicar": "2026-12-02T10:00:00+01:00",
-   "vidiq_post": "bc72651f-6651-4cf6-b52e-3da10a1a90ca",
-   "revision": "1f1a31d1",
-   "estado": "borrador"
+   "estado": "aprobado",
+   "subir_el": "2026-12-01"
   },
   {
    "id": "2026-11-27-s04-isla-faisanes",
@@ -105,7 +85,39 @@
    "publicar": "2026-12-02T21:00:00+01:00",
    "vidiq_post": "f9a5b78c-06b7-4009-a6da-726b2d4302e7",
    "revision": "1203465c",
-   "estado": "borrador"
+   "estado": "aprobado",
+   "subir_el": "2026-12-02"
+  },
+  {
+   "id": "2026-11-27-s09-vaticano",
+   "formato": "short",
+   "titulo": "El país del que NO eres ciudadano aunque nazcas allí 🇻🇦 #shorts",
+   "publicar": "2026-12-03T21:00:00+01:00",
+   "vidiq_post": "226151c5-b0ab-46ab-889e-a59d8fa85f6e",
+   "revision": "33d88e5d",
+   "estado": "borrador",
+   "subir_el": "2026-12-03"
+  },
+  {
+   "id": "2026-11-27-s07-coober-pedy",
+   "formato": "short",
+   "titulo": "El pueblo de Australia donde la gente vive BAJO TIERRA 🏜️ #shorts",
+   "publicar": "2026-12-04T21:00:00+01:00",
+   "vidiq_post": "ef8bf71a-c01a-4c4b-a677-f4a16fcdc1c6",
+   "revision": "6913d4dd",
+   "estado": "borrador",
+   "subir_el": "2026-12-04"
+  },
+  {
+   "id": "2026-11-27-s02-miyajima",
+   "formato": "short",
+   "titulo": "La isla de Japón donde NO podías NACER ni MORIR ⛩️ #shorts",
+   "publicar": "2026-12-05T21:00:00+01:00",
+   "vidiq_post": "bc72651f-6651-4cf6-b52e-3da10a1a90ca",
+   "revision": "59a16a6e",
+   "estado": "borrador",
+   "subir_el": "2026-12-05"
   }
- ]
+ ],
+ "notas": "Plan gratuito de vidIQ: 3 subidas a YouTube al día (se reinicia a medianoche del Pacífico, las 9:00 en España). Cada día: vídeo + Short del día y 1 Short pendiente. Estados: borrador (falta el «sí»), aprobado (con «sí», se sube el día subir_el), programado (ya en YouTube, sale a su hora), subido a mano."
 }

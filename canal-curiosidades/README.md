@@ -1,6 +1,6 @@
 # 🔑 Dato Oculto: canal de curiosidades con un vídeo nuevo cada día
 
-**Cada mañana a las 7:13 (hora de España)** una tarea programada de Claude (en la conversación donde está conectado vidIQ):
+**Cada mañana a las 9:17 (hora de España)** una tarea programada de Claude (en la conversación donde está conectado vidIQ):
 1. **Investiga qué vídeos funcionan**: vídeos de curiosidades en español de los últimos 14 días, ordenados por
    visitas/día y por cuántas veces superan al tamaño de su canal (API de YouTube; si no hay clave, búsquedas web).
 2. **Elige un tema** que no se haya hecho y **verifica cada dato** con dos fuentes como mínimo.

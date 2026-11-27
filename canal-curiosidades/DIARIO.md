@@ -106,6 +106,9 @@ Los `.mp4` no van a git (los excluye `.gitignore`). Se entregan con **SendUserFi
 ## 7. Subir a YouTube con vidIQ (si el conector está disponible)
 El usuario lo quiere así: **públicos y programados**, el vídeo a las **18:00** y el Short a las **13:00** (hora de España,
 `Europe/Madrid`). Subir a YouTube con vidIQ **no gasta créditos**. Lo que está previsto se apunta en `publicaciones.json`.
+**Límite del plan gratuito de vidIQ: 3 subidas a YouTube al día**, que se reinician a medianoche del Pacífico (las 9:00 en
+España; por eso la tarea se ejecuta a las 9:17). Cuenta cuando se publica, no cuando se crea el borrador. Cada día: el vídeo
+y el Short del día (2) y, como mucho, 1 Short pendiente (`estado: "aprobado"` con `subir_el` de hoy).
 1. **Horas libres.** Mira `publicaciones.json`. El vídeo va al **primer día, empezando por hoy, sin otro vídeo
    (`formato: video`) a las 18:00**. El Short va a la **primera hora de las 13:00 libre**. Nunca programes nada en el pasado.
 2. **Cuenta.** `vidiq_social_account_list` (platform YOUTUBE). El `platformAccountId` del canal es el de `publicaciones.json`.
