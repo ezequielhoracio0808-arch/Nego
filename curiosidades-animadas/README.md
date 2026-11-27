@@ -1,4 +1,7 @@
-# 🧠 Datos con Cara: Shorts animados de curiosidades
+# 🧠 Datos con Cara: la serie animada de El Dato Oculto
+
+> **Kit del canal [@eldatooculto09](https://www.youtube.com/@eldatooculto09):** [`canal/eldatooculto.md`](canal/eldatooculto.md).
+> Incluye títulos para los 3 Shorts ya publicados, la configuración del canal, las listas, el plan de 7 días y el banner.
 
 Inspirado en el vídeo *«Así Creo Shorts de 13M de Visitas con Claude en 10 Minutos»* (Ale Ferr): Shorts
 animados en 2D que cuentan un dato curioso con humor. Aquí no usamos su plantilla ni copiamos el estilo de
@@ -19,8 +22,8 @@ material con derechos de autor ni hace falta ninguna suscripción.
 | 04 | La miel NO caduca nunca | 25 s | tarro de miel, pirámide, abeja, Chispa |
 | 05 | Los flamencos NACEN GRISES | 21 s | flamenco, gamba |
 
-Cada uno trae `NN-slug.mp4` (1080×1920, 30 fps, −14 LUFS), `NN-slug-portada.jpg` y `NN-slug.txt`
-(título, descripción, hashtags, comentario para fijar y guion).
+Cada uno trae `NN-slug.mp4` (1080×1920, 30 fps, unos −15 LUFS), `NN-slug-portada.jpg` y `NN-slug.txt`
+(título, descripción con fuentes, hashtags, comentario para fijar y guion).
 
 **Antes de subir, escúchalos enteros.** La voz es sintética (Piper, español de España) y su tono cambia
 con cada personaje. Si quieres más calidad, usa tu voz o ElevenLabs (ver abajo).
@@ -50,6 +53,8 @@ python3 tools/animar.py render todos       # todos (en paralelo)
 python3 tools/animar.py prueba 03 4        # fotograma de la escena 4 (rápido, para revisar)
 python3 tools/animar.py reparto            # hoja con todos los personajes -> salida/reparto.png
 python3 tools/animar.py caras pulpo        # todas las expresiones de un personaje
+python3 tools/animar.py textos             # regenera solo los .txt (título, descripción, fuentes)
+python3 tools/marca.py                     # banner y foto de perfil del canal -> canal/
 ```
 Cada short tarda menos de un minuto en renderizarse.
 
@@ -83,5 +88,6 @@ tools/personajes.py todos los personajes y las caras
 pon-aqui-tu-voz/    (opcional) tu audio NN.mp3 para sustituir la voz sintética
 videos-listos/      vídeos terminados + portada + texto para publicar
 salida/reparto.png  catálogo de personajes
+canal/              kit del canal El Dato Oculto: guía, banner y foto de perfil
 ```
 Fuentes tipográficas: Anton e Inter (licencia OFL). Música y efectos sintetizados por el propio motor.

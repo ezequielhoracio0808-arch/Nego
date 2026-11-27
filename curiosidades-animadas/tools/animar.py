@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""DATOS CON CARA — motor de Shorts animados de curiosidades (vertical 1080x1920).
+"""DATOS CON CARA (serie de El Dato Oculto) — motor de Shorts animados de curiosidades (1080x1920).
 
 Cada guion (guiones/NN-slug.json) se convierte en un vídeo con personajes 2D que hablan,
 fondos animados, rótulos, subtítulos, música y efectos de sonido. Todo generado aquí:
@@ -10,6 +10,7 @@ Comandos (desde la carpeta curiosidades-animadas/):
   python3 tools/animar.py render 01 [02 ...]  -> videos-listos/NN-slug.mp4 (+ .txt y portada)
   python3 tools/animar.py render todos
   python3 tools/animar.py guion 01            -> texto para pegar en ElevenLabs
+  python3 tools/animar.py textos [01 ...]     -> solo regenera los .txt (título, descripción, fuentes)
   python3 tools/animar.py prueba 01 3         -> salida/prueba-01-3.png (fotograma de la escena 3)
   python3 tools/animar.py reparto             -> salida/reparto.png (todos los personajes)
 
@@ -36,7 +37,7 @@ GUIONES = os.path.join(ROOT, "guiones")
 LISTOS = os.path.join(ROOT, "videos-listos")
 SALIDA = os.path.join(ROOT, "salida")
 TU_VOZ = os.path.join(ROOT, "pon-aqui-tu-voz")
-CANAL = os.environ.get("CANAL", "Datos con Cara")
+CANAL = os.environ.get("CANAL", "El Dato Oculto")
 VOICE = os.environ.get("PIPER_VOICE", os.path.expanduser("~/.cache/piper-voces/es_ES-davefx-medium.onnx"))
 
 W, H, FPS = 1080, 1920, 30
@@ -1269,17 +1270,27 @@ def render(vid, only_frame=None):
     ff.stdin.close()
     ff.wait()
 
-    # ---- texto para publicar
-    tags = v.get("hashtags", [])
-    txt = (f"TÍTULO (máx. 100 caracteres):\n{v['titulo']}\n\n"
-           f"DESCRIPCIÓN:\n{v.get('descripcion', '')}\n\n{' '.join(tags)}\n\n"
-           f"COMENTARIO FIJADO:\n{v.get('comentario', '¿Lo sabías? Cuéntamelo en los comentarios 👇')}\n\n"
-           f"GUION:\n" + "\n".join(f"- {s.get('habla', '')}: {s['texto'].replace('*', '')}" for s in scenes) + "\n")
-    with open(os.path.join(LISTOS, f"{name}.txt"), "w") as f:
-        f.write(txt)
+    escribir_texto(v, name)
     subprocess.run(["rm", "-rf", tmp])
     print(f"OK {name}.mp4  {total:.1f} s")
     return out
+
+
+def escribir_texto(v, name):
+    """videos-listos/NN-slug.txt: título, descripción (con fuentes), hashtags, comentario y guion."""
+    tags = v.get("hashtags", [])
+    fuentes = v.get("fuentes", [])
+    desc = v.get("descripcion", "")
+    if fuentes:
+        desc += "\n\n🔑 Fuentes:\n" + "\n".join(f"· {f}" for f in fuentes)
+    desc += f"\n\n🔔 Suscríbete a {CANAL}: un dato oculto cada día."
+    txt = (f"TÍTULO ({len(v['titulo'])}/100 caracteres):\n{v['titulo']}\n\n"
+           f"DESCRIPCIÓN:\n{desc}\n\n{' '.join(tags)}\n\n"
+           f"COMENTARIO FIJADO:\n{v.get('comentario', '¿Lo sabías? Cuéntamelo en los comentarios 👇')}\n\n"
+           f"GUION:\n" + "\n".join(f"- {s.get('habla', '')}: {s['texto'].replace('*', '')}" for s in v["escenas"]) + "\n")
+    os.makedirs(LISTOS, exist_ok=True)
+    with open(os.path.join(LISTOS, f"{name}.txt"), "w") as f:
+        f.write(txt)
 
 
 def reparto():
@@ -1353,6 +1364,11 @@ if __name__ == "__main__":
         render(args[1], only_frame=int(args[2]) if len(args) > 2 else 1)
     elif cmd == "guion":
         guion(args[1])
+    elif cmd == "textos":   # solo regenera los .txt para publicar (sin volver a renderizar)
+        for vid in (ids if len(args) < 2 else args[1:]):
+            v = load(vid)
+            escribir_texto(v, os.path.splitext(os.path.basename(v["_file"]))[0])
+            print("OK", vid)
     elif cmd == "reparto":
         reparto()
     elif cmd == "caras":

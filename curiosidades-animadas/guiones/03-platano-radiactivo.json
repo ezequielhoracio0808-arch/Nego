@@ -1,17 +1,21 @@
 {
   "id": "03",
   "slug": "platano-radiactivo",
-  "titulo": "Los plátanos son RADIACTIVOS 🍌☢️ (de verdad)",
-  "descripcion": "El plátano tiene potasio, y una parte diminuta del potasio es radiactiva. ¿Hay que preocuparse? Te lo explica él.",
+  "titulo": "Los plátanos son RADIACTIVOS 🍌 ¿Hay que preocuparse?",
+  "descripcion": "Es verdad: el plátano tiene potasio y una parte diminuta del potasio (el potasio-40) es radiactiva. Pero haría falta comerse millones de golpe para que hiciera daño, y el cuerpo expulsa el potasio que le sobra. Eso sí: tú también eres un poco radiactivo. Te lo cuenta el propio plátano, en «Datos con Cara».",
   "hashtags": [
     "#curiosidades",
     "#datoscuriosos",
     "#ciencia",
     "#platano",
-    "#sabiasque",
+    "#datosconcara",
     "#shorts"
   ],
   "comentario": "¿Cuántos plátanos te comes a la semana? 🍌👇",
+  "fuentes": [
+    "Health Physics Society: radiactividad natural de los alimentos (potasio-40)",
+    "«Dosis equivalente a un plátano» (banana equivalent dose), unidad divulgativa de radiación"
+  ],
   "fondo": "rayos",
   "color": "#7AD957",
   "escenas": [

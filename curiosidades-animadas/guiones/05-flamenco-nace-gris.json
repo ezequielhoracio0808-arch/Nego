@@ -1,17 +1,20 @@
 {
   "id": "05",
   "slug": "flamenco-nace-gris",
-  "titulo": "Los flamencos NACEN GRISES 🦩 (el rosa es por lo que comen)",
-  "descripcion": "Los flamencos nacen grises y se vuelven rosas por los carotenoides de las gambitas y algas que comen. Si dejan de comerlos, palidecen.",
+  "titulo": "Los flamencos NACEN GRISES 🦩 El rosa es por lo que comen",
+  "descripcion": "Los flamencos nacen con plumón gris o blanco. Se vuelven rosas por los carotenoides de las gambitas y algas que comen (pigmentos como los de la zanahoria), y si dejan de comerlos, palidecen. Te lo cuenta el propio flamenco, en «Datos con Cara».",
   "hashtags": [
     "#curiosidades",
     "#datoscuriosos",
     "#flamenco",
     "#animales",
-    "#sabiasque",
+    "#datosconcara",
     "#shorts"
   ],
   "comentario": "¿De qué color serías tú si fueras lo que comes? 😂👇",
+  "fuentes": [
+    "San Diego Zoo Wildlife Alliance y National Geographic: ficha del flamenco (color por carotenoides; crías grises)"
+  ],
   "fondo": "laguna",
   "escenas": [
     {

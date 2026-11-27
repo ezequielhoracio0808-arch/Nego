@@ -1,17 +1,20 @@
 {
   "id": "02",
   "slug": "venus-dia-mas-largo",
-  "titulo": "En Venus un día dura MÁS que un año 🪐",
-  "descripcion": "Venus tarda 243 días en girar sobre sí misma y solo 225 en dar la vuelta al Sol. Y encima gira al revés.",
+  "titulo": "En Venus un día dura MÁS que un año 🪐 (y el Sol sale por el oeste)",
+  "descripcion": "Venus tarda 243 días terrestres en girar sobre sí misma y solo 225 en dar la vuelta al Sol. Además gira al revés que casi todos los planetas, así que allí el Sol sale por el oeste. Te lo cuenta la propia Venus, en «Datos con Cara».",
   "hashtags": [
     "#curiosidades",
     "#datoscuriosos",
     "#venus",
     "#espacio",
-    "#astronomia",
+    "#datosconcara",
     "#shorts"
   ],
   "comentario": "¿Qué planeta quieres que hable en el próximo? 👇",
+  "fuentes": [
+    "NASA Science, «Venus: Facts» (rotación de 243 días, órbita de 225 días, rotación retrógrada)"
+  ],
   "fondo": "espacio",
   "escenas": [
     {

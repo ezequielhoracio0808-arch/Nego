@@ -1,13 +1,17 @@
 # Datos con Cara: cómo hacer un short nuevo
 
-Canal de Shorts animados de curiosidades. **El protagonista del dato lo cuenta él mismo, con cara**
+Serie animada del canal **El Dato Oculto** (@eldatooculto09; kit del canal en `canal/eldatooculto.md`).
+La promesa del canal es «siempre con fuentes»: cada guion lleva `"fuentes"` (se imprimen en la descripción).
+Shorts animados de curiosidades. **El protagonista del dato lo cuenta él mismo, con cara**
 (el pulpo explica sus tres corazones, Venus presume de su día eterno...). Humor blanco, datos verdaderos.
 
 ## Cuando el usuario pida un short ("hazme uno sobre X", "dame ideas")
 1. Si pide ideas: propone 5 con un gancho de una línea cada una e indica qué personajes existen ya.
 2. **Comprueba el dato** antes de escribir (fuentes fiables). Si es dudoso, suavízalo ("unos", "miles de")
    o descártalo. Nada de mitos (no usamos el 10 % del cerebro, etc.).
-3. Escribe `guiones/NN-slug.json` (siguiente número libre). Copia la forma de `guiones/01-pulpo-tres-corazones.json`.
+3. Escribe `guiones/NN-slug.json` (siguiente número libre). Copia la forma de `guiones/01-pulpo-tres-corazones.json`:
+   `titulo` (≤100 caracteres, palabra clave en MAYÚSCULAS + 1 emoji), `descripcion`, `hashtags` (incluye
+   `#datosconcara`), `comentario` (pregunta para fijar) y `fuentes` (nombres de fuentes fiables que existan).
 4. Si falta un personaje, dibújalo en `tools/personajes.py` (ver abajo) y revisa `python3 tools/animar.py reparto`.
 5. Prueba fotogramas: `python3 tools/animar.py prueba NN 3` → `salida/prueba-NN-3.png`. Míralos.
 6. Renderiza: `python3 tools/animar.py render NN` → `videos-listos/NN-slug.mp4`, `-portada.jpg` y `.txt`.

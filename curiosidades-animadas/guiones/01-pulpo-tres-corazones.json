@@ -1,17 +1,21 @@
 {
   "id": "01",
   "slug": "pulpo-tres-corazones",
-  "titulo": "El pulpo tiene TRES corazones 🐙 (y la sangre azul)",
-  "descripcion": "Tres corazones, sangre azul y la mayoría de sus neuronas en los brazos. Te lo cuenta el propio pulpo.",
+  "titulo": "El pulpo tiene 3 CORAZONES 🐙 (y uno se PARA cuando nada)",
+  "descripcion": "El pulpo tiene tres corazones: dos mandan la sangre a las branquias y el tercero al resto del cuerpo, y ese tercero se detiene cuando nada. Su sangre es azul porque usa cobre en vez de hierro, y la mayoría de sus neuronas están en los brazos. Te lo cuenta él mismo, en «Datos con Cara».",
   "hashtags": [
     "#curiosidades",
     "#datoscuriosos",
     "#pulpo",
     "#animales",
-    "#sabiasque",
+    "#datosconcara",
     "#shorts"
   ],
   "comentario": "¿Qué animal quieres que venga a contar su secreto? 👇",
+  "fuentes": [
+    "Smithsonian Ocean y National Geographic: anatomía del pulpo (tres corazones, hemocianina con cobre)",
+    "Peter Godfrey-Smith, «Otras mentes» (2016): la mayoría de las neuronas del pulpo están en sus brazos"
+  ],
   "fondo": "mar",
   "escenas": [
     {
