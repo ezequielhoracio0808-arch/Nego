@@ -19,7 +19,18 @@ python3 tools/investigar.py        # -> investigacion/$FECHA.md (+ .json)
 - **Con API de YouTube** (código 0): lee el informe. Fíjate sobre todo en la columna **× canal** (visitas ÷ suscriptores):
   si un canal pequeño tiene un vídeo con muchas visitas, lo que funcionó es **el tema y el título**. Busca 2–3 temas
   que se repitan o que destaquen, y mira qué formato tienen los títulos y miniaturas que ganan.
-- **Sin API** (código 2): investiga con búsquedas web (4–6 búsquedas): temas de curiosidades virales esta semana,
+- **Con el conector de vidIQ** (herramientas `vidiq_*`), úsalo antes que las búsquedas web: da visitas reales.
+  El plan tiene **150 créditos al mes** y cada consulta gasta 5, así que:
+  1. Mira el saldo con `vidiq_balance`, que es gratis. Si quedan menos de 30 créditos, no gastes y pasa a las búsquedas web.
+  2. Haz **una sola consulta**, alternando por días:
+     - días pares: `vidiq_outliers` (`contentType` short, `language` es, `publishedWithin` thisMonth) con la categoría que toque;
+     - días impares: `vidiq_trending_videos` (`videoFormat` short, `videoTitleLanguage` es, `sortBy` recentVph,
+       `titleQuery` «curiosidades datos curiosos sabías que», los últimos 14 días).
+  3. Apunta en `investigacion/$FECHA.md` los 5 mejores (título, canal, suscriptores, visitas, × canal) y lo que copias del
+     formato. No copies las granjas de «Por favor comparte…» (interacción por debajo del 1 %).
+  Lo que ya se sabe está en `investigacion/2026-11-27-vidiq.md`: funcionan los lugares prohibidos en serie numerada,
+  los «¿Sabías que…?» de animales y las búsquedas «lugares prohibidos del mundo» (+45 %) y «… que no puedes visitar» (+81 %).
+- **Sin API ni vidIQ** (código 2): investiga con búsquedas web (4–6 búsquedas): temas de curiosidades virales esta semana,
   efemérides de hoy («un día como hoy» + la fecha), descubrimientos científicos o noticias raras de los últimos días y
   qué han publicado los grandes canales de curiosidades en español. Apunta lo que encuentres al final de `investigacion/$FECHA.md`.
 
