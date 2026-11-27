@@ -7,7 +7,7 @@ Resultado: un vídeo horizontal de 3–4 min + un Short de menos de 60 s, con mi
 ```bash
 cd canal-curiosidades
 FECHA=$(TZ=Europe/Madrid date +%F)
-ls guiones/$FECHA-* 2>/dev/null && echo "YA HAY VÍDEO HOY"   # si ya existe, no hagas otro: reenvía el de hoy
+ls guiones/$FECHA-* 2>/dev/null && echo "YA HAY VÍDEO HOY"   # si ya existe, para aquí: no hagas otro
 python3 -c "import piper" 2>/dev/null || pip install piper-tts
 ```
 La voz (`es_ES-davefx-medium`) se descarga sola en `~/.cache/piper-voces/` si no está.
