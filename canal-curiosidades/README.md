@@ -11,6 +11,9 @@
 6. **Te lo manda a la app** (video.mp4, short.mp4 y miniatura.jpg) y sube el guion y los textos a git.
 7. **Lo sube a tu canal de YouTube con vidIQ**, programado (vídeo a las 18:00 y Short a las 13:00, hora de España).
    Antes te enseña los borradores y solo los programa cuando respondes «sí». Lo previsto queda en `publicaciones.json`.
+8. **Aprende de las visitas**: cada dos días lee en YouTube Studio (a través de vidIQ) las visitas y el % visto de cada
+   vídeo publicado (`rendimiento.json`), compara qué temas, ganchos, títulos y duraciones funcionan mejor y actualiza la
+   receta de `aprendizajes.md`, que manda al escribir los siguientes Shorts. De cada 3 Shorts, 1 prueba algo nuevo.
 
 El procedimiento detallado está en [`DIARIO.md`](DIARIO.md). La identidad del canal y cómo crearlo están en [`marca/`](marca/canal.md).
 

@@ -20,8 +20,9 @@ python3 tools/investigar.py        # -> investigacion/$FECHA.md (+ .json)
   si un canal pequeño tiene un vídeo con muchas visitas, lo que funcionó es **el tema y el título**. Busca 2–3 temas
   que se repitan o que destaquen, y mira qué formato tienen los títulos y miniaturas que ganan.
 - **Con el conector de vidIQ** (herramientas `vidiq_*`), úsalo antes que las búsquedas web: da visitas reales.
-  El plan tiene **150 créditos al mes** y cada consulta gasta 5, así que:
-  1. Mira el saldo con `vidiq_balance`, que es gratis. Si quedan menos de 30 créditos, no gastes y pasa a las búsquedas web.
+  El plan tiene **150 créditos al mes** y cada consulta gasta 5. **El análisis de tus propios vídeos (paso 1b) va primero.**
+  1. Mira el saldo con `vidiq_balance`, que es gratis. Investiga con vidIQ **solo los días impares** y solo si quedan
+     40 créditos o más. Si no, usa las búsquedas web.
   2. Haz **una sola consulta**, alternando por días:
      - días pares: `vidiq_outliers` (`contentType` short, `language` es, `publishedWithin` thisMonth) con la categoría que toque;
      - días impares: `vidiq_trending_videos` (`videoFormat` short, `videoTitleLanguage` es, `sortBy` recentVph,
@@ -33,6 +34,25 @@ python3 tools/investigar.py        # -> investigacion/$FECHA.md (+ .json)
 - **Sin API ni vidIQ** (código 2): investiga con búsquedas web (4–6 búsquedas): temas de curiosidades virales esta semana,
   efemérides de hoy («un día como hoy» + la fecha), descubrimientos científicos o noticias raras de los últimos días y
   qué han publicado los grandes canales de curiosidades en español. Apunta lo que encuentres al final de `investigacion/$FECHA.md`.
+
+## 1b. Analizar las visitas de lo publicado y aprender
+1. **Enlaces.** En `publicaciones.json`, a cada vídeo con `estado: "programado"` y sin `url`, ponle la `postUrl` que
+   devuelve `vidiq_social_post_status` con su `vidiq_post`.
+2. **Datos.** Hazlo los **días pares** (o si han pasado 2 días desde el último análisis) y solo si hay algún vídeo
+   publicado hace 48 h o más. Llama una vez a `vidiq_channel_analytics`, que gasta 5 créditos:
+   - `channelId`: el de `publicaciones.json`; `dimensions`: `["video"]`; `startDate`: 2026-11-27; `endDate`: hoy; `maxResults`: 200;
+   - `metrics`: `views, engagedViews, averageViewPercentage, averageViewDuration, likes, comments, shares, subscribersGained`.
+
+   Guarda la respuesta tal cual en `trabajo/analitica-$FECHA.json`. Después:
+   `python3 tools/rendimiento.py importar trabajo/analitica-$FECHA.json && python3 tools/rendimiento.py informe`.
+3. **Conclusiones.** Lee el informe y actualiza `aprendizajes.md`: la receta, las pruebas y una fila nueva en el historial.
+   Sigue sus normas: cambia una regla solo si el patrón se repite (2 vídeos o más por lado y una diferencia del 30 % o más).
+   Si no, apúntalo como indicio. Fíjate también en lo concreto: qué temas, ganchos y títulos tienen los 3 mejores y los
+   3 peores Shorts, y qué tienen en común.
+4. **Aplicarlo.** El tema, el gancho, el título y la duración de hoy siguen la receta de `aprendizajes.md`, salvo el día
+   de prueba (1 de cada 3), que cambia una sola cosa. Pon en el guion `"categoria"` y, el día de prueba,
+   `"prueba": "<qué se prueba>"`. Si un Short ya aprobado pero sin subir va claramente en contra de lo aprendido
+   (por ejemplo, por el título), propón el cambio al usuario. Cambiar un borrador obliga a pedirle otro «sí».
 
 **Elegir el tema.** Debe cumplir todo esto:
 1. Tiene demanda demostrada: vídeos parecidos con muchas visitas, o una noticia o efeméride de la que se habla ahora.
@@ -52,6 +72,7 @@ Copia la estructura de un guion anterior (por ejemplo `guiones/2026-11-27-longye
 | Campo | Regla |
 |---|---|
 | `tema`, `por_que` | Qué es y por qué se eligió (con los datos de la investigación) |
+| `categoria` | lugares, historia, ciencia, animales, misterios, inventos, cuerpo humano, récords o actualidad |
 | `titulo` | ≤ 70 caracteres, honesto (el vídeo cumple lo que promete), con 1–3 palabras clave en MAYÚSCULAS |
 | `miniatura` | 2 líneas de ≤ 14 caracteres que **complementen** el título, no que lo repitan |
 | `miniatura_imagen` | Índice de la escena cuya foto va en la miniatura (la más impactante) |
@@ -65,6 +86,8 @@ Copia la estructura de un guion anterior (por ejemplo `guiones/2026-11-27-longye
 Cada escena tiene `titulo` (en pantalla, MAYÚSCULAS, ≤ 28 caracteres), `capitulo` (texto del capítulo en YouTube),
 `narracion` (35–60 palabras, una sola idea) e `imagen`. Opcionalmente lleva `cifra`, un número o frase corta
 (≤ 12 caracteres) que aparece en grande.
+
+**Antes de escribir, lee `aprendizajes.md`:** su receta (gancho, duración, título, final) manda sobre lo de abajo.
 
 **Estilo:** español de España, frases cortas, tono de conversación, sin relleno.
 - **Escena 1 = gancho** (menos de 15 s): el dato más sorprendente y una promesa («quédate hasta el final porque…»). Cumple la promesa.
@@ -129,7 +152,7 @@ y el Short del día (2) y, como mucho, 1 Short pendiente (`estado: "aprobado"` c
 7. **Pide el visto bueno.** vidIQ solo publica cuando el usuario lo aprueba después de ver el borrador. Así que **no llames
    a `vidiq_social_post_publish`** hasta que el usuario responda «sí» en esta conversación. En el resumen final enséñale
    cada borrador: cuenta, título, hora y coste (0). Cuando diga que sí, publica cada `postId` con su `revision`, cambia el
-   `estado` a `"programado"` y haz commit. Si la hora ya ha pasado cuando responda, muévela a la siguiente hora libre con
+   `estado` a `"programado"`, guarda en `url` la `postUrl` de `vidiq_social_post_status` y haz commit. Si la hora ya ha pasado cuando responda, muévela a la siguiente hora libre con
    `vidiq_social_post_draft_update` y avísale.
 8. **Comentario fijado.** Si existe `salida/<id>/comentario-fijado.txt`, recuérdale que lo pegue y lo fije, porque vidIQ
    no fija comentarios.
@@ -137,7 +160,8 @@ y el Short del día (2) y, como mucho, 1 Short pendiente (`estado: "aprobado"` c
 ## 8. Resumen final
 Termina con un resumen breve en español:
 - el tema y **por qué** se eligió (cifras de la investigación),
-- el título,
+- **qué se ha aprendido de las visitas** (los mejores y peores vídeos, con cifras) y qué se ha cambiado por ello,
+- el título (y, si es día de prueba, qué se prueba),
 - qué revisar (pronunciación de nombres raros y cualquier dato con matices),
 - los borradores de YouTube con su hora, y la pregunta: «¿Los programo? Responde **sí**».
   Sin conector de vidIQ: cuándo publicar a mano (vídeo a las 18:00 y Short a las 13:00).
