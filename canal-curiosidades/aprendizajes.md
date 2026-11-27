@@ -21,6 +21,14 @@ Datos de cada vídeo en `rendimiento.json`. Para verlos: `python3 tools/rendimie
    «… que no puedes visitar» sube un 81 %.
 5. **Final:** una pregunta corta para que comenten («¿Irías?», «¿Vivirías aquí?»).
 
+## Receta actual de los vídeos largos
+*Estado: hipótesis sacadas de vidIQ (27/11) y del vídeo de Duodedos sobre monetizar sin mostrar la cara.*
+1. **Duración:** 8–10 minutos al día. A partir de 8 min caben anuncios a mitad del vídeo, y las 4.000 horas solo cuentan en vídeos largos.
+2. **Formato:** una lista de 5–7 elementos del mismo tema, de menos a más, con un capítulo por elemento.
+3. **Título:** «N LUGARES / ANIMALES … que …», con la búsqueda principal dentro («lugares prohibidos del mundo»).
+4. **Domingo:** recopilación de 25–30 min con los 3 vídeos de la semana con más visitas por hora.
+5. **Miniatura:** 2 líneas que complementen el título (no lo repitan) y una foto con un sujeto claro.
+
 ## Pruebas pendientes (una cada 3 Shorts)
 - [ ] Animales con «¿Sabías que…?» (lo que más crece ahora en curiosidades).
 - [ ] Gancho en forma de pregunta frente a afirmación.

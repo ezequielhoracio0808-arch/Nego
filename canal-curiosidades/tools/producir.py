@@ -547,7 +547,8 @@ def textos(g, ctx):
     if v:
         caps = []
         for i, (s, sc) in enumerate(zip(v["starts"], g["escenas"])):
-            txt = sc.get("capitulo") or (nice(sc["titulo"]) if sc.get("titulo") else None)
+            cap = sc.get("capitulo")  # False: el rótulo se ve en pantalla pero no es capítulo
+            txt = None if cap is False else (cap or (nice(sc["titulo"]) if sc.get("titulo") else None))
             st = 0 if i == 0 else s - 0.3
             if txt and (not caps or st - caps[-1][0] >= 10):
                 caps.append([st, txt])

@@ -4,7 +4,9 @@
 1. **Investiga qué vídeos funcionan**: vídeos de curiosidades en español de los últimos 14 días, ordenados por
    visitas/día y por cuántas veces superan al tamaño de su canal (API de YouTube; si no hay clave, búsquedas web).
 2. **Elige un tema** que no se haya hecho y **verifica cada dato** con dos fuentes como mínimo.
-3. **Escribe el guion** del vídeo (3–4 min) y del Short (menos de 60 s).
+3. **Escribe el guion** del vídeo (8–10 min, en formato lista: «7 lugares donde…») y del Short (menos de 60 s).
+   **Los domingos** hace una recopilación de 25–30 min con los 3 vídeos de la semana que más se han visto
+   (`tools/recopilar.py`), para sumar horas de visualización: hacen falta 4.000 para monetizar.
 4. **Busca imágenes** con licencia libre en Wikimedia Commons y anota la atribución.
 5. **Pone la voz** (Piper, español de España), **hace el montaje** (zoom lento sobre cada foto, rótulos, subtítulos y música propia),
    la miniatura y la descripción con capítulos, fuentes y créditos.

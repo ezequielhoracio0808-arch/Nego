@@ -1,7 +1,12 @@
 # Vídeo diario de «Dato Oculto»: procedimiento
 
 Lo sigue cada mañana la sesión programada de Claude (y cualquiera que quiera hacerlo a mano).
-Resultado: un vídeo horizontal de 3–4 min + un Short de menos de 60 s, con miniaturas y textos listos para subir.
+Resultado: un vídeo horizontal de **8–10 min** + un Short de menos de 60 s, con miniaturas y textos listos para subir.
+**Los domingos**, en lugar del vídeo nuevo, se hace la **recopilación semanal** de 25–30 min (ver el final) y un Short nuevo.
+
+¿Por qué 8–10 min? Para monetizar, YouTube pide 1.000 suscriptores y **4.000 horas vistas en vídeos largos** (las de los
+Shorts no cuentan). Además, a partir de 8 minutos se pueden poner anuncios a mitad del vídeo. Los Shorts siguen: traen
+suscriptores y llevan gente a los vídeos largos.
 
 ## 0. Preparar
 ```bash
@@ -67,7 +72,17 @@ artículos científicos, enciclopedias o grandes medios. Si las fuentes no coinc
 Si algo es leyenda, dilo («no hay ninguna ley que…»). **No inventes cifras.** Guarda entre 3 y 6 enlaces en `fuentes`.
 
 ## 3. Escribir el guion: `guiones/$FECHA-<slug>.json`
-Copia la estructura de un guion anterior (por ejemplo `guiones/2026-11-27-longyearbyen.json`). Los campos:
+**Formato del vídeo: una lista de 5 a 7 elementos del mismo tema** («7 lugares donde…», «6 animales que…»), como
+`guiones/2026-11-27-11-lugares.json`. Es lo que mejor funciona en curiosidades y deja un capítulo por elemento:
+- **Intro (2 escenas):** el gancho, en menos de 15 s, con lo mejor de la lista («…y el número uno ni siquiera te dejan
+  pisarlo»), y una promesa.
+- **Cada elemento (3–4 escenas):** la primera lleva `titulo` (nombre y país), `cifra` (`"#7"`) y `capitulo`
+  (`"7. Nombre: idea"`); las demás, sin `titulo`. De menos a más sorprendente.
+- **Cierre (1 escena):** pregunta para los comentarios y suscripción.
+- Si un elemento ya salió en otro vídeo (`historial.json`), cuéntalo desde otro ángulo o cámbialo.
+- El **Short** sale del elemento más sorprendente de la lista.
+
+Los campos:
 
 | Campo | Regla |
 |---|---|
@@ -80,7 +95,7 @@ Copia la estructura de un guion anterior (por ejemplo `guiones/2026-11-27-longye
 | `etiquetas` (8–12), `hashtags` (3) | En español y en minúsculas |
 | `pron` | Pronunciación para la voz: `{"Longyearbyen": "Long yir bien"}` (los subtítulos usan el texto original) |
 | `fuentes` | `[{"titulo": …, "url": …}]` |
-| `escenas` | **11–14 escenas, 520–680 palabras en total** (3–4 min) |
+| `escenas` | **26–34 escenas, 1.450–1.800 palabras en total** (8–10 min), con **15–25 fotos distintas** |
 | `short` | `titulo` (con #shorts), `gancho` (2 líneas), `descripcion`, `escenas`: **4–6, 90–140 palabras** (menos de 55 s) |
 
 Cada escena tiene `titulo` (en pantalla, MAYÚSCULAS, ≤ 28 caracteres), `capitulo` (texto del capítulo en YouTube),
@@ -113,10 +128,11 @@ el script espera y reintenta. Si sigue fallando, reutiliza fotos ya descargadas.
 
 ## 5. Producir
 ```bash
-python3 tools/producir.py $FECHA      # 8-10 minutos (ejecútalo en segundo plano si hace falta)
+python3 tools/producir.py $FECHA      # unos 20-25 minutos: ejecútalo en segundo plano
 ```
 Revisa `trabajo/<id>/fotogramas.jpg` y `salida/<id>/miniatura.jpg`: que el texto se lea, que ninguna imagen sea un
-error y que la miniatura llame la atención. El vídeo debe durar entre 2:30 y 4:30 y el Short, menos de 60 s (si no, el script avisa).
+error y que la miniatura llame la atención. El vídeo debe durar entre **8:00 y 10:30** (si dura menos de 8 min, añade un elemento a la lista) y el Short, menos
+de 60 s (si no, el script avisa).
 Si cambias algo, `--solo video|short|miniatura|textos` regenera solo esa parte.
 
 ## 6. Entregar
@@ -165,3 +181,22 @@ Termina con un resumen breve en español:
 - qué revisar (pronunciación de nombres raros y cualquier dato con matices),
 - los borradores de YouTube con su hora, y la pregunta: «¿Los programo? Responde **sí**».
   Sin conector de vidIQ: cuándo publicar a mano (vídeo a las 18:00 y Short a las 13:00).
+
+## Domingos: recopilación semanal (25–30 min)
+Los domingos no se hace vídeo nuevo, sino una recopilación de **los 3 vídeos largos de la semana (lunes a sábado) con más
+visitas por hora**, según `python3 tools/rendimiento.py informe`. Si aún no hay datos, se usan los 3 más recientes.
+Lo que ya está verificado no hay que volver a comprobarlo, y las fotos ya están descargadas.
+1. Escribe la receta en `trabajo/receta-$FECHA.json` (ver `tools/recopilar.py`). Lleva:
+   - `id`: `$FECHA-recopilacion-<slug>`;
+   - un título nuevo con palabras clave que se buscan («lugares prohibidos del mundo», «misterios sin resolver»…);
+   - la miniatura;
+   - una `intro` nueva (gancho de 2–3 frases) y un `cierre` con pregunta y suscripción;
+   - los 3 `videos` en orden, de menos a más sorprendente.
+2. `python3 tools/recopilar.py trabajo/receta-$FECHA.json` y después
+   `python3 tools/producir.py $FECHA-recopilacion-<slug> --solo video miniatura textos` (unos 60 min; en segundo plano).
+3. Revisa los fotogramas, la miniatura y la duración (25–30 min; si se queda corta, añade un cuarto vídeo).
+4. El Short del domingo es un **Short suelto nuevo** (`guiones/shorts/$FECHA-s01-<slug>.json`, como los del 27/11),
+   sobre un tema que siga la receta de `aprendizajes.md`.
+5. Súbelos como cualquier día (paso 7): la recopilación a las 18:00 y el Short a las 13:00. La recopilación lleva un
+   `comentario-fijado.txt` con los créditos de las fotos: recuérdaselo al usuario.
+
