@@ -1,0 +1,240 @@
+{
+  "id": "03",
+  "slug": "platano-radiactivo",
+  "titulo": "Los plátanos son RADIACTIVOS 🍌☢️ (de verdad)",
+  "descripcion": "El plátano tiene potasio, y una parte diminuta del potasio es radiactiva. ¿Hay que preocuparse? Te lo explica él.",
+  "hashtags": [
+    "#curiosidades",
+    "#datoscuriosos",
+    "#ciencia",
+    "#platano",
+    "#sabiasque",
+    "#shorts"
+  ],
+  "comentario": "¿Cuántos plátanos te comes a la semana? 🍌👇",
+  "fondo": "rayos",
+  "color": "#7AD957",
+  "escenas": [
+    {
+      "habla": "platano",
+      "texto": "Soy un plátano... y soy *radiactivo*.",
+      "rotulo": "¡RADIACTIVO!",
+      "actores": {
+        "platano": {
+          "x": 0.5,
+          "y": 0.56,
+          "s": 1.25,
+          "cara": "presumido"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "resplandor",
+          "en": "platano",
+          "retraso": "50%",
+          "color": "#C8FF7A"
+        }
+      ],
+      "sfx": [
+        [
+          "golpe",
+          "50%"
+        ]
+      ]
+    },
+    {
+      "habla": "bombilla",
+      "texto": "¿¡Qué!? ¡Si me como uno cada mañana!",
+      "actores": {
+        "platano": {
+          "x": 0.7,
+          "y": 0.58,
+          "s": 0.85,
+          "cara": "presumido"
+        },
+        "bombilla": {
+          "x": 0.28,
+          "y": 0.57,
+          "s": 0.85,
+          "cara": "asustado",
+          "entra": "izq"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "exclamacion",
+          "en": "bombilla",
+          "retraso": 0.4
+        }
+      ],
+      "camara": "temblor"
+    },
+    {
+      "habla": "platano",
+      "texto": "Tranquilo. Tengo *potasio*, y una parte diminuta del potasio es radiactiva.",
+      "rotulo": "*POTASIO*",
+      "actores": {
+        "platano": {
+          "x": 0.7,
+          "y": 0.58,
+          "s": 0.85,
+          "cara": "feliz"
+        },
+        "bombilla": {
+          "x": 0.28,
+          "y": 0.57,
+          "s": 0.85,
+          "cara": "pensativo"
+        }
+      }
+    },
+    {
+      "habla": "platano",
+      "texto": "Para hacerte daño, tendrías que comerte *millones* de plátanos de golpe.",
+      "rotulo": "*MILLONES* DE PLÁTANOS",
+      "actores": {
+        "platano": {
+          "x": 0.5,
+          "y": 0.58,
+          "s": 0.8,
+          "cara": "feliz"
+        },
+        "platano#2": {
+          "x": 0.17,
+          "y": 0.42,
+          "s": 0.32,
+          "cara": "feliz",
+          "retraso": "45%"
+        },
+        "platano#3": {
+          "x": 0.83,
+          "y": 0.42,
+          "s": 0.32,
+          "cara": "presumido",
+          "retraso": "52%"
+        },
+        "platano#4": {
+          "x": 0.15,
+          "y": 0.62,
+          "s": 0.32,
+          "cara": "sorprendido",
+          "retraso": "59%"
+        },
+        "platano#5": {
+          "x": 0.85,
+          "y": 0.62,
+          "s": 0.32,
+          "cara": "feliz",
+          "retraso": "66%"
+        }
+      }
+    },
+    {
+      "habla": "bombilla",
+      "texto": "Vale... ¿y si me como dos?",
+      "actores": {
+        "platano": {
+          "x": 0.7,
+          "y": 0.58,
+          "s": 0.85,
+          "cara": "neutro"
+        },
+        "bombilla": {
+          "x": 0.28,
+          "y": 0.57,
+          "s": 0.85,
+          "cara": "pensativo"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "interrogacion",
+          "en": "bombilla",
+          "retraso": "60%"
+        }
+      ]
+    },
+    {
+      "habla": "platano",
+      "texto": "Tu cuerpo expulsa el potasio que le sobra. Comer más no te hace más radiactivo.",
+      "actores": {
+        "platano": {
+          "x": 0.7,
+          "y": 0.58,
+          "s": 0.85,
+          "cara": "feliz"
+        },
+        "bombilla": {
+          "x": 0.28,
+          "y": 0.57,
+          "s": 0.85,
+          "cara": "feliz"
+        }
+      }
+    },
+    {
+      "habla": "platano",
+      "texto": "Eso sí... tú *también* eres un poquito radiactivo.",
+      "rotulo": "TÚ *TAMBIÉN*",
+      "actores": {
+        "platano": {
+          "x": 0.7,
+          "y": 0.58,
+          "s": 0.85,
+          "cara": "presumido"
+        },
+        "bombilla": {
+          "x": 0.28,
+          "y": 0.57,
+          "s": 0.85,
+          "cara": "sorprendido"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "exclamacion",
+          "en": "bombilla",
+          "retraso": "70%"
+        }
+      ]
+    },
+    {
+      "habla": "bombilla",
+      "texto": "Pues mira... así brillo más.",
+      "actores": {
+        "platano": {
+          "x": 0.7,
+          "y": 0.58,
+          "s": 0.85,
+          "cara": "feliz"
+        },
+        "bombilla": {
+          "x": 0.3,
+          "y": 0.56,
+          "s": 0.95,
+          "cara": "presumido"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "resplandor",
+          "en": "bombilla",
+          "retraso": "30%",
+          "color": "#FFF3A0"
+        },
+        {
+          "tipo": "brillos",
+          "en": "bombilla",
+          "retraso": "40%"
+        }
+      ],
+      "sfx": [
+        [
+          "badumtss",
+          "fin"
+        ]
+      ],
+      "pausa": 0.9
+    }
+  ]
+}

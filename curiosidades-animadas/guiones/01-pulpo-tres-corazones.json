@@ -1,0 +1,193 @@
+{
+  "id": "01",
+  "slug": "pulpo-tres-corazones",
+  "titulo": "El pulpo tiene TRES corazones 🐙 (y la sangre azul)",
+  "descripcion": "Tres corazones, sangre azul y la mayoría de sus neuronas en los brazos. Te lo cuenta el propio pulpo.",
+  "hashtags": [
+    "#curiosidades",
+    "#datoscuriosos",
+    "#pulpo",
+    "#animales",
+    "#sabiasque",
+    "#shorts"
+  ],
+  "comentario": "¿Qué animal quieres que venga a contar su secreto? 👇",
+  "fondo": "mar",
+  "escenas": [
+    {
+      "habla": "pulpo",
+      "texto": "Hola. Soy un pulpo... y tengo *tres corazones*.",
+      "rotulo": "*3* CORAZONES",
+      "actores": {
+        "pulpo": {
+          "x": 0.5,
+          "y": 0.56,
+          "s": 1.2,
+          "cara": "feliz"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "corazones",
+          "en": "pulpo",
+          "retraso": "70%"
+        }
+      ]
+    },
+    {
+      "habla": "pulpo",
+      "texto": "Dos mandan la sangre a mis branquias. Y el tercero, al resto del cuerpo.",
+      "actores": {
+        "pulpo": {
+          "x": 0.5,
+          "y": 0.6,
+          "s": 0.95,
+          "cara": "presumido"
+        },
+        "corazon#1": {
+          "x": 0.2,
+          "y": 0.3,
+          "s": 0.34,
+          "cara": "feliz",
+          "retraso": "5%"
+        },
+        "corazon#2": {
+          "x": 0.5,
+          "y": 0.25,
+          "s": 0.34,
+          "cara": "feliz",
+          "retraso": "22%"
+        },
+        "corazon#3": {
+          "x": 0.8,
+          "y": 0.3,
+          "s": 0.34,
+          "cara": "feliz",
+          "retraso": "62%",
+          "accion": "latir",
+          "accion_en": "80%"
+        }
+      }
+    },
+    {
+      "habla": "corazon#3",
+      "texto": "Pero cuando el pulpo nada... yo me *paro*.",
+      "rotulo": "¡SE *PARA*!",
+      "actores": {
+        "corazon#3": {
+          "x": 0.5,
+          "y": 0.56,
+          "s": 0.85,
+          "cara": "triste"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "sudor",
+          "en": "corazon#3",
+          "retraso": "50%"
+        }
+      ],
+      "sfx": [
+        [
+          "bajada",
+          "fin"
+        ]
+      ]
+    },
+    {
+      "habla": "pulpo",
+      "texto": "Por eso prefiero ir *andando*. Nadar me agota.",
+      "actores": {
+        "pulpo": {
+          "x": 0.5,
+          "y": 0.56,
+          "s": 1.15,
+          "cara": "pensativo"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "sudor",
+          "en": "pulpo",
+          "retraso": "40%"
+        }
+      ]
+    },
+    {
+      "habla": "gota",
+      "texto": "¡Y yo soy su sangre! Llevo *cobre* en vez de hierro... por eso soy *azul*.",
+      "rotulo": "SANGRE *AZUL*",
+      "actores": {
+        "pulpo": {
+          "x": 0.3,
+          "y": 0.6,
+          "s": 0.8,
+          "cara": "sorprendido"
+        },
+        "gota": {
+          "x": 0.72,
+          "y": 0.52,
+          "s": 0.62,
+          "cara": "feliz",
+          "entra": "cae"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "brillos",
+          "en": "gota",
+          "retraso": "88%"
+        }
+      ]
+    },
+    {
+      "habla": "pulpo",
+      "texto": "Y lo mejor: casi todas mis neuronas no están en la cabeza... ¡están en los *brazos*!",
+      "rotulo": "NEURONAS EN LOS *BRAZOS*",
+      "actores": {
+        "pulpo": {
+          "x": 0.5,
+          "y": 0.58,
+          "s": 1.1,
+          "cara": "sorprendido",
+          "accion": "saltar",
+          "accion_en": "86%"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "exclamacion",
+          "en": "pulpo",
+          "retraso": "86%"
+        }
+      ]
+    },
+    {
+      "habla": "pulpo",
+      "texto": "O sea, que yo no pierdo la cabeza. La tengo *repartida*.",
+      "actores": {
+        "pulpo": {
+          "x": 0.5,
+          "y": 0.58,
+          "s": 1.1,
+          "cara": "presumido"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "brillos",
+          "en": "pulpo",
+          "retraso": "72%"
+        }
+      ],
+      "sfx": [
+        [
+          "badumtss",
+          "fin"
+        ]
+      ],
+      "pausa": 0.9
+    }
+  ]
+}

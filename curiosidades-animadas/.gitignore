@@ -1,0 +1,4 @@
+_tmp/
+__pycache__/
+salida/prueba-*
+salida/_*

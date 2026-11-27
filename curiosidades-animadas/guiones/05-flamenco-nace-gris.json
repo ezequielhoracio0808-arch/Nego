@@ -1,0 +1,200 @@
+{
+  "id": "05",
+  "slug": "flamenco-nace-gris",
+  "titulo": "Los flamencos NACEN GRISES 🦩 (el rosa es por lo que comen)",
+  "descripcion": "Los flamencos nacen grises y se vuelven rosas por los carotenoides de las gambitas y algas que comen. Si dejan de comerlos, palidecen.",
+  "hashtags": [
+    "#curiosidades",
+    "#datoscuriosos",
+    "#flamenco",
+    "#animales",
+    "#sabiasque",
+    "#shorts"
+  ],
+  "comentario": "¿De qué color serías tú si fueras lo que comes? 😂👇",
+  "fondo": "laguna",
+  "escenas": [
+    {
+      "habla": "flamenco",
+      "texto": "Todo el mundo cree que nací rosa...",
+      "actores": {
+        "flamenco": {
+          "x": 0.5,
+          "y": 0.56,
+          "s": 1.2,
+          "cara": "presumido"
+        }
+      }
+    },
+    {
+      "habla": "flamenco",
+      "texto": "...pero nací *gris*.",
+      "rotulo": "NACÍ *GRIS*",
+      "rotulo_color": "#D9D6E0",
+      "actores": {
+        "flamenco": {
+          "x": 0.5,
+          "y": 0.56,
+          "s": 1.2,
+          "cara": "triste",
+          "gris": 1.0,
+          "gris_en": "55%"
+        }
+      },
+      "sfx": [
+        [
+          "bajada",
+          0.1
+        ]
+      ]
+    },
+    {
+      "habla": "flamenco",
+      "texto": "Me pongo rosa por lo que *como*.",
+      "rotulo": "ROSA POR LO QUE *COMO*",
+      "actores": {
+        "flamenco": {
+          "x": 0.5,
+          "y": 0.56,
+          "s": 1.2,
+          "cara": "feliz",
+          "gris": 0.0,
+          "gris_en": "30%"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "brillos",
+          "en": "flamenco",
+          "retraso": "35%"
+        }
+      ]
+    },
+    {
+      "habla": "gamba",
+      "texto": "Ay, no... que viene a por mí.",
+      "actores": {
+        "flamenco": {
+          "x": 0.3,
+          "y": 0.58,
+          "s": 0.9,
+          "cara": "presumido",
+          "mira": "der"
+        },
+        "gamba": {
+          "x": 0.74,
+          "y": 0.52,
+          "s": 0.55,
+          "cara": "asustado",
+          "entra": "der"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "sudor",
+          "en": "gamba",
+          "retraso": "40%"
+        }
+      ]
+    },
+    {
+      "habla": "flamenco",
+      "texto": "Las gambitas y las algas que como tienen *carotenoides*: pigmentos como los de la zanahoria.",
+      "rotulo": "*CAROTENOIDES*",
+      "actores": {
+        "flamenco": {
+          "x": 0.3,
+          "y": 0.58,
+          "s": 0.9,
+          "cara": "feliz"
+        },
+        "gamba": {
+          "x": 0.74,
+          "y": 0.52,
+          "s": 0.55,
+          "cara": "asustado"
+        }
+      }
+    },
+    {
+      "habla": "flamenco",
+      "texto": "Si dejo de comerlos, me voy poniendo *pálido*.",
+      "rotulo": "SIN ELLOS: *PÁLIDO*",
+      "actores": {
+        "flamenco": {
+          "x": 0.3,
+          "y": 0.58,
+          "s": 0.9,
+          "cara": "triste",
+          "gris": 0.65,
+          "gris_en": "65%"
+        },
+        "gamba": {
+          "x": 0.74,
+          "y": 0.52,
+          "s": 0.55,
+          "cara": "sorprendido"
+        }
+      }
+    },
+    {
+      "habla": "gamba",
+      "texto": "O sea, que todo tu glamour... es gracias a *mí*.",
+      "actores": {
+        "flamenco": {
+          "x": 0.3,
+          "y": 0.58,
+          "s": 0.9,
+          "cara": "sorprendido",
+          "gris": 0.0
+        },
+        "gamba": {
+          "x": 0.72,
+          "y": 0.5,
+          "s": 0.62,
+          "cara": "presumido"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "brillos",
+          "en": "gamba",
+          "retraso": "70%"
+        }
+      ]
+    },
+    {
+      "habla": "flamenco",
+      "texto": "Shhh. Que no se entere nadie.",
+      "actores": {
+        "flamenco": {
+          "x": 0.3,
+          "y": 0.58,
+          "s": 0.9,
+          "cara": "asustado",
+          "mira": "der"
+        },
+        "gamba": {
+          "x": 0.72,
+          "y": 0.5,
+          "s": 0.62,
+          "cara": "presumido"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "sudor",
+          "en": "flamenco",
+          "retraso": "30%"
+        }
+      ],
+      "sfx": [
+        [
+          "badumtss",
+          "fin"
+        ]
+      ],
+      "pausa": 0.9
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "id": "04",
+  "slug": "miel-no-caduca",
+  "titulo": "La miel NO caduca nunca 🍯 (ni en 3.000 años)",
+  "descripcion": "En tumbas de Egipto se ha encontrado miel de hace miles de años sin estropearse. El truco: casi no tiene agua y es muy ácida.",
+  "hashtags": [
+    "#curiosidades",
+    "#datoscuriosos",
+    "#miel",
+    "#abejas",
+    "#sabiasque",
+    "#shorts"
+  ],
+  "comentario": "¿Tienes un tarro de miel olvidado en la despensa? 🍯👇",
+  "fondo": "desierto",
+  "escenas": [
+    {
+      "habla": "tarro",
+      "texto": "Soy un tarro de miel... y *no caduco nunca*.",
+      "rotulo": "NO CADUCA *NUNCA*",
+      "actores": {
+        "tarro": {
+          "x": 0.5,
+          "y": 0.57,
+          "s": 1.1,
+          "cara": "presumido"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "brillos",
+          "en": "tarro",
+          "retraso": "65%"
+        }
+      ]
+    },
+    {
+      "habla": "piramide",
+      "texto": "Doy fe. En tumbas de Egipto se ha encontrado miel de hace *miles de años*.",
+      "rotulo": "*MILES* DE AÑOS",
+      "actores": {
+        "tarro": {
+          "x": 0.26,
+          "y": 0.6,
+          "s": 0.72,
+          "cara": "feliz"
+        },
+        "piramide": {
+          "x": 0.7,
+          "y": 0.56,
+          "s": 0.95,
+          "cara": "neutro",
+          "entra": "cae"
+        }
+      }
+    },
+    {
+      "habla": "tarro",
+      "texto": "Y seguía sin estropearse.",
+      "actores": {
+        "tarro": {
+          "x": 0.26,
+          "y": 0.6,
+          "s": 0.72,
+          "cara": "presumido",
+          "accion": "saltar",
+          "accion_en": "40%"
+        },
+        "piramide": {
+          "x": 0.7,
+          "y": 0.56,
+          "s": 0.95,
+          "cara": "sorprendido"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "brillos",
+          "en": "tarro",
+          "retraso": "40%"
+        }
+      ]
+    },
+    {
+      "habla": "bombilla",
+      "texto": "Vale, pero... ¿cuál es el truco?",
+      "actores": {
+        "tarro": {
+          "x": 0.7,
+          "y": 0.6,
+          "s": 0.8,
+          "cara": "feliz"
+        },
+        "bombilla": {
+          "x": 0.28,
+          "y": 0.58,
+          "s": 0.82,
+          "cara": "pensativo",
+          "entra": "izq"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "interrogacion",
+          "en": "bombilla",
+          "retraso": "70%"
+        }
+      ]
+    },
+    {
+      "habla": "tarro",
+      "texto": "Tengo muy poca *agua* y soy muy *ácida*. Aquí las bacterias no sobreviven.",
+      "rotulo": "POCA *AGUA* + MUY *ÁCIDA*",
+      "actores": {
+        "tarro": {
+          "x": 0.7,
+          "y": 0.6,
+          "s": 0.8,
+          "cara": "presumido"
+        },
+        "bombilla": {
+          "x": 0.28,
+          "y": 0.58,
+          "s": 0.82,
+          "cara": "sorprendido"
+        }
+      }
+    },
+    {
+      "habla": "abeja",
+      "texto": "¡Y eso que nos cuesta lo suyo! Para medio kilo de miel visitamos unos *dos millones de flores*.",
+      "rotulo": "*2 MILLONES* DE FLORES",
+      "actores": {
+        "tarro": {
+          "x": 0.28,
+          "y": 0.6,
+          "s": 0.75,
+          "cara": "feliz"
+        },
+        "abeja": {
+          "x": 0.72,
+          "y": 0.5,
+          "s": 0.62,
+          "cara": "feliz",
+          "entra": "der"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "corazones",
+          "en": "abeja",
+          "retraso": "80%"
+        }
+      ]
+    },
+    {
+      "habla": "tarro",
+      "texto": "Así que, si me cierras bien, duro más que tus propósitos de *Año Nuevo*.",
+      "actores": {
+        "tarro": {
+          "x": 0.5,
+          "y": 0.58,
+          "s": 1.0,
+          "cara": "presumido"
+        },
+        "abeja": {
+          "x": 0.8,
+          "y": 0.4,
+          "s": 0.42,
+          "cara": "feliz"
+        }
+      },
+      "sfx": [
+        [
+          "badumtss",
+          "fin"
+        ]
+      ],
+      "pausa": 0.9
+    }
+  ]
+}

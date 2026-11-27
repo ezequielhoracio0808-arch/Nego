@@ -1,0 +1,186 @@
+{
+  "id": "02",
+  "slug": "venus-dia-mas-largo",
+  "titulo": "En Venus un día dura MÁS que un año 🪐",
+  "descripcion": "Venus tarda 243 días en girar sobre sí misma y solo 225 en dar la vuelta al Sol. Y encima gira al revés.",
+  "hashtags": [
+    "#curiosidades",
+    "#datoscuriosos",
+    "#venus",
+    "#espacio",
+    "#astronomia",
+    "#shorts"
+  ],
+  "comentario": "¿Qué planeta quieres que hable en el próximo? 👇",
+  "fondo": "espacio",
+  "escenas": [
+    {
+      "habla": "venus",
+      "texto": "En mí, un día dura *más que un año*.",
+      "rotulo": "1 DÍA *>* 1 AÑO",
+      "actores": {
+        "venus": {
+          "x": 0.5,
+          "y": 0.55,
+          "s": 1.15,
+          "cara": "presumido"
+        }
+      }
+    },
+    {
+      "habla": "tierra",
+      "texto": "¿Perdona? Eso es imposible.",
+      "rotulo": "¿¿QUÉ??",
+      "actores": {
+        "venus": {
+          "x": 0.3,
+          "y": 0.56,
+          "s": 0.8,
+          "cara": "presumido"
+        },
+        "tierra": {
+          "x": 0.74,
+          "y": 0.5,
+          "s": 0.7,
+          "cara": "sorprendido",
+          "entra": "der"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "interrogacion",
+          "en": "tierra",
+          "retraso": 0.5
+        }
+      ]
+    },
+    {
+      "habla": "venus",
+      "texto": "Tardo *243 días* en dar una vuelta sobre mí misma...",
+      "rotulo": "1 VUELTA = *243* DÍAS",
+      "actores": {
+        "venus": {
+          "x": 0.3,
+          "y": 0.56,
+          "s": 0.8,
+          "cara": "feliz",
+          "accion": "girar",
+          "accion_en": "62%"
+        },
+        "calendario": {
+          "x": 0.73,
+          "y": 0.55,
+          "s": 0.62,
+          "texto": "243",
+          "retraso": "30%"
+        }
+      }
+    },
+    {
+      "habla": "venus",
+      "texto": "...y solo *225* en dar la vuelta al Sol.",
+      "rotulo": "1 AÑO = *225* DÍAS",
+      "actores": {
+        "venus": {
+          "x": 0.3,
+          "y": 0.56,
+          "s": 0.8,
+          "cara": "presumido"
+        },
+        "calendario#2": {
+          "x": 0.73,
+          "y": 0.55,
+          "s": 0.62,
+          "texto": "225",
+          "retraso": "30%"
+        }
+      },
+      "sfx": [
+        [
+          "ding",
+          "32%"
+        ]
+      ]
+    },
+    {
+      "habla": "tierra",
+      "texto": "O sea, que cumples años... antes de que se acabe el día.",
+      "actores": {
+        "venus": {
+          "x": 0.3,
+          "y": 0.56,
+          "s": 0.8,
+          "cara": "feliz"
+        },
+        "tierra": {
+          "x": 0.73,
+          "y": 0.52,
+          "s": 0.7,
+          "cara": "pensativo",
+          "entra": "der"
+        }
+      }
+    },
+    {
+      "habla": "venus",
+      "texto": "Exacto. Y encima giro *al revés*.",
+      "rotulo": "GIRA AL *REVÉS*",
+      "actores": {
+        "venus": {
+          "x": 0.5,
+          "y": 0.56,
+          "s": 1.05,
+          "cara": "presumido",
+          "accion": "girar",
+          "accion_en": "70%"
+        }
+      }
+    },
+    {
+      "habla": "sol",
+      "texto": "Por eso allí yo salgo por el *oeste*.",
+      "rotulo": "EL SOL SALE POR EL *OESTE*",
+      "actores": {
+        "sol": {
+          "x": 0.5,
+          "y": 0.56,
+          "s": 1.0,
+          "cara": "feliz",
+          "entra": "cae"
+        }
+      }
+    },
+    {
+      "habla": "tierra",
+      "texto": "Y yo quejándome de que los lunes se hacen largos.",
+      "actores": {
+        "venus": {
+          "x": 0.28,
+          "y": 0.58,
+          "s": 0.72,
+          "cara": "presumido"
+        },
+        "tierra": {
+          "x": 0.72,
+          "y": 0.54,
+          "s": 0.78,
+          "cara": "asustado"
+        }
+      },
+      "fx": [
+        {
+          "tipo": "sudor",
+          "en": "tierra",
+          "retraso": 0.8
+        }
+      ],
+      "sfx": [
+        [
+          "trompeta",
+          "fin"
+        ]
+      ],
+      "pausa": 0.9
+    }
+  ]
+}

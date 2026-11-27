@@ -1,0 +1,7 @@
+Pon aquí tu audio para sustituir la voz sintética de un short.
+
+  1. python3 tools/animar.py guion 01      (texto para leer o pegar en ElevenLabs)
+  2. Guarda el audio como 01.mp3  (o 01.wav / 01.m4a) en esta carpeta
+  3. python3 tools/animar.py render 01
+
+Deja una pausa clara entre frase y frase: el motor usa los silencios para repartir el audio entre las escenas.
