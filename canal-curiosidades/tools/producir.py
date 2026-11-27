@@ -564,13 +564,20 @@ def textos(g, ctx):
         partes += ["", "📌 Capítulos", cap_txt]
     if g.get("fuentes"):
         partes += ["", "📚 Fuentes", *fuentes_txt(g)]
-    cr = creditos_txt(g, ctx, g["escenas"])
-    if cr:
-        partes += ["", "📷 Imágenes con licencia libre (Wikimedia Commons)", *cr]
-    partes += ["", f"🔔 Suscríbete a {C.CANAL.title()}: una curiosidad nueva cada día.",
-               "🎙️ Narración con voz sintética. Guion revisado con las fuentes de arriba.", "", hashtags,
-               "", "Etiquetas: " + ", ".join(tags)]
-    open(os.path.join(out, "descripcion.txt"), "w", encoding="utf-8").write("\n".join(partes).strip() + "\n")
+    mini = [{"imagen": g["miniatura_busqueda"]}] if g.get("miniatura_busqueda") else []  # la foto de la miniatura también lleva crédito
+    cr = creditos_txt(g, ctx, g["escenas"] + mini)
+    pie = ["", f"🔔 Suscríbete a {C.CANAL.title()}: una curiosidad nueva cada día.",
+           "🎙️ Narración con voz sintética. Guion revisado con las fuentes de arriba.", "", hashtags]
+    desc = "\n".join(partes + (["", "📷 Imágenes con licencia libre (Wikimedia Commons)", *cr] if cr else []) + pie).strip()
+    fijado = os.path.join(out, "comentario-fijado.txt")
+    if len(desc) > 4900:  # YouTube admite 5000 caracteres: los créditos completos van al comentario fijado
+        open(fijado, "w", encoding="utf-8").write("\n".join(["📷 Créditos de las imágenes (Wikimedia Commons)", *cr]) + "\n")
+        desc = "\n".join(partes + ["", f"📷 {len(cr)} fotos de Wikimedia Commons con licencia libre (CC BY, CC BY-SA, CC0 o dominio público). "
+                                       "Autor, licencia y enlace de cada una en el comentario fijado."] + pie).strip()
+        print(f"Créditos de las fotos en comentario-fijado.txt (la descripción pasaba de 5000 caracteres)")
+    elif os.path.exists(fijado):
+        os.remove(fijado)
+    open(os.path.join(out, "descripcion.txt"), "w", encoding="utf-8").write(desc + "\n\nEtiquetas: " + ", ".join(tags) + "\n")
 
     if S:
         textos_short(g, ctx, S, hashtags, tags, g["titulo"])
