@@ -32,6 +32,13 @@ def limpio(s):
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", s or ""))).strip()
 
 
+def nombre_autor(s):
+    """Solo el nombre: sin «- Wikimedia Commons - © …», enlaces, paréntesis ni letras que la fuente no tiene (chino, etc.)."""
+    s = re.split(r"\s+[-–|/]\s+|\s*[©(\[]|https?://", limpio(s))[0]
+    s = re.sub(r"\s+", " ", "".join(ch for ch in s if ord(ch) < 0x2000)).strip(" ,.;:")
+    return s[:60] or "Autor desconocido"
+
+
 API_BLOQUEADA = False  # si la API de Commons nos bloquea mucho rato, se usan sus páginas web normales
 
 
@@ -76,7 +83,7 @@ def _web_info(titulo):
     if not turl:
         return None
     return {"titulo": titulo, "url": turl, "pagina": "https://commons.wikimedia.org/wiki/" + quote(titulo.replace(" ", "_")),
-            "autor": (autor or "Autor desconocido")[:120], "licencia": lic, "ancho": w, "alto": hh, "fuente": "Wikimedia Commons"}
+            "autor": nombre_autor(autor), "licencia": lic, "ancho": w, "alto": hh, "fuente": "Wikimedia Commons"}
 
 
 @functools.lru_cache(maxsize=None)
@@ -211,7 +218,7 @@ def _paginas(pages):
         score = (2 if 1.25 <= ar <= 2.1 else 1 if ar >= 1 else 0) + (1 if ii["width"] >= 1920 else 0) - out.__len__() * 0.05
         autor = limpio(m.get("Artist", {}).get("value", "")) or limpio(m.get("Credit", {}).get("value", "")) or "Autor desconocido"
         out.append({"titulo": p["title"], "url": url, "pagina": ii.get("descriptionurl", ""),
-                    "autor": autor[:120], "licencia": lic, "ancho": ii["width"], "alto": ii["height"],
+                    "autor": nombre_autor(autor), "licencia": lic, "ancho": ii["width"], "alto": ii["height"],
                     "fuente": "Wikimedia Commons", "score": score})
     return out
 
@@ -228,7 +235,7 @@ def candidatos_openverse(spec):
         if x.get("license") in ("cc0", "pdm"):
             lic = "CC0" if x["license"] == "cc0" else "Public domain"
         out.append({"titulo": x.get("title") or spec, "url": x["url"], "pagina": x.get("foreign_landing_url", ""),
-                    "autor": (x.get("creator") or "Autor desconocido")[:120], "licencia": lic,
+                    "autor": nombre_autor(x.get("creator")), "licencia": lic,
                     "ancho": x.get("width") or 0, "alto": x.get("height") or 0, "fuente": x.get("provider", "Openverse")})
     return out
 
