@@ -101,9 +101,40 @@ Si cambias algo, `--solo video|short|miniatura|textos` regenera solo esa parte.
 cd .. && git add canal-curiosidades && git commit -m "Vídeo diario $FECHA: <título>" && git push -u origin <rama>
 ```
 Los `.mp4` no van a git (los excluye `.gitignore`). Se entregan con **SendUserFile** (`status: proactive`):
-`video.mp4`, `short.mp4` y `miniatura.jpg`. Termina con un resumen breve en español:
+`video.mp4`, `short.mp4` y `miniatura.jpg`. **Haz el push antes del paso 7**: la miniatura se le pasa a vidIQ desde GitHub.
+
+## 7. Subir a YouTube con vidIQ (si el conector está disponible)
+El usuario lo quiere así: **públicos y programados**, el vídeo a las **18:00** y el Short a las **13:00** (hora de España,
+`Europe/Madrid`). Subir a YouTube con vidIQ **no gasta créditos**. Lo que está previsto se apunta en `publicaciones.json`.
+1. **Horas libres.** Mira `publicaciones.json`. El vídeo va al **primer día, empezando por hoy, sin otro vídeo
+   (`formato: video`) a las 18:00**. El Short va a la **primera hora de las 13:00 libre**. Nunca programes nada en el pasado.
+2. **Cuenta.** `vidiq_social_account_list` (platform YOUTUBE). El `platformAccountId` del canal es el de `publicaciones.json`.
+3. **Miniatura.** `vidiq_upload_image` con `image` =
+   `https://raw.githubusercontent.com/ezequielhoracio0808-arch/Nego/<rama>/canal-curiosidades/salida/<id>/miniatura.jpg`.
+   No uses el enlace de subida de vidIQ: este entorno no llega a mcp.vidiq.com.
+4. **Vídeos.** Para `video.mp4` y para `short.mp4`: `vidiq_video_upload` con `localFile` (ruta absoluta, `wc -c` y
+   `video/mp4`). Ejecuta en la terminal la orden que devuelve (tarda segundos) y luego llama otra vez con el `uploadId`
+   hasta que diga `ready`.
+5. **Borradores.** Uno por vídeo con `vidiq_social_post_draft_create`. Si responde «has not finished rendering», espera
+   un minuto y repite. Datos del borrador:
+   - `title`: la primera línea de `descripcion.txt` o `descripcion-short.txt`;
+   - `text`: el resto del archivo, sin la línea «Etiquetas:»;
+   - `tags`: `etiquetas` del guion;
+   - `categoryId`: 27; `privacyStatus`: `public`; `publishAt`: la hora del punto 1, con `+01:00` o `+02:00` según el horario;
+   - el vídeo largo lleva además `thumbnailImageId`.
+6. **Apúntalo** en `publicaciones.json` con `estado: "borrador"` (con `vidiq_post` y `revision`), haz commit y push.
+7. **Pide el visto bueno.** vidIQ solo publica cuando el usuario lo aprueba después de ver el borrador. Así que **no llames
+   a `vidiq_social_post_publish`** hasta que el usuario responda «sí» en esta conversación. En el resumen final enséñale
+   cada borrador: cuenta, título, hora y coste (0). Cuando diga que sí, publica cada `postId` con su `revision`, cambia el
+   `estado` a `"programado"` y haz commit. Si la hora ya ha pasado cuando responda, muévela a la siguiente hora libre con
+   `vidiq_social_post_draft_update` y avísale.
+8. **Comentario fijado.** Si existe `salida/<id>/comentario-fijado.txt`, recuérdale que lo pegue y lo fije, porque vidIQ
+   no fija comentarios.
+
+## 8. Resumen final
+Termina con un resumen breve en español:
 - el tema y **por qué** se eligió (cifras de la investigación),
 - el título,
-- qué revisar antes de subir (pronunciación de nombres raros y cualquier dato con matices),
-- cuándo publicar: el vídeo entre las **17:00 y las 19:00** (hora de España) y el Short 2–3 horas después,
-  o el Short por la mañana para atraer gente al vídeo.
+- qué revisar (pronunciación de nombres raros y cualquier dato con matices),
+- los borradores de YouTube con su hora, y la pregunta: «¿Los programo? Responde **sí**».
+  Sin conector de vidIQ: cuándo publicar a mano (vídeo a las 18:00 y Short a las 13:00).

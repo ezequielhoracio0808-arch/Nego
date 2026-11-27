@@ -1,6 +1,6 @@
 # 🔑 Dato Oculto: canal de curiosidades con un vídeo nuevo cada día
 
-**Cada mañana a las 7:13 (hora de España)** una sesión programada de Claude:
+**Cada mañana a las 7:13 (hora de España)** una tarea programada de Claude (en la conversación donde está conectado vidIQ):
 1. **Investiga qué vídeos funcionan**: vídeos de curiosidades en español de los últimos 14 días, ordenados por
    visitas/día y por cuántas veces superan al tamaño de su canal (API de YouTube; si no hay clave, búsquedas web).
 2. **Elige un tema** que no se haya hecho y **verifica cada dato** con dos fuentes como mínimo.
@@ -9,6 +9,8 @@
 5. **Pone la voz** (Piper, español de España), **hace el montaje** (zoom lento sobre cada foto, rótulos, subtítulos y música propia),
    la miniatura y la descripción con capítulos, fuentes y créditos.
 6. **Te lo manda a la app** (video.mp4, short.mp4 y miniatura.jpg) y sube el guion y los textos a git.
+7. **Lo sube a tu canal de YouTube con vidIQ**, programado (vídeo a las 18:00 y Short a las 13:00, hora de España).
+   Antes te enseña los borradores y solo los programa cuando respondes «sí». Lo previsto queda en `publicaciones.json`.
 
 El procedimiento detallado está en [`DIARIO.md`](DIARIO.md). La identidad del canal y cómo crearlo están en [`marca/`](marca/canal.md).
 
