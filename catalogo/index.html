@@ -334,6 +334,7 @@ h1, h2, h3 { text-wrap: balance; }
     <h1 id="intro-h">Armá tu pedido y lo cerramos por WhatsApp</h1>
     <p class="lead" id="lead">Todo ordenado por categoría y sección. Sumá lo que te guste y se abre WhatsApp con el pedido escrito.</p>
     <ul class="trust">
+      <li><b style="color:var(--gold-hi)">Precios renovados: todo 10% más barato</b></li>
       <li>Envíos a todo el país</li>
       <li>Transferencia, efectivo o Mercado Pago</li>
       <li>Precios en pesos</li>
@@ -573,9 +574,10 @@ h1, h2, h3 { text-wrap: balance; }
 
   // Precio en tarjeta y ficha
   function priceHTML(p) {
-    if (p.sinDescuento) return '<div class="price"><b>' + fmt(p.precio) + "</b>" + (p.separado ? "<s>" + fmt(p.separado) + "</s>" : "") + '</div><p class="hint10">' + (p.separado ? "Ahorrás <b>" + fmt(p.separado - p.precio) + "</b> · precio cerrado" : "Precio cerrado") + "</p>";
-    if (active()) return '<div class="price"><b>' + fmt(disc(p)) + "</b><s>" + fmt(p.precio) + '</s><span class="off">−' + PCT_TXT + "</span></div>";
-    return '<div class="price"><b>' + fmt(p.precio) + '</b></div><p class="hint10">Llevando ' + DESDE + "+: <b>" + fmt(disc(p)) + "</b></p>";
+    if (p.sinDescuento) return '<div class="price"><b>' + fmt(p.precio) + "</b>" + (p.separado || p.antes ? "<s>" + fmt(p.separado || p.antes) + "</s>" : "") + '</div><p class="hint10">' + (p.separado ? "Ahorrás <b>" + fmt(p.separado - p.precio) + "</b> · precio cerrado" : "Precio cerrado") + "</p>";
+    var ref = p.antes || p.precio;
+    if (active()) return '<div class="price"><b>' + fmt(disc(p)) + "</b><s>" + fmt(ref) + '</s><span class="off">−' + Math.round((1 - disc(p) / ref) * 100) + "%</span></div>";
+    return '<div class="price"><b>' + fmt(p.precio) + "</b>" + (p.antes ? "<s>" + fmt(p.antes) + '</s><span class="off">−' + Math.round((1 - p.precio / p.antes) * 100) + "%</span>" : "") + '</div><p class="hint10">Llevando ' + DESDE + "+: <b>" + fmt(disc(p)) + "</b></p>";
   }
   function actHTML(p) {
     if (p.opciones) return '<button class="add" type="button" data-add="' + p.id + '">Agregar</button>';
