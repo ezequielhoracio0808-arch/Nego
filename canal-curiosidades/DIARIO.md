@@ -155,7 +155,8 @@ y el Short del día (2) y, como mucho, 1 Short pendiente (`estado: "aprobado"` c
    `https://raw.githubusercontent.com/ezequielhoracio0808-arch/Nego/<rama>/canal-curiosidades/salida/<id>/miniatura.jpg`.
    No uses el enlace de subida de vidIQ: este entorno no llega a mcp.vidiq.com.
 4. **Vídeos.** Para `video.mp4` y para `short.mp4`: `vidiq_video_upload` con `localFile` (ruta absoluta, `wc -c` y
-   `video/mp4`). Ejecuta en la terminal la orden que devuelve (tarda segundos) y luego llama otra vez con el `uploadId`
+   `video/mp4`). Ejecuta en la terminal la orden que devuelve (tarda segundos; es lo mismo que
+   `sh tools/vidiq_subir.sh RUTA TAMAÑO URL_FIRMADA video/mp4 UPLOAD_ID`) y luego llama otra vez con el `uploadId`
    hasta que diga `ready`.
 5. **Borradores.** Uno por vídeo con `vidiq_social_post_draft_create`. Si responde «has not finished rendering», espera
    un minuto y repite. Datos del borrador:
