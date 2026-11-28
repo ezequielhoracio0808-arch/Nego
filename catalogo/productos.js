@@ -271,7 +271,7 @@ window.CATALOGO = {
     { id: "vs-velvet-petals-decadent", cat: "victoria", nombre: "Velvet Petals Decadent", detalle: "Body splash 250 ml", precio: 17500, antes: 19500, para: "ella", aroma: "frutal", foto: "vs-velvet-petals-decadent.webp", ocasiones: ["dia","cita","verano","regalo"] },
 
     // ── audio/auriculares
-    { id: "auric-e7s", cat: "audio", sec: "auriculares", nombre: "Auriculares inalámbricos E7S", detalle: "Bluetooth · estuche con visor", precio: 7000, antes: 7800, foto: "auric-e7s.webp", ilustrativa: true },
+    { id: "auric-e7s", cat: "audio", sec: "auriculares", nombre: "Auriculares inalámbricos E7S", detalle: "Bluetooth · estuche con visor", precio: 8900, foto: "auric-e7s.webp", ilustrativa: true },
     { id: "aur-cable", cat: "audio", sec: "auriculares", nombre: "EarPods con cable", detalle: "Elegí la ficha", precio: 13000, antes: 14500, opciones: "cable", foto: "aur-cable.webp", texto: "Auriculares con cable y micrófono, para escuchar música y hablar por teléfono. Sin batería: enchufás y listo. Elegí la ficha: Tipo C o Lightning." },
     { id: "jbl-wave300", cat: "audio", sec: "auriculares", nombre: "JBL Wave 300", detalle: "Auriculares inalámbricos", precio: 18500, antes: 20500, foto: "jbl-wave300.webp" },
     { id: "airpods-pro2", cat: "audio", sec: "auriculares", nombre: "AirPods Pro 2", detalle: "Auriculares inalámbricos", precio: 21000, antes: 23500, foto: "airpods-pro2.webp", texto: "Auriculares inalámbricos in-ear con estuche de carga. Traen cable USB-C mallado y almohadillas de repuesto en tres tamaños. Se conectan al toque con el iPhone. Vienen sellados en caja.", ocasiones: ["regalo"] },
